@@ -1,0 +1,108 @@
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+[Bb]uilds/
+sysinfo.txt
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+/*.vs
+*.suo
+
+
+*_autosave_0.spp
+*_autosave_1.spp
+*_autosave_2.spp
+*.painter_lock
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+[Tt]humbs.db
+*.stackdump
+RoomsVR/.vs/
+*.spp
+CubeEscape/.vs/
+
+CubeEscape/Assembly-CSharp-Editor\.csproj
+
+CubeEscape/Assembly-CSharp\.csproj
+
+CubeEscape/Build.zip
+
+CubeEscape/CubeEscape\.sln
+
+CubeEscape/*.csproj
+CubeEscape2/*.csproj
+
+CubeEscape/Oculus\.VR\.csproj
+CubeEscapee/Oculus\.VR\.csproj
+
+CubeEscape/Oculus\.VR\.Editor\.csproj
+
+CubeEscape/Oculus\.VR\.Scripts\.Editor\.csproj
+
+CubeEscape/BakeryEditorAssembly\.csproj
+
+CubeEscape/BakeryRuntimeAssembly\.csproj
+CubeEscape/BuildReports
+
+
+###### FOLDERS
+/Assets/_[Tt]est/
+
+
+###### FILES
+/Assets/_[Tt]est.meta
+BuildReports
+Assets/FR2_Cache.asset
+Assets/ExternalPlugins/Bakery/ftGlobalStorage.asset
+Assets/Editor/x64/Bakery/.uvgblog.txt
+Assets/FR2_Cache.asset
+Assets/FR2_Cache.asset.meta
+GameBuild
+Assets/Bends
+Assets/Single-20210917T175902Z-001
+GameBuild_GroundedWheels
+Logs
+logRunSetup.txt
+Assets/PixelTheKarters_PTK/PTK_EnviroProject_Linked
+Assets/PixelTheKarters_PTK/PTK_EnviroProject_Linked.meta
+Assets/StreamingAssets/aa
+Assets/StreamingAssets/Audio/GeneratedSoundBanks
+Build_IL2CPP
+Build_MONO
+Build_PS5_Hosted_SymbolFiles
+Build_PS5_Hosted_BurstDebugInformation_DoNotShip
+Build_PS5_Hosted
+Build_XBoxOne
+Build_XboxSeries
+TheKarters_WwiseProject/.cache
+BuildMONO
+skins to remove and copy
+IL2_CPP Windows characters
+*.prof
+Build_ILCPP
+Build_ILCPP_QueueActionsCtn
+WwiseUnityIntegration_PS5_Src
+Mods
