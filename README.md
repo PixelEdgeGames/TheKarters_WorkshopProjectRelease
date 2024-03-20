@@ -20,22 +20,22 @@
 <tr>
     <td>
         <ul>
-            <li>New racing circuits</li>
-            <li>Custom terrains</li>
+            <li>Race Tracks</li>
+            <li>Battle Arenas</li>
         </ul>
     </td>
     <td>
         <ul>
-            <li>New racers</li>
-            <li>Character skins</li>
-            <li>Voice overs</li>
+            <li>New Racers</li>
+            <li>Character Skins</li>
+            <li>Audio Voice Overs</li>
         </ul>
     </td>
     <td>
         <ul>
-            <li>Custom karts</li>
-            <li>Unique wheels</li>
-            <li>Stylish stickers</li>
+            <li>Karts</li>
+            <li>Wheels</li>
+            <li>Stickers</li>
         </ul>
     </td>
 </tr>
