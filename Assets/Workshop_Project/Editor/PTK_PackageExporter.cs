@@ -1221,9 +1221,12 @@ public class PTK_PackageExporter : EditorWindow
 
                     var childWithBestPath = boundingBoxCalculator.GetChildWithBestPath(strFullPath);
 
-                    instance.transform.position = childWithBestPath.vPosition;
-                    instance.transform.rotation = childWithBestPath.qRotation;
-                    instance.transform.localScale = childWithBestPath.vLoosyScale;
+                    if(childWithBestPath != null)
+                    {
+                        instance.transform.position = childWithBestPath.vPosition;
+                        instance.transform.rotation = childWithBestPath.qRotation;
+                        instance.transform.localScale = childWithBestPath.vLoosyScale;
+                    }
 
                     ThumbnailGenerate.TakeScreenshoot(2048, 2048, Camera.main, true, strTargetDirectory,true,512,512);
                     AssetDatabase.Refresh();
@@ -1537,9 +1540,12 @@ public class PTK_PackageExporter : EditorWindow
 
                 var childWithBestPath = boundingBoxCalculator.GetChildWithBestPath(strFullPath);
 
-                instance.transform.position = childWithBestPath.vPosition;
-                instance.transform.rotation = childWithBestPath.qRotation;
-                instance.transform.localScale = childWithBestPath.vLoosyScale;
+                if(childWithBestPath != null)
+                {
+                    instance.transform.position = childWithBestPath.vPosition;
+                    instance.transform.rotation = childWithBestPath.qRotation;
+                    instance.transform.localScale = childWithBestPath.vLoosyScale;
+                }
 
                 ThumbnailGenerate.TakeScreenshoot(2048, 2048, Camera.main, true, strTargetFilePathForThumbPNG, true, 512, 512);
                 AssetDatabase.Refresh();
