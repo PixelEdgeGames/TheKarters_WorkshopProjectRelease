@@ -23,10 +23,20 @@ public class PTK_PackageExporter : EditorWindow
     private int iLastSelectedIndex = -1;
 
 
-    [MenuItem("PixelTools/PTK Package Exporter")]
+    [MenuItem("PixelTools/PTK Package Exporter",false,333)]
     public static void ShowWindow()
     {
         GetWindow<PTK_PackageExporter>("PTK Package Exporter");
+    }
+
+
+    [MenuItem("PixelTools/Open Scene: Workshop Content Gen",false,-333)]
+    public static void WorkshopItemsScene()
+    {
+        if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            UnityEditor.SceneManagement.EditorSceneManager.OpenScene("Assets/Workshop_Project/Scenes/WorkshopGenScene.unity");
+        }
     }
 
     string strModSO_Path = "Assets/Workshop_Project/LocalUserModsGenerationConfigs";
@@ -379,12 +389,20 @@ public class PTK_PackageExporter : EditorWindow
                 strLastPresentedModTexturePreviewsPath = strModTexturePreviewsPath;
                
                 GUILayout.BeginVertical();
+                GUI.color = Color.yellow;
+                if (GUILayout.Button("Show Thumbnail & Screens in Explorer"))
+                {
+                    EditorUtility.RevealInFinder(strModTexturePreviewsPath + "Thumbnail.png");
+                }
+                GUI.color = Color.white;
+
                 if (fCurrentMBThumbnailSize >= 1.0f || modThumbnailTexPreview == null)
                     GUI.color = Color.red;
                 else
                     GUI.color = Color.green;
 
                 GUILayout.Label("Under 1MB requirement. (" + fCurrentMBThumbnailSize.ToString("F1")+"MB)", GUI.skin.box);
+               
                 GUI.color = Color.white;
                 GUI.enabled = false;
                 modThumbnailTexPreview = (Texture2D)EditorGUILayout.ObjectField("Mod Thumbnail 16x9", modThumbnailTexPreview, typeof(Texture2D), false);
@@ -491,10 +509,18 @@ public class PTK_PackageExporter : EditorWindow
     string[] VisibilityOptions = new string[] { "Public", "FriendsOnly", "Unlisted", "Private" };
     private void OnGUI()
     {
-        Undo.RecordObject(currentMod, "Mod Changed");
+        if (currentMod != null)
+            Undo.RecordObject(currentMod, "Mod Changed");
+
         EditorGUI.BeginChangeCheck();
 
         ModConfigGUI();
+
+        if (currentMod == null)
+        {
+            EditorGUI.EndChangeCheck();
+            return;
+        }
 
         string ignorePhrases = "Ctrl+D,Outfits,Blender,Color Variations,3D Models, GameplayPrefabBase,WeaponsAnimations";
          string noCheckboxPhrases = "Color Variations";
@@ -528,13 +554,16 @@ public class PTK_PackageExporter : EditorWindow
 
 
         // Draw the progress bar
-    //    EditorGUI.ProgressBar(new Rect(3, GUILayoutUtility.GetLastRect().yMax + 5, position.width - 6, 20), fExportProgress, "Export Progress");
+        //    EditorGUI.ProgressBar(new Rect(3, GUILayoutUtility.GetLastRect().yMax + 5, position.width - 6, 20), fExportProgress, "Export Progress");
+
+       
+            
 
         GUILayout.Space(20);  // Add space after the progress bar
 
         GUI.enabled = currentMod != null;
 
-        if(currentMod.UniqueModNameHashToGenerateItemsKeys == "")
+        if (currentMod.UniqueModNameHashToGenerateItemsKeys == "")
         {
             GUI.color = Color.red;
             GUILayout.Label("Unique Mod Name is empty! Please assign unique Name before generating!");
@@ -1010,6 +1039,9 @@ public class PTK_PackageExporter : EditorWindow
                 if (fullPath.Contains("ModelPreviewWithSuspension_DoNotIncludeInMod") == true)
                     continue; // we don't need to include it (it will take extra space in mod)
 
+                if (fullPath.Contains("Preview3DModels_IgnoreInBuild") == true)
+                    continue; // we don't need to include it (it will take extra space in mod)
+                
                 var guid = AssetDatabase.AssetPathToGUID(fullPath);
                 var entry = settings.CreateOrMoveEntry(guid, newGroup);
 
@@ -1094,6 +1126,9 @@ public class PTK_PackageExporter : EditorWindow
 
         if (boundingBoxCalculator != null)
             boundingBoxCalculator.gameObject.SetActive(true);
+
+
+        EditorUtility.RevealInFinder(Path.Combine(buildPathModDir, ""));
     }
 
 
