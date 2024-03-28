@@ -22,7 +22,7 @@ public class BoundingBoxCalculator : MonoBehaviour
 
     private void Update()
     {
-        transform.position = new Vector3(0.0F, 0.0F, 6.5F);
+        transform.localPosition = new Vector3(0.0F, 0.0F, 6.5F);
         transform.rotation = Quaternion.Euler(0.0F, 200.0F, 0.0F);
     }
     public void RefreshOffsets()
