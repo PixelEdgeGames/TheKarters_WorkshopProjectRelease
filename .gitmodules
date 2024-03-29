@@ -1,6 +1,3 @@
-[submodule "Assets/Workshop_Content"]
-	path = Assets/Workshop_Content
-	url = git@github.com:PixelEdgeGames/TheKarters_Workshop_Content.git
 [submodule "Assets/Workshop_Module"]
 	path = Assets/Workshop_Module
 	url = git@github.com:PixelEdgeGames/TheKarters_WorkshopModule.git
