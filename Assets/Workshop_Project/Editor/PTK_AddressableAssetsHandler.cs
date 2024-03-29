@@ -13,9 +13,212 @@ using UnityEngine;
 
 public class PTK_AddressableAssetsHandler
 {
+    PTK_ModItemConfigurator modItemConfigurator = new PTK_ModItemConfigurator();
+
     string buildPathModDir;
     float fExportProgress = 0.0f;
 
+    public void ExportToAddressables(PTK_PackageExporter exporter)
+    {
+        PrepareExportToAddressables(exporter);
+
+        bool bExportSettingsValid = ValidateIfExportSettingsAreCorrect(exporter);
+
+        if (bExportSettingsValid == false)
+            return;
+
+
+        SaveUploadPasswordKey(exporter);
+
+        ClearExistingAddressablesGroups();
+
+
+        var settings = AddressableAssetSettingsDefaultObject.Settings;
+        var addressableGroupsEntries = GenerateAddressablesGroupsAndContentItems(exporter);
+
+        bool bAreSelectedItemsForExportAreValidToExportAsSingleModPackage = AreSelectedItemsForExportAreValidToExportAsSingleModPackage(exporter);
+        
+
+        EditorUtility.SetDirty(exporter.currentMod);
+        AssetDatabase.SaveAssets();
+
+        EditorUtility.ClearProgressBar();
+        SimplifyAddresses(addressableGroupsEntries);
+
+        // run addressables build
+        AddressableAssetSettings.BuildPlayerContent();
+
+        EditorUtility.SetDirty(settings);
+        AssetDatabase.SaveAssets();
+
+        exporter.treeView.SaveStateToPrefs();  // Save state after changes
+
+
+        if (exporter.boundingBoxCalculator != null)
+            exporter.boundingBoxCalculator.gameObject.SetActive(true);
+
+        // after mod generated - copy textures
+        CopyThumbnailAndScreensToExportedModDirectory(exporter);
+
+        EditorUtility.RevealInFinder(Path.Combine(buildPathModDir, ""));
+    }
+
+    void PrepareExportToAddressables(PTK_PackageExporter exporter)
+    {
+        AssetDatabase.SaveAssets();
+        fExportProgress = 0.0f;
+
+
+        if (exporter.boundingBoxCalculator != null)
+        {
+            exporter.boundingBoxCalculator.RefreshOffsets();
+            exporter.boundingBoxCalculator.gameObject.SetActive(false);
+        }
+
+        string strUserCOnfigured_ModName = exporter.currentMod.ModName;
+        string projectPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath, ".."));
+        buildPathModDir = System.IO.Path.Combine(projectPath, "Mods", strUserCOnfigured_ModName);
+
+        // Ensure the target directory exists
+        Directory.CreateDirectory(buildPathModDir);
+
+        if (exporter.bRegenerateThumbnails == true)
+            exporter.currentMod.thumbnailsForObjects.Clear();
+
+        exporter.currentMod.modContentInfo = new CPTK_ModContentInfoFile();
+    }
+
+    void ClearExistingAddressablesGroups()
+    {
+        var settings = AddressableAssetSettingsDefaultObject.Settings;
+        // Clear all groups
+        var allGroups = new List<AddressableAssetGroup>(settings.groups);
+        foreach (var group in allGroups)
+        {
+            if (group.name.ToLower().Contains("PTK_EnviroAssetsGroup".ToLower()) == true)
+            {
+                // we dont want to remove enviro asset group
+                continue;
+            }
+
+            settings.RemoveGroup(group);
+        }
+    }
+
+    Dictionary<AddressableAssetEntry, AddressableAssetGroup> GenerateAddressablesGroupsAndContentItems(PTK_PackageExporter exporter)
+    {
+        var settings = AddressableAssetSettingsDefaultObject.Settings;
+        Dictionary<AddressableAssetEntry, AddressableAssetGroup> entries = new Dictionary<AddressableAssetEntry, AddressableAssetGroup>();
+
+        exporter.currentMod.LastBuildDateTime = DateTime.Now.ToString();
+
+        string buildPath = System.IO.Path.Combine(buildPathModDir, "[BuildTarget]");
+
+        AddressableAssetGroup modInfoGroup = settings.FindGroup("ModInfoGroup");
+        if (modInfoGroup == null)
+            modInfoGroup = CreateAndConfigureGroup("ModInfoGroup", buildPath, exporter.currentMod);
+
+        var currentModGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(exporter.currentMod));
+
+        var modInfoEntry = settings.CreateOrMoveEntry(currentModGuid, modInfoGroup);
+        modInfoEntry.SetAddress("ModInfo", false);
+
+
+        int totalDirectories = exporter.treeView.GetCheckedItems().Count;
+        int totalAssets = 0;
+
+        foreach (var dirName in exporter.treeView.GetCheckedItems())
+        {
+            totalAssets += GetAssetsInDirectoryNonRecursive(dirName).Length;
+        }
+
+        int totalSteps = totalDirectories + totalAssets;
+
+        List<PTK_Workshop_CharAnimConfig> alreadyInitializedAnimConfigs = new List<PTK_Workshop_CharAnimConfig>();
+        int currentStep = 0;
+        foreach (var dirName in exporter.treeView.GetCheckedItems())
+        {
+            // Create a group for the directory
+            // Create a group for the directory
+            var groupName = Path.GetFileNameWithoutExtension(dirName);  // Assuming you want the directory name as the group name
+            AddressableAssetGroup newGroup = settings.FindGroup(groupName);
+            if (newGroup == null)
+            {
+                newGroup = CreateAndConfigureGroup(groupName, buildPath, exporter.currentMod);
+            }
+
+            // Fetch all asset paths from the directory
+            string[] assetPathsInDir = GetAssetsInDirectoryNonRecursive(dirName);
+
+            string[] filteredPaths = assetPathsInDir.Where(path => path.Contains("PTK_Workshop_Char Anim Config")).ToArray();
+            string strAnimConfigFilePath = filteredPaths.FirstOrDefault();
+
+            PTK_Workshop_CharAnimConfig animConfig = null;
+            if (strAnimConfigFilePath != null && strAnimConfigFilePath != "")
+            {
+                animConfig = AssetDatabase.LoadAssetAtPath<PTK_Workshop_CharAnimConfig>(strAnimConfigFilePath);
+
+                if (alreadyInitializedAnimConfigs.Contains(animConfig) == false)
+                {
+                    PTK_Workshop_CharAnimConfigEditor.InitializeFromDirectory(animConfig);
+                    alreadyInitializedAnimConfigs.Add(animConfig);
+                }
+            }
+
+            foreach (string assetPath in assetPathsInDir)
+            {
+                var fullPath = assetPath;
+
+                if (ShouldAddItemInPathToAddressableGroup(fullPath) == false)
+                    continue;
+
+                var guid = AssetDatabase.AssetPathToGUID(fullPath);
+                var entry = settings.CreateOrMoveEntry(guid, newGroup);
+
+                string strItemOrPrefabAddressableKey = ConstructAddressableName(fullPath, groupName);
+                entry.SetAddress(strItemOrPrefabAddressableKey, false);
+
+                modItemConfigurator.ConfigureGameplayAddressableContentItem(exporter, fullPath, strItemOrPrefabAddressableKey, animConfig);
+
+                entries[entry] = newGroup;
+
+                currentStep++;
+                fExportProgress = (float)currentStep / totalSteps;
+                EditorUtility.DisplayProgressBar("Exporting", "Exporting...", fExportProgress);
+                exporter.Repaint();
+            }
+        }
+
+        return entries;
+    }
+
+    bool AreSelectedItemsForExportAreValidToExportAsSingleModPackage(PTK_PackageExporter exporter)
+    {
+        if (exporter.currentMod.modContentInfo.tracks.Count > 0)
+        {
+            if (exporter.currentMod.modContentInfo.tracks.Count != 1)
+            {
+                EditorUtility.ClearProgressBar();
+                Debug.LogError("Single Mod should contain only one track!");
+                return false;
+            }
+
+
+            if (exporter.currentMod.modContentInfo.characters.Count != 0 ||
+                exporter.currentMod.modContentInfo.stickers.Count != 0 ||
+                exporter.currentMod.modContentInfo.vehicles.Count != 0 ||
+                exporter.currentMod.modContentInfo.wheels.Count != 0)
+            {
+                EditorUtility.ClearProgressBar();
+                Debug.LogError("Race Track Mod can't have other items like characters, wheels,vehicles or stickers!");
+                return false;
+            }
+        }
+
+        return true;
+    }
+   
+   
     AddressableAssetGroup CreateAndConfigureGroup(string strGroupName, string buildPath, PTK_ModInfo currentMod)
     {
         var settings = AddressableAssetSettingsDefaultObject.Settings;
@@ -69,311 +272,6 @@ public class PTK_AddressableAssetsHandler
 
         return newGroup;
     }
-    public void ExportToAddressables(PTK_PackageExporter exporter)
-    {
-        AssetDatabase.SaveAssets();
-
-        string strUserCOnfigured_ModName = exporter.currentMod.ModName;
-        string projectPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath, ".."));
-        buildPathModDir = System.IO.Path.Combine(projectPath, "Mods", strUserCOnfigured_ModName);
-
-        // Ensure the target directory exists
-        Directory.CreateDirectory(buildPathModDir);
-
-        if (exporter.currentMod.UniqueModNameHashToGenerateItemsKeys == "")
-        {
-            Debug.LogError("Unique Mod Name is empty. Please assign unique mod name first!");
-            return;
-        }
-
-        if (exporter.currentMod.strUniqueModServerUpdateKEY == "")
-        {
-            Debug.LogError("Update KEY is empty! Please assign unique key before generating!");
-            return;
-        }
-
-        if (exporter.modThumbnailTexPreview == null)
-        {
-            Debug.LogError("Thumbnail is required to generate mod!");
-            return;
-        }
-
-        if (exporter.strUploadPassword == "")
-        {
-            Debug.LogError("Upload Password is required to generate mod!");
-            return;
-        }
-
-        string strModTexturesPreviewsPath = exporter.GetCurrentModEditorSO_LocationDirPath();
-
-        string strThumbnailPath1MBCheck = Path.Combine(strModTexturesPreviewsPath, "Thumbnail.png");
-        if (File.Exists(strThumbnailPath1MBCheck) == false)
-        {
-            Debug.LogError("File thumbnail not found in path: " + strThumbnailPath1MBCheck);
-            return;
-        }
-
-        string strDirectoryOfModWithFilesForTargetBuildPlatform = GetModFilesDirectoryForBuildPlatform(exporter.currentMod);
-
-        float fThumbnailSizeMB = new FileInfo(strThumbnailPath1MBCheck).Length / (1024 * 1024.0f);
-        exporter.fCurrentMBThumbnailSize = fThumbnailSizeMB;
-        if (fThumbnailSizeMB > 1.0f)
-        {
-            Debug.LogError("File thumnail size is higher than 1MB!");
-            return;
-        }
-
-        if (exporter.currentMod.bUploadAndReplaceScreenshootsOnServer == true)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                string strScreenName = "Screen" + (i + 1).ToString() + ".png";
-                string strScreenPath = Path.Combine(strModTexturesPreviewsPath, strScreenName);
-                if (File.Exists(strScreenPath) == false)
-                {
-                    Debug.LogError("File screenshot not found in path: " + strScreenPath);
-                    continue;
-                }
-
-                float fScreenMB = new FileInfo(strScreenPath).Length / (1024 * 1024.0f);
-                if (fScreenMB > 1.0f)
-                {
-                    Debug.LogError("File thumnail size is higher than 1MB!" + fScreenMB.ToString());
-                    return;
-                }
-            }
-        }
-
-
-        fExportProgress = 0.0f;
-        if (exporter.currentMod == null)
-        {
-            return;
-        }
-
-        // simple guard to make sure uploading other mods won't be super easy
-        File.WriteAllText(Path.Combine(buildPathModDir, PTK_ModInfo.strUploadKey_FileName), exporter.strUploadPassword);
-
-        // save in unity project
-        File.WriteAllText(Path.Combine(exporter.GetCurrentModEditorSO_LocationDirPath() + PTK_ModInfo.strUploadKey_FileName), exporter.strUploadPassword);
-
-        ///////////// ENCRYPT UPLOAD KEY
-        string original = PTK_ModInfo.strNameToDecrypt_UploadPassword;
-        string encrypted = EncryptString(original, exporter.strUploadPassword);
-        exporter.currentMod.strUploadHashedKey = encrypted;
-        //////
-
-        if (exporter.bRegenerateThumbnails == true)
-            exporter.currentMod.thumbnailsForObjects.Clear();
-
-        exporter.currentMod.modContentInfo = new CPTK_ModContentInfoFile();
-
-        // Reference to the AddressableAssetSettings
-        var settings = AddressableAssetSettingsDefaultObject.Settings;
-
-        if (settings == null)
-        {
-            Debug.LogError("Failed to access AddressableAssetSettings.");
-            return;
-        }
-
-        // Clear all groups
-        var allGroups = new List<AddressableAssetGroup>(settings.groups);
-        foreach (var group in allGroups)
-        {
-            if (group.name.ToLower().Contains("PTK_EnviroAssetsGroup".ToLower()) == true)
-            {
-                // we dont want to remove enviro asset group
-                continue;
-            }
-
-            settings.RemoveGroup(group);
-        }
-
-        exporter.boundingBoxCalculator = GameObject.FindObjectOfType<BoundingBoxCalculator>(true);
-
-        if (exporter.boundingBoxCalculator != null)
-        {
-            exporter.boundingBoxCalculator.RefreshOffsets();
-            exporter.boundingBoxCalculator.gameObject.SetActive(false);
-        }
-
-
-        Dictionary<AddressableAssetEntry, AddressableAssetGroup> entries = new Dictionary<AddressableAssetEntry, AddressableAssetGroup>();
-
-        exporter.currentMod.LastBuildDateTime = DateTime.Now.ToString();
-
-
-        string buildPath = System.IO.Path.Combine(buildPathModDir, "[BuildTarget]");
-
-
-        AddressableAssetGroup modInfoGroup = settings.FindGroup("ModInfoGroup");
-        if (modInfoGroup == null)
-            modInfoGroup = CreateAndConfigureGroup("ModInfoGroup", buildPath, exporter.currentMod);
-
-        var currentModGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(exporter.currentMod));
-
-        var modInfoEntry = settings.CreateOrMoveEntry(currentModGuid, modInfoGroup);
-        modInfoEntry.SetAddress("ModInfo", false);
-
-
-        int totalDirectories = exporter.treeView.GetCheckedItems().Count;
-        int totalAssets = 0;
-
-        foreach (var dirName in exporter.treeView.GetCheckedItems())
-        {
-            totalAssets += GetAssetsInDirectoryNonRecursive(dirName).Length;
-        }
-
-        int totalSteps = totalDirectories + totalAssets;
-
-
-        List<PTK_Workshop_CharAnimConfig> alreadyInitializedAnimConfigs = new List<PTK_Workshop_CharAnimConfig>();
-        int currentStep = 0;
-        foreach (var dirName in exporter.treeView.GetCheckedItems())
-        {
-            // Create a group for the directory
-            // Create a group for the directory
-            var groupName = Path.GetFileNameWithoutExtension(dirName);  // Assuming you want the directory name as the group name
-            AddressableAssetGroup newGroup = settings.FindGroup(groupName);
-            if (newGroup == null)
-            {
-                newGroup = CreateAndConfigureGroup(groupName, buildPath, exporter.currentMod);
-            }
-
-
-            // Fetch all asset paths from the directory
-            string[] assetPathsInDir = GetAssetsInDirectoryNonRecursive(dirName);
-
-            string[] filteredPaths = assetPathsInDir.Where(path => path.Contains("PTK_Workshop_Char Anim Config")).ToArray();
-            string strAnimConfigFilePath = filteredPaths.FirstOrDefault();
-
-            PTK_Workshop_CharAnimConfig animConfig = null;
-            if (strAnimConfigFilePath != null && strAnimConfigFilePath != "")
-            {
-                animConfig = AssetDatabase.LoadAssetAtPath<PTK_Workshop_CharAnimConfig>(strAnimConfigFilePath);
-
-                if (alreadyInitializedAnimConfigs.Contains(animConfig) == false)
-                {
-                    PTK_Workshop_CharAnimConfigEditor.InitializeFromDirectory(animConfig);
-                    alreadyInitializedAnimConfigs.Add(animConfig);
-                }
-            }
-
-            foreach (string assetPath in assetPathsInDir)
-            {
-                var fullPath = assetPath;
-
-                // If it's a directory, skip this iteration.
-                if (AssetDatabase.IsValidFolder(fullPath))
-                {
-                    //  continue;
-                }
-
-                // Check if the asset is a .fbx and resides inside 'Color Variants' directory or its subdirectories
-                if (fullPath.EndsWith(".fbx") && IsInsideColorVariantsDirectory(fullPath))
-                {
-                    continue; // Skip this asset and move to the next one
-                }
-
-                if (fullPath.Contains("GameplayPrefabBase") == true)
-                    continue; // we don't need to include it (it will take extra space in mod)
-
-                if (fullPath.Contains("ModelPreviewWithSuspension_DoNotIncludeInMod") == true)
-                    continue; // we don't need to include it (it will take extra space in mod)
-
-                if (fullPath.Contains("Preview3DModels_IgnoreInBuild") == true)
-                    continue; // we don't need to include it (it will take extra space in mod)
-
-                var guid = AssetDatabase.AssetPathToGUID(fullPath);
-                var entry = settings.CreateOrMoveEntry(guid, newGroup);
-
-                string strAddressFileKey = ConstructName(fullPath, groupName);
-                entry.SetAddress(strAddressFileKey, false);
-
-                exporter.UpdateModFileInfo(fullPath, groupName, strAddressFileKey, animConfig);
-
-                entries[entry] = newGroup;
-
-                currentStep++;
-                fExportProgress = (float)currentStep / totalSteps;
-                EditorUtility.DisplayProgressBar("Exporting", "Exporting...", fExportProgress);
-                exporter.Repaint();
-            }
-        }
-
-        if (exporter.currentMod.modContentInfo.tracks.Count > 0)
-        {
-            if (exporter.currentMod.modContentInfo.tracks.Count != 1)
-            {
-                EditorUtility.ClearProgressBar();
-                Debug.LogError("Single Mod should contain only one track!");
-                return;
-            }
-
-
-            if (exporter.currentMod.modContentInfo.characters.Count != 0 ||
-                exporter.currentMod.modContentInfo.stickers.Count != 0 ||
-                exporter.currentMod.modContentInfo.vehicles.Count != 0 ||
-                exporter.currentMod.modContentInfo.wheels.Count != 0)
-            {
-                EditorUtility.ClearProgressBar();
-                Debug.LogError("Race Track Mod can't have other items like characters, wheels,vehicles or stickers!");
-                return;
-            }
-        }
-        EditorUtility.SetDirty(exporter.currentMod);
-        AssetDatabase.SaveAssets();
-
-        EditorUtility.ClearProgressBar();
-        SimplifyAddresses(entries);
-
-        AddressableAssetSettings.BuildPlayerContent();
-
-        EditorUtility.SetDirty(settings);
-        AssetDatabase.SaveAssets();
-        exporter.treeView.SaveStateToPrefs();  // Save state after changes
-
-        // after mod generated - copy textures
-
-        // Copy the texture to the new path
-        try
-        {
-            string strFileName = "";
-
-            strFileName = "Thumbnail.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen1.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen2.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen3.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen4.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Failed to copy texture: {ex.Message}");
-        }
-
-
-        if (exporter.boundingBoxCalculator != null)
-            exporter.boundingBoxCalculator.gameObject.SetActive(true);
-
-
-        EditorUtility.RevealInFinder(Path.Combine(buildPathModDir, ""));
-    }
-
 
     public static void SimplifyAddresses(Dictionary<AddressableAssetEntry, AddressableAssetGroup> entries)
     {
@@ -382,21 +280,7 @@ public class PTK_AddressableAssetsHandler
         AddressableAssetSettingsDefaultObject.Settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryModified, entries, true, false);
     }
 
-
-    private bool IsInsideColorVariantsDirectory(string assetPath)
-    {
-        var directories = assetPath.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-        for (int i = 0; i < directories.Length; i++)
-        {
-            if (directories[i] == "Color Variations")
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public string ConstructName(string assetPath, string strGroupName)
+    public string ConstructAddressableName(string assetPath, string strGroupName)
     {
 
         string[] forbiddenPhrases = { "Color Variations", "Assets", "Workshop", "Outfits" };
@@ -424,6 +308,96 @@ public class PTK_AddressableAssetsHandler
 
         return string.Join("_", partsList);//.Replace(" ", "");
     }
+
+
+    //
+    // Addressables Helper Functions
+    //
+
+
+    bool ValidateIfExportSettingsAreCorrect(PTK_PackageExporter exporter)
+    {
+        var settings = AddressableAssetSettingsDefaultObject.Settings;
+
+        if (settings == null)
+        {
+            Debug.LogError("Failed to access AddressableAssetSettings.");
+            return false;
+        }
+
+        if (exporter.currentMod.UniqueModNameHashToGenerateItemsKeys == "")
+        {
+            Debug.LogError("Unique Mod Name is empty. Please assign unique mod name first!");
+            return false;
+        }
+
+        if (exporter.currentMod.strUniqueModServerUpdateKEY == "")
+        {
+            Debug.LogError("Update KEY is empty! Please assign unique key before generating!");
+            return false;
+        }
+
+        if (exporter.packageExporterGUI.modThumbnailTexPreview == null)
+        {
+            Debug.LogError("Thumbnail is required to generate mod!");
+            return false;
+        }
+
+        if (exporter.packageExporterGUI.strUploadPassword == "")
+        {
+            Debug.LogError("Upload Password is required to generate mod!");
+            return false;
+        }
+
+        string strModTexturesPreviewsPath = exporter.packageExporterGUI.GetCurrentModEditorSO_LocationDirPath(exporter);
+
+        string strThumbnailPath1MBCheck = Path.Combine(strModTexturesPreviewsPath, "Thumbnail.png");
+        if (File.Exists(strThumbnailPath1MBCheck) == false)
+        {
+            Debug.LogError("File thumbnail not found in path: " + strThumbnailPath1MBCheck);
+            return false;
+        }
+
+        string strDirectoryOfModWithFilesForTargetBuildPlatform = GetModFilesDirectoryForBuildPlatform(exporter.currentMod);
+
+        float fThumbnailSizeMB = new FileInfo(strThumbnailPath1MBCheck).Length / (1024 * 1024.0f);
+        exporter.packageExporterGUI.fCurrentMBThumbnailSize = fThumbnailSizeMB;
+        if (fThumbnailSizeMB > 1.0f)
+        {
+            Debug.LogError("File thumnail size is higher than 1MB!");
+            return false;
+        }
+
+        if (exporter.currentMod.bUploadAndReplaceScreenshootsOnServer == true)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                string strScreenName = "Screen" + (i + 1).ToString() + ".png";
+                string strScreenPath = Path.Combine(strModTexturesPreviewsPath, strScreenName);
+                if (File.Exists(strScreenPath) == false)
+                {
+                    Debug.LogError("File screenshot not found in path: " + strScreenPath);
+                    continue;
+                }
+
+                float fScreenMB = new FileInfo(strScreenPath).Length / (1024 * 1024.0f);
+                if (fScreenMB > 1.0f)
+                {
+                    Debug.LogError("File thumnail size is higher than 1MB!" + fScreenMB.ToString());
+                    return false;
+                }
+            }
+        }
+
+
+        if (exporter.currentMod == null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 
     private string[] GetAssetsInDirectoryNonRecursive(string directory)
     {
@@ -471,6 +445,78 @@ public class PTK_AddressableAssetsHandler
         return filteredAssets.ToArray();
     }
 
+
+    bool ShouldAddItemInPathToAddressableGroup(string fullPath)
+    {
+        // Check if the asset is a .fbx and resides inside 'Color Variants' directory or its subdirectories
+        if (fullPath.EndsWith(".fbx") && IsInsideColorVariantsDirectory(fullPath))
+        {
+            return false; // Skip this asset and move to the next one
+        }
+
+        if (fullPath.Contains("GameplayPrefabBase") == true)
+            return false; // we don't need to include it (it will take extra space in mod)
+
+        if (fullPath.Contains("ModelPreviewWithSuspension_DoNotIncludeInMod") == true)
+            return false; // we don't need to include it (it will take extra space in mod)
+
+        if (fullPath.Contains("Preview3DModels_IgnoreInBuild") == true)
+            return false; // we don't need to include it (it will take extra space in mod)
+
+        return true;
+    }
+
+
+    private void CopyThumbnailAndScreensToExportedModDirectory(PTK_PackageExporter exporter)
+    {
+        string strDirectoryOfModWithFilesForTargetBuildPlatform = GetModFilesDirectoryForBuildPlatform(exporter.currentMod);
+        string strModTexturesPreviewsPath = exporter.packageExporterGUI.GetCurrentModEditorSO_LocationDirPath(exporter);
+
+        // Copy the texture to the new path
+        try
+        {
+            string strFileName = "";
+
+            strFileName = "Thumbnail.png";
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+
+            strFileName = "Screen1.png";
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+
+            strFileName = "Screen2.png";
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+
+            strFileName = "Screen3.png";
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+
+            strFileName = "Screen4.png";
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
+            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Failed to copy texture: {ex.Message}");
+        }
+    }
+
+
+    private bool IsInsideColorVariantsDirectory(string assetPath)
+    {
+        var directories = assetPath.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+        for (int i = 0; i < directories.Length; i++)
+        {
+            if (directories[i] == "Color Variations")
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // will contain StandaloneWindows64 etc. (inside Mods/MiaMod/StandaloneWindows64
     string GetModFilesDirectoryForBuildPlatform(PTK_ModInfo modInfo)
     {
@@ -478,6 +524,21 @@ public class PTK_AddressableAssetsHandler
         return strDirectoryOfMod;
     }
 
+
+
+    private void SaveUploadPasswordKey(PTK_PackageExporter exporter)
+    {
+        // simple guard to make sure uploading other mods won't be super easy
+        File.WriteAllText(Path.Combine(buildPathModDir, PTK_ModInfo.strUploadKey_FileName), exporter.packageExporterGUI.strUploadPassword);
+
+        // save in unity project
+        File.WriteAllText(Path.Combine(exporter.packageExporterGUI.GetCurrentModEditorSO_LocationDirPath(exporter) + PTK_ModInfo.strUploadKey_FileName), exporter.packageExporterGUI.strUploadPassword);
+
+        ///////////// ENCRYPT UPLOAD KEY
+        string original = PTK_ModInfo.strNameToDecrypt_UploadPassword;
+        string encrypted = EncryptString(original, exporter.packageExporterGUI.strUploadPassword);
+        exporter.currentMod.strUploadHashedKey = encrypted;
+    }
 
     //https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
 

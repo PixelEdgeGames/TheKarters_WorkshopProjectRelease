@@ -8,10 +8,18 @@ using UnityEngine;
 
 public class PTK_SkinTreeView : TreeView
 {
-    private const string rootPath = "Assets/Workshop_Content";
+    string ignorePhrases = "Ctrl+D,Outfits,Blender,Color Variations,3D Models, GameplayPrefabBase,WeaponsAnimations";
+    string noCheckboxPhrases = "Color Variations";
 
     public event Action<HashSet<string>> OnCheckedItemsChanged;
     private HashSet<string> ignoreSet = new HashSet<string>();
+
+
+    internal void RefreshIgnorePhrases()
+    {
+        SetIgnorePhrases(ignorePhrases.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+        SetNoCheckboxPhrases(noCheckboxPhrases.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+    }
 
     public void SetIgnorePhrases(string[] phrases)
     {
@@ -41,7 +49,7 @@ public class PTK_SkinTreeView : TreeView
     {
         var root = new TreeViewItem { id = 0, depth = -1, displayName = "Root" };
         int id = 1;
-        var items = CreateChildrenForDirectory(rootPath, ref id);
+        var items = CreateChildrenForDirectory(PTK_ModItemConfigurator.rootPath, ref id);
         SetupParentsAndChildrenFromDepths(root, items);
         return root;
     }
@@ -189,4 +197,5 @@ public class PTK_SkinTreeView : TreeView
         }
         return false;
     }
+
 }
