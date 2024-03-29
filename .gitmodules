@@ -4,6 +4,6 @@
 [submodule "Assets/TheKarters_EnviroAssets"]
 	path = Assets/TheKarters_EnviroAssets
 	url = git@github.com:PixelEdgeGames/TheKarters_EnviroAssets.git
-[submodule "Assets/Workshop_Content"]
-	path = Assets/Workshop_Content
+[submodule "Assets/Workshop__Content"]
+	path = Assets/Workshop__Content
 	url = git@github.com:PixelEdgeGames/TheKarters_Workshop_ContentReleaseOfficial.git
