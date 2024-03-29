@@ -14,11 +14,12 @@ using System.Security.Cryptography;
 
 public class PTK_PackageExporter : EditorWindow
 {
-    private SkinTreeView treeView;
+    PTK_AddressableAssetsHandler addressableHelper = new PTK_AddressableAssetsHandler();
+    public PTK_SkinTreeView treeView;
     private TreeViewState treeViewState;
 
     private List<PTK_ModInfo> allMods = new List<PTK_ModInfo>();
-    private PTK_ModInfo currentMod;
+    public PTK_ModInfo currentMod;
     private int selectedIndex = -1;
     private int iLastSelectedIndex = -1;
 
@@ -47,7 +48,7 @@ public class PTK_PackageExporter : EditorWindow
         if (treeViewState == null)
             treeViewState = new TreeViewState();
 
-        treeView = new SkinTreeView(treeViewState);
+        treeView = new PTK_SkinTreeView(treeViewState);
         treeView.LoadStateFromPrefs();  // Load state from EditorPrefs
         treeView.Reload();
         bRefreshDirectories = true;
@@ -483,11 +484,11 @@ public class PTK_PackageExporter : EditorWindow
 
     }
 
-    string strUploadPassword = "";
-    string strLastPresentedModTexturePreviewsPath = "";
-    float fCurrentMBThumbnailSize = 0.0f;
+    public string strUploadPassword = "";
+    public string strLastPresentedModTexturePreviewsPath = "";
+    public float fCurrentMBThumbnailSize = 0.0f;
 
-    string GetCurrentModEditorSO_LocationDirPath()
+    public string GetCurrentModEditorSO_LocationDirPath()
     {
         string strModPath = AssetDatabase.GetAssetPath(currentMod);
         strModPath = strModPath.Replace(".asset", "");
@@ -498,7 +499,7 @@ public class PTK_PackageExporter : EditorWindow
         return strModPath + "/";
     }
 
-    Texture2D modThumbnailTexPreview = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
+    public Texture2D modThumbnailTexPreview = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
     Texture2D modScreen1 = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
     Texture2D modScreen2 = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
     Texture2D modScreen3 = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
@@ -553,8 +554,6 @@ public class PTK_PackageExporter : EditorWindow
 
 
 
-        // Draw the progress bar
-        //    EditorGUI.ProgressBar(new Rect(3, GUILayoutUtility.GetLastRect().yMax + 5, position.width - 6, 20), fExportProgress, "Export Progress");
 
        
             
@@ -632,7 +631,7 @@ public class PTK_PackageExporter : EditorWindow
                 OptimizeTextureSizesInDirectory(dirName);
             }
 
-            ExportToAddressables();
+            addressableHelper.ExportToAddressables(this);
         }
 
         GUILayout.Space(20);
@@ -647,7 +646,7 @@ public class PTK_PackageExporter : EditorWindow
                 OptimizeTextureSizesInDirectory(dirName);
             }
 
-            ExportToAddressables();
+            addressableHelper.ExportToAddressables(this);
         }
 
         GUI.color = Color.white;
@@ -700,7 +699,7 @@ public class PTK_PackageExporter : EditorWindow
 
 
 
-    bool bRegenerateThumbnails = false;
+   public bool bRegenerateThumbnails = false;
 
     public static void OptimizeTextureSizesInDirectory(string directoryPath)
     {
@@ -761,375 +760,10 @@ public class PTK_PackageExporter : EditorWindow
     ////
     /// Addressables
     ///
-    string buildPathModDir;
 
-    BoundingBoxCalculator boundingBoxCalculator;
+    public BoundingBoxCalculator boundingBoxCalculator;
 
-    float fExportProgress = 0.0f;
 
-    // will contain StandaloneWindows64 etc. (inside Mods/MiaMod/StandaloneWindows64
-    string GetModFilesDirectoryForBuildPlatform(PTK_ModInfo modInfo)
-    {
-        string strDirectoryOfMod = System.IO.Path.Combine(Application.dataPath, "..", "Mods", modInfo.ModName, EditorUserBuildSettings.selectedStandaloneTarget.ToString());
-        return strDirectoryOfMod;
-    }
-    AddressableAssetGroup CreateAndConfigureGroup(string strGroupName, string buildPath)
-    {
-        var settings = AddressableAssetSettingsDefaultObject.Settings;
-        string strUserCOnfigured_ModName = currentMod.ModName;
-
-        AddressableAssetGroup  newGroup = settings.CreateGroup(strGroupName, false, false, true, new List<AddressableAssetGroupSchema>());
-
-        // Attach necessary schemas
-        var bundleSchema = newGroup.AddSchema<BundledAssetGroupSchema>();
-        var contentUpdateSchema = newGroup.AddSchema<ContentUpdateGroupSchema>();
-
-        // Set some default values for the schemas if required
-        //  bundleSchema.BuildPath.SetVariableByName(settings, "LocalBuildPath");
-        //    bundleSchema.LoadPath.SetVariableByName(settings, "LocalLoadPath");
-        string buildPathVariableName = "CustomBuildPath";
-        string loadPathVariableName = "CustomLoadPath";
-
-
-
-        string strDirectoryOfModForPlatform = GetModFilesDirectoryForBuildPlatform(currentMod);
-        if (System.IO.Directory.Exists(strDirectoryOfModForPlatform))
-            System.IO.Directory.Delete(strDirectoryOfModForPlatform, true);
-
-        Directory.CreateDirectory(strDirectoryOfModForPlatform);
-
-        settings.profileSettings.CreateValue(buildPathVariableName, buildPath);
-        settings.profileSettings.SetValue(settings.activeProfileId, buildPathVariableName, buildPath);
-
-        // string loadPath = "file://./Mods/{LOCAL_FILE_NAME}/[BuildTarget]";
-        //string loadPath = "file://./Mods/"+ strUserCOnfigured_ModName  + "/[BuildTarget]";
-        //string loadPath = "../Mods/" + strUserCOnfigured_ModName + "/[BuildTarget]";
-        //string loadPath = "file://{DATA_PATH}/Mods/" + strUserCOnfigured_ModName + "/[BuildTarget]";
-
-        string strUserConfiguredModName = strUserCOnfigured_ModName;  // Replace with your actual mod name
-                                                                      //   string loadPath = $"file://{{DATA_PATH}}\\Mods\\{strUserConfiguredModName}\\[BuildTarget]";
-        string loadPath = "file://{DATA_PATH}";
-
-        settings.profileSettings.CreateValue(loadPathVariableName, loadPath);
-        settings.profileSettings.SetValue(settings.activeProfileId, loadPathVariableName, loadPath);
-
-        settings.RemoteCatalogBuildPath.SetVariableByName(settings, buildPathVariableName);
-        settings.RemoteCatalogLoadPath.SetVariableByName(settings, loadPathVariableName);
-
-
-        bundleSchema.BuildPath.SetVariableByName(settings, buildPathVariableName);
-        bundleSchema.LoadPath.SetVariableByName(settings, loadPathVariableName);
-
-        bundleSchema.BundleMode = BundledAssetGroupSchema.BundlePackingMode.PackSeparately;
-        bundleSchema.BundleNaming = BundledAssetGroupSchema.BundleNamingStyle.OnlyHash;
-        // Add more default settings if needed
-
-        return newGroup;
-    }
-    private void ExportToAddressables()
-    {
-        AssetDatabase.SaveAssets();
-
-        string strUserCOnfigured_ModName = currentMod.ModName;
-        string projectPath = System.IO.Path.GetFullPath(System.IO.Path.Combine(Application.dataPath, ".."));
-        buildPathModDir = System.IO.Path.Combine(projectPath, "Mods", strUserCOnfigured_ModName);
-
-        // Ensure the target directory exists
-        Directory.CreateDirectory(buildPathModDir);
-
-        if (currentMod.UniqueModNameHashToGenerateItemsKeys == "")
-        {
-            Debug.LogError("Unique Mod Name is empty. Please assign unique mod name first!");
-            return;
-        }
-
-        if (currentMod.strUniqueModServerUpdateKEY == "")
-        {
-            Debug.LogError("Update KEY is empty! Please assign unique key before generating!");
-            return;
-        }
-
-        if(modThumbnailTexPreview == null)
-        {
-            Debug.LogError("Thumbnail is required to generate mod!");
-            return;
-        }
-
-        if (strUploadPassword == "")
-        {
-            Debug.LogError("Upload Password is required to generate mod!");
-            return;
-        }
-
-        string strModTexturesPreviewsPath = GetCurrentModEditorSO_LocationDirPath();
-
-        string strThumbnailPath1MBCheck = Path.Combine(strModTexturesPreviewsPath, "Thumbnail.png");
-        if (File.Exists(strThumbnailPath1MBCheck) == false)
-        {
-            Debug.LogError("File thumbnail not found in path: " + strThumbnailPath1MBCheck);
-            return;
-        }
-
-      string strDirectoryOfModWithFilesForTargetBuildPlatform =  GetModFilesDirectoryForBuildPlatform(currentMod);
-
-        float fThumbnailSizeMB = new FileInfo(strThumbnailPath1MBCheck).Length/(1024 * 1024.0f);
-        fCurrentMBThumbnailSize = fThumbnailSizeMB;
-        if (fThumbnailSizeMB > 1.0f)
-        {
-            Debug.LogError("File thumnail size is higher than 1MB!");
-            return;
-        }
-
-        if(currentMod.bUploadAndReplaceScreenshootsOnServer == true)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                string strScreenName = "Screen" + (i + 1).ToString() + ".png";
-                string strScreenPath = Path.Combine(strModTexturesPreviewsPath, strScreenName);
-                if (File.Exists(strScreenPath) == false)
-                {
-                    Debug.LogError("File screenshot not found in path: " + strScreenPath);
-                    continue;
-                }
-
-                float fScreenMB = new FileInfo(strScreenPath).Length / (1024 * 1024.0f);
-                if (fScreenMB > 1.0f)
-                {
-                    Debug.LogError("File thumnail size is higher than 1MB!" + fScreenMB.ToString());
-                    return;
-                }
-            }
-        }
-       
-
-        fExportProgress = 0.0f;
-        if (currentMod == null)
-        {
-            return;
-        }
-
-        // simple guard to make sure uploading other mods won't be super easy
-        File.WriteAllText(Path.Combine(buildPathModDir, PTK_ModInfo.strUploadKey_FileName), strUploadPassword);
-
-        // save in unity project
-        File.WriteAllText(Path.Combine(GetCurrentModEditorSO_LocationDirPath() + PTK_ModInfo.strUploadKey_FileName), strUploadPassword);
-
-        ///////////// ENCRYPT UPLOAD KEY
-        string original = PTK_ModInfo.strNameToDecrypt_UploadPassword;
-        string encrypted = EncryptString(original, strUploadPassword);
-        currentMod.strUploadHashedKey = encrypted;
-        //////
-
-        if (bRegenerateThumbnails == true)
-            currentMod.thumbnailsForObjects.Clear();
-
-        currentMod.modContentInfo = new CPTK_ModContentInfoFile();
-
-        // Reference to the AddressableAssetSettings
-        var settings = AddressableAssetSettingsDefaultObject.Settings;
-
-        if (settings == null)
-        {
-            Debug.LogError("Failed to access AddressableAssetSettings.");
-            return;
-        }
-
-        // Clear all groups
-        var allGroups = new List<AddressableAssetGroup>(settings.groups);
-        foreach (var group in allGroups)
-        {
-            if(group.name.ToLower().Contains("PTK_EnviroAssetsGroup".ToLower()) == true)
-            {
-                // we dont want to remove enviro asset group
-                continue;
-            }
-
-            settings.RemoveGroup(group);
-        }
-
-        boundingBoxCalculator = GameObject.FindObjectOfType<BoundingBoxCalculator>(true);
-
-        if(boundingBoxCalculator != null)
-        {
-            boundingBoxCalculator.RefreshOffsets();
-            boundingBoxCalculator.gameObject.SetActive(false);
-        }
-
-
-        Dictionary<AddressableAssetEntry, AddressableAssetGroup> entries = new Dictionary<AddressableAssetEntry, AddressableAssetGroup>();
-
-        currentMod.LastBuildDateTime = DateTime.Now.ToString();
-
-
-        string buildPath = System.IO.Path.Combine(buildPathModDir, "[BuildTarget]");
-
-
-        AddressableAssetGroup modInfoGroup = settings.FindGroup("ModInfoGroup");
-        if (modInfoGroup == null)
-            modInfoGroup = CreateAndConfigureGroup("ModInfoGroup", buildPath);
-
-        var currentModGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(currentMod));
-
-        var modInfoEntry = settings.CreateOrMoveEntry(currentModGuid, modInfoGroup);
-        modInfoEntry.SetAddress("ModInfo", false);
-
-
-        int totalDirectories = treeView.GetCheckedItems().Count;
-        int totalAssets = 0;
-
-        foreach (var dirName in treeView.GetCheckedItems())
-        {
-            totalAssets += GetAssetsInDirectoryNonRecursive(dirName).Length;
-        }
-
-        int totalSteps = totalDirectories + totalAssets;
-
-
-        List<PTK_Workshop_CharAnimConfig> alreadyInitializedAnimConfigs = new List<PTK_Workshop_CharAnimConfig>();
-        int currentStep = 0;
-        foreach (var dirName in treeView.GetCheckedItems())
-        {
-            // Create a group for the directory
-            // Create a group for the directory
-            var groupName = Path.GetFileNameWithoutExtension(dirName);  // Assuming you want the directory name as the group name
-            AddressableAssetGroup newGroup = settings.FindGroup(groupName);
-            if (newGroup == null)
-            {
-                newGroup = CreateAndConfigureGroup(groupName, buildPath);
-            }
-
-
-            // Fetch all asset paths from the directory
-            string[] assetPathsInDir = GetAssetsInDirectoryNonRecursive(dirName);
-
-            string[] filteredPaths = assetPathsInDir.Where(path => path.Contains("PTK_Workshop_Char Anim Config")).ToArray();
-            string strAnimConfigFilePath = filteredPaths.FirstOrDefault();
-
-            PTK_Workshop_CharAnimConfig animConfig = null;
-            if (strAnimConfigFilePath != null && strAnimConfigFilePath != "")
-            {
-                animConfig = AssetDatabase.LoadAssetAtPath<PTK_Workshop_CharAnimConfig>(strAnimConfigFilePath);
-
-                if (alreadyInitializedAnimConfigs.Contains(animConfig) == false)
-                {
-                    PTK_Workshop_CharAnimConfigEditor.InitializeFromDirectory(animConfig);
-                    alreadyInitializedAnimConfigs.Add(animConfig);
-                }
-            }
-
-            foreach (string assetPath in assetPathsInDir)
-            {
-                var fullPath = assetPath;
-
-                // If it's a directory, skip this iteration.
-                if (AssetDatabase.IsValidFolder(fullPath))
-                {
-                  //  continue;
-                }
-
-                // Check if the asset is a .fbx and resides inside 'Color Variants' directory or its subdirectories
-                if (fullPath.EndsWith(".fbx") && IsInsideColorVariantsDirectory(fullPath))
-                {
-                    continue; // Skip this asset and move to the next one
-                }
-
-                if (fullPath.Contains("GameplayPrefabBase") == true)
-                    continue; // we don't need to include it (it will take extra space in mod)
-
-                if (fullPath.Contains("ModelPreviewWithSuspension_DoNotIncludeInMod") == true)
-                    continue; // we don't need to include it (it will take extra space in mod)
-
-                if (fullPath.Contains("Preview3DModels_IgnoreInBuild") == true)
-                    continue; // we don't need to include it (it will take extra space in mod)
-                
-                var guid = AssetDatabase.AssetPathToGUID(fullPath);
-                var entry = settings.CreateOrMoveEntry(guid, newGroup);
-
-                string strAddressFileKey = ConstructName(fullPath, groupName);
-                entry.SetAddress(strAddressFileKey, false);
-
-                UpdateModFileInfo(fullPath, groupName, strAddressFileKey, animConfig);
-
-                entries[entry] = newGroup;
-
-                currentStep++;
-                fExportProgress = (float)currentStep / totalSteps;
-                EditorUtility.DisplayProgressBar("Exporting", "Exporting...", fExportProgress);
-                Repaint();
-            }
-        }
-
-        if(currentMod.modContentInfo.tracks.Count > 0)
-        {
-            if(currentMod.modContentInfo.tracks.Count != 1)
-            {
-                EditorUtility.ClearProgressBar();
-                Debug.LogError("Single Mod should contain only one track!");
-                return;
-            }
-
-
-            if (currentMod.modContentInfo.characters.Count != 0 ||
-                currentMod.modContentInfo.stickers.Count != 0 ||
-                currentMod.modContentInfo.vehicles.Count != 0 ||
-                currentMod.modContentInfo.wheels.Count != 0)
-            {
-                EditorUtility.ClearProgressBar();
-                Debug.LogError("Race Track Mod can't have other items like characters, wheels,vehicles or stickers!");
-                return;
-            }
-        }
-        EditorUtility.SetDirty(currentMod);
-        AssetDatabase.SaveAssets();
-
-        EditorUtility.ClearProgressBar();
-        SimplifyAddresses(entries);
-
-        AddressableAssetSettings.BuildPlayerContent();
-
-        EditorUtility.SetDirty(settings); 
-        AssetDatabase.SaveAssets();
-        treeView.SaveStateToPrefs();  // Save state after changes
-
-        // after mod generated - copy textures
-
-        // Copy the texture to the new path
-        try
-        {
-            string strFileName = "";
-
-            strFileName = "Thumbnail.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName),true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen1.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen2.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen3.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-
-            strFileName = "Screen4.png";
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
-            File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError($"Failed to copy texture: {ex.Message}");
-        }
-
-
-        if (boundingBoxCalculator != null)
-            boundingBoxCalculator.gameObject.SetActive(true);
-
-
-        EditorUtility.RevealInFinder(Path.Combine(buildPathModDir, ""));
-    }
 
 
     private Regex Pattern_CharacterOnly = new Regex(@"Workshop_Content/Characters/(?<characterName>[^/]+)");
@@ -1143,7 +777,7 @@ public class PTK_PackageExporter : EditorWindow
 
     private Regex Pattern_Tracks = new Regex(@"Workshop_Content/Tracks/(?<Name>[^/]+)/");
 
-    void UpdateModFileInfo(string strFullPath, string strGroupName, string strFileKey, PTK_Workshop_CharAnimConfig animConfig)
+    public void UpdateModFileInfo(string strFullPath, string strGroupName, string strFileKey, PTK_Workshop_CharAnimConfig animConfig)
     {
         if(strFullPath.Contains("CharacterInfo"))
         {
@@ -1187,7 +821,6 @@ public class PTK_PackageExporter : EditorWindow
                 charOutfitMaterial.strPrefabFileName_AddressableKey = strPrefabAddressableKey;
                 charOutfitMaterial.iGeneratedTargetUniqueConfigID = GetStringHashWithMD5(currentMod.UniqueModNameHashToGenerateItemsKeys + strPrefabAddressableKey);
 
-                //string strTargetDirectory = Path.Combine(buildPathModDir,"Thumbnails", strCharacterName, strCharacterOutfit, strFileKey + ".png");
 
                 string strDirSkin = Path.GetDirectoryName(strFullPath);
                 string strTargetDirectory = strDirSkin + "/" + strPrefabAddressableKey + ".png";
@@ -1622,335 +1255,17 @@ public class PTK_PackageExporter : EditorWindow
         }
     }
 
-    public static string ConstructName(string assetPath,string strGroupName)
-    {
-
-        string[] forbiddenPhrases = { "Color Variations", "Assets","Workshop" ,"Outfits"};
-
-        // Split the path into parts.
-        string[] parts = assetPath.Split(new char[] { '/', '\\' }, System.StringSplitOptions.RemoveEmptyEntries);
-
-        // Filter out parts that contain any forbidden phrases.
-        List<string> partsList = parts.Where(part => !forbiddenPhrases.Any(phrase => part.Contains(phrase))).ToList();
-
-        if(partsList[partsList.Count-1].Contains(".prefab"))
-        {
-            partsList.RemoveAt(partsList.Count - 1); // we dont want prefab name at the end
-        }
-
-        if (partsList[partsList.Count - 1].Contains(".asset"))
-        {
-            partsList.RemoveAt(partsList.Count - 1); // we dont want prefab name at the end
-        }
-
-        if (partsList[partsList.Count - 1].Contains(".unity"))
-        {
-            partsList.RemoveAt(partsList.Count - 1); // we dont want scene name at the end
-        }
-
-        return string.Join("_", partsList);//.Replace(" ", "");
-    }
+  
 
    
 
-    private string[] GetAssetsInDirectoryNonRecursive(string directory)
-    {
-        // 1. Get all asset paths in the directory (this includes subdirectories)
-        string[] allAssetPaths = AssetDatabase.FindAssets("", new[] { directory })
-            .Select(AssetDatabase.GUIDToAssetPath)
-            .ToArray();
-
-        string strTargetDirPath = (Application.dataPath + directory.Substring("Assets".Length, directory.Length - "Assets".Length));
-        strTargetDirPath = strTargetDirPath.Replace("\\", "/");
-        // 2. Filter out the directories and assets in subdirectories
-        List<string> filteredAssets = new List<string>();
-        foreach (string assetPath in allAssetPaths)
-        {
-            FileInfo info = new FileInfo(Application.dataPath + assetPath.Substring("Assets".Length, assetPath.Length - "Assets".Length));
-
-            string strDirFullName = info.Directory.FullName.Replace('\\', '/');
-            bool bOnlyThisDirectory = false;
-            if (info.Exists  )
-            {
-                if (bOnlyThisDirectory == true && strDirFullName != strTargetDirPath)
-                    continue;
-
-                if (assetPath.ToLower().Contains("ctrl+d"))
-                    continue;
-
-                if(assetPath.ToLower().Contains("tracks") == true)
-                {
-                    if (assetPath.ToLower().Contains(".unity") == true)
-                    {
-                        filteredAssets.Add(assetPath);
-                    }
-
-                    // we dont want add any other files from tracks directory other than scene
-                    continue;
-                }
-
-                if (assetPath.Contains(".prefab") || assetPath.Contains("PTK_Workshop_Char") || assetPath.Contains("Info") || (assetPath.Contains("Blender") == false && assetPath.Contains(".fbx") == true)
-                    || (assetPath.Contains("StickerTextures.asset") == true ))
-                    filteredAssets.Add(assetPath);
-            }
-            
-        }
-
-        return filteredAssets.ToArray();
-    }
-
-    public static void SimplifyAddresses(Dictionary<AddressableAssetEntry, AddressableAssetGroup> entries)
-    {
-        foreach (var group in entries)
-            group.Value.SetDirty(AddressableAssetSettings.ModificationEvent.EntryModified, group.Key, false, true);
-        AddressableAssetSettingsDefaultObject.Settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryModified, entries, true, false);
-    }
+    
 
 
 
-    private bool IsInsideColorVariantsDirectory(string assetPath)
-    {
-        var directories = assetPath.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-        for (int i = 0; i < directories.Length; i++)
-        {
-            if (directories[i] == "Color Variations")
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// ///// Tree View
-    /// </summary>
-    class SkinTreeView : TreeView
-    {
-        public event Action<HashSet<string>> OnCheckedItemsChanged;
-        private HashSet<string> ignoreSet = new HashSet<string>();
-
-        public void SetIgnorePhrases(string[] phrases)
-        {
-            ignoreSet.Clear();
-            foreach (var phrase in phrases)
-            {
-                ignoreSet.Add(phrase.Trim());
-            }
-        }
-        private HashSet<string> noCheckboxSet = new HashSet<string>();
-
-        public void SetNoCheckboxPhrases(string[] phrases)
-        {
-            noCheckboxSet.Clear();
-            foreach (var phrase in phrases)
-            {
-                noCheckboxSet.Add(phrase.Trim());
-            }
-        }
-
-        private const string rootPath = "Assets/Workshop_Content";
-
-        public SkinTreeView(TreeViewState state) : base(state)
-        {
-        }
-
-        protected override TreeViewItem BuildRoot()
-        {
-            var root = new TreeViewItem { id = 0, depth = -1, displayName = "Root" };
-            int id = 1;
-            var items = CreateChildrenForDirectory(rootPath, ref id);
-            SetupParentsAndChildrenFromDepths(root, items);
-            return root;
-        }
-        private List<TreeViewItem> CreateChildrenForDirectory(string path, ref int id, int depth = 0)
-        {
-            var items = new List<TreeViewItem>();
-
-            // Skip directories that match ignore phrases
-            if (ShouldIgnore(path))
-                return items;
-
-            // Add current directory (skip for the root)
-            if (depth > 0)
-                items.Add(new MyTreeViewItem { id = id++, depth = depth, displayName = Path.GetFileName(path), pathSegment = Path.GetFileName(path), fullPath = path });
-
-            var subDirs = Directory.GetDirectories(path);
-            foreach (var dir in subDirs)
-            {
-                items.AddRange(CreateChildrenForDirectory(dir, ref id, depth + 1));
-            }
-
-            return items;
-        }
-
-        private bool ShouldIgnore(string path)
-        {
-            foreach (var ignore in ignoreSet)
-            {
-                if (path.Contains(ignore))
-                    return true;
-            }
-            return false;
-        }
-        HashSet<string> checkedItems_ = new HashSet<string>();
-        public HashSet<string> GetCheckedItems()
-        {
-            return checkedItems_;
-        }
-
-        protected override void RowGUI(RowGUIArgs args)
-        {
-            MyTreeViewItem myItem = args.item as MyTreeViewItem;
-            if (!ShouldNotRenderCheckbox(myItem.displayName) && ShouldRenderCheckbox_IfParent(myItem))
-            {
-                EditorGUI.BeginChangeCheck();
-                bool wasChecked = checkedItems_.Contains(myItem.fullPath);
-                bool isChecked = EditorGUI.Toggle(new Rect(args.rowRect.x + 2, args.rowRect.y, 16, args.rowRect.height), wasChecked);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    if (isChecked && !wasChecked)
-                    {
-                        checkedItems_.Add(myItem.fullPath);
-                    }
-                    else if (!isChecked && wasChecked)
-                    {
-                        checkedItems_.Remove(myItem.fullPath);
-                    }
-
-                    OnCheckedItemsChanged?.Invoke(checkedItems_);
-                }
-            }
-
-            base.RowGUI(args);
 
 
-        }
-        private bool ShouldRenderCheckbox_IfParent(MyTreeViewItem item)
-        {
-            if (item == null)
-                return false;
-
-           // if ((item as MyTreeViewItem).pathSegment == "Characters")
-            //    return true;
-
-            if (item.parent as MyTreeViewItem == null)
-                return false;
-
-          //  if ((item.parent as MyTreeViewItem).pathSegment == "Outfits")
-        //        return true;
-
-            if ((item.parent as MyTreeViewItem).pathSegment == "Characters")
-                return true;
-
-            if ((item.parent as MyTreeViewItem).pathSegment == "Vehicles")
-                return true;
-
-            if ((item.parent as MyTreeViewItem).pathSegment == "Tracks")
-                return true;
-
-            if ((item.parent as MyTreeViewItem).pathSegment == "Wheels")
-                return true;
-
-            if ((item.parent as MyTreeViewItem).pathSegment == "Stickers")
-                return true;
-
-            return false;
-        }
-
-        public HashSet<string> GetCheckedPaths()
-        {
-            return checkedItems_;
-        }
-
-        public void SetCheckedPaths(HashSet<string> paths)
-        {
-            checkedItems_.Clear();
-            foreach (var path in paths)
-            {
-                checkedItems_.Add(path);
-            }
-        }
-
-        public void RemovePath(string strPath)
-        {
-            checkedItems_.Remove(strPath);
-        }
-
-        public void SaveStateToPrefs()
-        {
-            string checkedPaths = string.Join(";", checkedItems_);
-            EditorPrefs.SetString("SkinTreeView_Checked_Items", checkedPaths);
-        }
-
-        public void LoadStateFromPrefs()
-        {
-            if (EditorPrefs.HasKey("SkinTreeView_Checked_Items"))
-            {
-                var savedPaths = EditorPrefs.GetString("SkinTreeView_Checked_Items").Split(';');
-                checkedItems_ = new HashSet<string>(savedPaths);
-            }
-        }
-
-        private class MyTreeViewItem : TreeViewItem
-        {
-            public string pathSegment;
-            public string fullPath; // New field
-        }
-
-        private bool ShouldNotRenderCheckbox(string path)
-        {
-            foreach (var noCheckbox in noCheckboxSet)
-            {
-                if (path.Contains(noCheckbox))
-                    return true;
-            }
-            return false;
-        }
-
-    }
-
-    //https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
-
-    private const string initVector = "tu89geji340t89u2";
-
-    private const int keysize = 256;
-
-    public static string EncryptString(string Text, string Key)
-    {
-        byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
-        byte[] plainTextBytes = Encoding.UTF8.GetBytes(Text);
-        PasswordDeriveBytes password = new PasswordDeriveBytes(Key, null);
-        byte[] keyBytes = password.GetBytes(keysize / 8);
-        RijndaelManaged symmetricKey = new RijndaelManaged();
-        symmetricKey.Mode = CipherMode.CBC;
-        ICryptoTransform encryptor = symmetricKey.CreateEncryptor(keyBytes, initVectorBytes);
-        MemoryStream memoryStream = new MemoryStream();
-        CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write);
-        cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-        cryptoStream.FlushFinalBlock();
-        byte[] Encrypted = memoryStream.ToArray();
-        memoryStream.Close();
-        cryptoStream.Close();
-        return Convert.ToBase64String(Encrypted);
-    }
-
-    public static string DecryptString(string EncryptedText, string Key)
-    {
-        byte[] initVectorBytes = Encoding.ASCII.GetBytes(initVector);
-        byte[] DeEncryptedText = Convert.FromBase64String(EncryptedText);
-        PasswordDeriveBytes password = new PasswordDeriveBytes(Key, null);
-        byte[] keyBytes = password.GetBytes(keysize / 8);
-        RijndaelManaged symmetricKey = new RijndaelManaged();
-        symmetricKey.Mode = CipherMode.CBC;
-        ICryptoTransform decryptor = symmetricKey.CreateDecryptor(keyBytes, initVectorBytes);
-        MemoryStream memoryStream = new MemoryStream(DeEncryptedText);
-        CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read);
-        byte[] plainTextBytes = new byte[DeEncryptedText.Length];
-        int decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
-        memoryStream.Close();
-        cryptoStream.Close();
-        return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
-    }
+  
 
 }
 
