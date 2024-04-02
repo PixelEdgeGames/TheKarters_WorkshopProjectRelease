@@ -41,7 +41,6 @@ public class PTK_PackageExporter : EditorWindow
         }
     }
 
-
     private void OnEnable()
     {
         if (treeViewState == null)
@@ -52,7 +51,6 @@ public class PTK_PackageExporter : EditorWindow
         treeView.Reload();
 
         packageExporterGUI.OnEnable(this);
-
 
         treeView.OnCheckedItemsChanged += HandleCheckedItemsChanged;
 
@@ -77,21 +75,6 @@ public class PTK_PackageExporter : EditorWindow
         RefreshTreeViewDirectories();
     }
 
-    private void OnUndoRedo()
-    {
-        // This method is called after an undo or redo operation is performed.
-        // Repaint the editor window to reflect the changes.
-        Repaint();
-    }
-
-    private void HandleCheckedItemsChanged(HashSet<string> checkedItems)
-    {
-        if (currentMod != null)
-        {
-            currentMod.SelectedPaths = checkedItems.ToList();
-            EditorUtility.SetDirty(currentMod); // Mark the ScriptableObject as "dirty" so that changes are saved.
-        }
-    }
 
     private void OnGUI()
     {
@@ -110,6 +93,23 @@ public class PTK_PackageExporter : EditorWindow
         boundingBoxCalculator = GameObject.FindObjectOfType<BoundingBoxCalculator>(true);
 
         addressableHelper.ExportToAddressables(this);
+    }
+
+
+    private void OnUndoRedo()
+    {
+        // This method is called after an undo or redo operation is performed.
+        // Repaint the editor window to reflect the changes.
+        Repaint();
+    }
+
+    private void HandleCheckedItemsChanged(HashSet<string> checkedItems)
+    {
+        if (currentMod != null)
+        {
+            currentMod.SelectedPaths = checkedItems.ToList();
+            EditorUtility.SetDirty(currentMod); // Mark the ScriptableObject as "dirty" so that changes are saved.
+        }
     }
 
     public void RefreshTreeViewDirectories()
@@ -133,6 +133,8 @@ public class PTK_PackageExporter : EditorWindow
             treeView.Reload();
         }
     }
+
+    // helpers
 
     public  void OptimizeTextureSizesInDirectory(string directoryPath)
     {
