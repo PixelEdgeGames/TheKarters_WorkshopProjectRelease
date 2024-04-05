@@ -28,6 +28,7 @@
     <th>🏁 Tracks</th>
     <th>👤 Characters</th>
     <th>🚗 Vehicles</th>
+    <th>🔊 Audio</th>
 </tr>
 <tr>
     <td>
@@ -38,9 +39,9 @@
     </td>
     <td>
         <ul>
-            <li>New Racers</li>
-            <li>Character Skins</li>
-            <li>Audio Voice Overs</li>
+            <li>New Characters</li>
+            <li>Outfits</li>
+            <li>Materials</li>
         </ul>
     </td>
     <td>
@@ -48,6 +49,11 @@
             <li>Karts</li>
             <li>Wheels</li>
             <li>Stickers</li>
+        </ul>
+    </td>
+   <td>
+        <ul>
+            <li>Voice Over Pack</li>
         </ul>
     </td>
 </tr>
