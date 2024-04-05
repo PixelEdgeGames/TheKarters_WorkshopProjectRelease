@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{6B1865E0-DF63-47A7-A57E-07A7825D7F22}" SchemaVersion="103">
+	<Effects>
+		<WorkUnit Name="Default Work Unit" ID="{6B1865E0-DF63-47A7-A57E-07A7825D7F22}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="SideChain_Meter" ID="{AB3658A7-AD77-4DDA-B905-08B9AEF67273}" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+					<PropertyList>
+						<Property Name="AttackTime" Type="Real32" Value="0.1"/>
+						<Property Name="MeterMode" Type="int32" Value="1"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="1"/>
+					</PropertyList>
+					<PluginData>
+	<GameParameter Name="SideChain" ID="{7C876C78-90F9-4764-BF66-C8BB949B12A6}"/>
+</PluginData>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
+	</Effects>
+</WwiseDocument>

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="Weapon" ID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="E_Weapon_UseSingle_Event" ID="{F6CEEE7B-8C0C-4B98-BB65-78A96E7D5E98}">
+					<ChildrenList>
+						<Action Name="" ID="{144E4157-35E9-4B63-A265-85BE1F0F4E26}" ShortID="750809179">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_Catch" ID="{A083C8F3-103B-40A5-9BE7-80ECFCEE05D0}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{AE8B41E9-033C-4EB5-B9B4-EA377548ACED}" ShortID="416062221">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType" ID="{B2613969-7988-4376-8C28-70C6A04FA746}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{AB74419F-532B-4DDA-B7CB-A01E1F03C267}" ShortID="452695514">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_Idle_Loop" ID="{E645A9B6-62DA-4D21-80EB-74C731171995}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_Weapon_UseLoop_Start_Event" ID="{D5776ED2-066B-4B18-B360-F52242B034EA}">
+					<ChildrenList>
+						<Action Name="" ID="{A16F1B76-C468-4ACC-9A2D-695121E1DCD8}" ShortID="245085989">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsTypeSpecial" ID="{ABB28F8E-9BB9-4AE3-B982-E51C65BA8711}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_Weapon_UseLoop_End_Event" ID="{9E7C302F-0976-4E92-8FD3-45C78F23428D}">
+					<ChildrenList>
+						<Action Name="" ID="{9690D595-BA91-449F-BEAF-31D0A322D6EB}" ShortID="937904510">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_EndShot" ID="{BE0E89AC-461E-408A-B5C1-0D946EC51E21}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{ADB1E233-EFB6-408C-A82A-91020BEA8A05}" ShortID="655678534">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsTypeSpecial" ID="{ABB28F8E-9BB9-4AE3-B982-E51C65BA8711}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_Weapon_Reload_Event" ID="{51945A7C-7F93-4980-8AA0-E49F3818CB03}"/>
+				<Event Name="E_WeaponType_Catch_Event" ID="{118629A6-45B4-434D-BCDF-4A892FADD85F}">
+					<ChildrenList>
+						<Action Name="" ID="{06173034-BFB8-4603-B662-A89E0ACDF9B2}" ShortID="77931254">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ChoseItem" ID="{4640EC89-A5F0-492B-A8FB-E5A5C4868038}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{7962D513-30E4-4DCB-9F6A-0FD45246C644}" ShortID="260742001">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_Catch" ID="{A083C8F3-103B-40A5-9BE7-80ECFCEE05D0}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E60C9C95-93B2-4F42-BE78-E5CC14160712}" ShortID="530209525">
+							<PropertyList>
+								<Property Name="FadeTime" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_Idle_Loop" ID="{E645A9B6-62DA-4D21-80EB-74C731171995}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_WeaponType_Throw_Event" ID="{C84CF1FA-1CAA-4464-AEF4-700F8629043A}">
+					<ChildrenList>
+						<Action Name="" ID="{DE3AD456-7316-4D96-8076-F9A3300E392D}" ShortID="129677353">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_Throw" ID="{6E95D8EC-637A-4C32-9BA6-842448633E93}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{66BBD576-2BFC-4B6B-94A3-5BD80F3F7926}" ShortID="565942222">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsTypeSpecial" ID="{ABB28F8E-9BB9-4AE3-B982-E51C65BA8711}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A9FD4C49-02DD-4DFA-8ABC-FF2E51F20D2F}" ShortID="666799715">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_EndShot" ID="{BE0E89AC-461E-408A-B5C1-0D946EC51E21}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_WeaponEffect_JustDestroyed_Event" ID="{FB374317-2953-4404-9022-5409A73453EA}">
+					<ChildrenList>
+						<Action Name="" ID="{E2CD959E-D073-4B5C-B5A4-2892D4BECA9E}" ShortID="785702481">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponBultetTail" ID="{DFBA4BA9-0571-44D1-A36F-DC286E553CA2}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_WeaponEffect_JustSpawned_Event" ID="{A28A730B-D69E-4200-ABD7-069CA521E98B}">
+					<ChildrenList>
+						<Action Name="" ID="{9B1B044B-AF53-4310-88E4-6ADE98988CA3}" ShortID="267726724">
+							<PropertyList>
+								<Property Name="FadeInCurve" Type="int16" Value="6"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponBultetTail" ID="{DFBA4BA9-0571-44D1-A36F-DC286E553CA2}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="Animations" ID="{E79F0730-75EF-4E57-8E7A-5F6319C71CED}" ShortID="987225667">
+					<ChildrenList>
+						<Event Name="Play_MINIGUN_13_Idle" ID="{3277BCBC-69C0-4516-B8BB-3D8A47DCED36}">
+							<ChildrenList>
+								<Action Name="" ID="{EABC7B25-BFB6-49C2-A146-D27F67A7C5BB}" ShortID="729388713">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MINIGUN_13_Idle" ID="{8D01CC1C-35B2-4CDD-82DC-292E4E6F1AA8}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_SHOTGUN_05_Idle" ID="{4F88927A-3E7B-42B0-9AB1-C4A9D4582A70}">
+							<ChildrenList>
+								<Action Name="" ID="{1EF07DA6-2892-439B-ADA0-89620FA577FE}" ShortID="360234678">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="SHOTGUN_05_Idle" ID="{9E6C8187-5DF6-4370-9C9E-26F0E55F7251}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_TESLAGUN_07_Idle" ID="{5DC70F0D-F6F3-4ECB-AE3F-D5588F782F28}">
+							<ChildrenList>
+								<Action Name="" ID="{FB972ED1-FA55-4042-A35C-3E7A9323EF83}" ShortID="133011783">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="TESLAGUN_07_Idle" ID="{403AA620-25BB-4CFF-BEC8-015149C36AC1}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_PORTALGUN_04_Idle" ID="{65331D4F-FACB-4E6F-937B-309DD81480E7}">
+							<ChildrenList>
+								<Action Name="" ID="{9608937E-C763-44F6-85B4-97BE91387B16}" ShortID="766197652">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="PORTALGUN_04_Idle" ID="{F24380FD-B2B8-410C-A330-58932A0A6B62}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_STAR_10_Idle" ID="{984E883F-7CE4-4CD3-A3F3-2551C433B0E5}">
+							<ChildrenList>
+								<Action Name="" ID="{CB0F3AA2-0F96-4CE7-8770-814AC53C99E8}" ShortID="665469025">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="STAR_10_Idle" ID="{F355006D-B6F7-4704-859E-B446A4B72B3E}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="MountingPlatform" ID="{E3F72921-9FDD-47F2-A9C9-29602542ED44}" ShortID="118238828">
+					<ChildrenList>
+						<Event Name="E_MountingPlatformOn" ID="{E1366EB2-107A-43F4-8C5B-157C1D520A84}">
+							<ChildrenList>
+								<Action Name="" ID="{13C6FDE8-EED0-4C42-B58E-5A33AA9AA995}" ShortID="269413282">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BackTransform" ID="{D2263072-E01B-4290-98DA-8BDE661242F8}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="E_MountingPlatformOff" ID="{80A46F5A-C916-4F1F-BA99-D8880BAAD1CD}">
+							<ChildrenList>
+								<Action Name="" ID="{B8D57733-3FA8-4EC3-8C61-1314560D131A}" ShortID="559033083">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="BackTransform" ID="{D2263072-E01B-4290-98DA-8BDE661242F8}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Dadicated" ID="{F9ECA29C-B0C5-45FB-AAB1-0690B8F1111D}" ShortID="928470936">
+					<ChildrenList>
+						<Event Name="E_TeslaElectrocude_Start_Event" ID="{7DF8736B-75A7-4B5A-948D-D1E61F396A8A}"/>
+						<Event Name="E_TeslaElectrocude_End_Event" ID="{EF5269BF-ADDB-44E0-8209-EA102BF391C4}"/>
+					</ChildrenList>
+				</Folder>
+				<Event Name="ItemBoxDrawAnim_Started_Event" ID="{8F4097BF-F962-411A-A6C3-3B3F5E47A996}">
+					<ChildrenList>
+						<Action Name="" ID="{E2E38509-470A-437D-A8A9-A1EEA992CDA8}" ShortID="269006589">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ItemBoxDrawAnim_Started_Event" ID="{D1B4D73E-FE5C-469A-A628-E76D5F5434B3}" WorkUnitID="{1B1F06AC-D7D5-4504-A332-9FF1B0397972}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ItemBoxDrawAnim_Ended_Event" ID="{10F71D03-E35A-4E7A-8809-6ED8891B00E9}">
+					<ChildrenList>
+						<Action Name="" ID="{0E12EE58-1DAA-4882-B461-EC4FB149AFFC}" ShortID="919861973">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="Delay" Type="Real64" Value="0.1"/>
+								<Property Name="FadeInCurve" Type="int16" Value="7"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="7"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ItemBoxDrawAnim_Started_Event" ID="{D1B4D73E-FE5C-469A-A628-E76D5F5434B3}" WorkUnitID="{1B1F06AC-D7D5-4504-A332-9FF1B0397972}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="ItemBoxBreak" ID="{FD96A785-6CDD-4A4D-AD17-E061F9F55621}">
+					<ChildrenList>
+						<Action Name="" ID="{A35C5506-922B-4BB0-9EB2-14AFCFE287EB}" ShortID="225918921">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="ItemBoxBreak" ID="{565F8FD2-6580-45AD-94D2-1E3DCE5CD3D9}" WorkUnitID="{1B1F06AC-D7D5-4504-A332-9FF1B0397972}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

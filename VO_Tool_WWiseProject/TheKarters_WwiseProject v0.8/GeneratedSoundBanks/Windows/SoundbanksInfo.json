@@ -1,0 +1,155 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\",
+   "SourceFilesRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\GeneratedSoundBanks\\Windows"
+  },
+  "DialogueEvents": [],
+  "StreamedFiles": [],
+  "MediaFilesNotInAnyBank": [],
+  "SoundBanks": [
+   {
+    "Id": "208773473",
+    "Language": "SFX",
+    "Hash": "3941229787",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\VO\\_CopyMeAndChangeName",
+    "ShortName": "_CopyMeAndChangeName",
+    "Path": "_CopyMeAndChangeName.bnk"
+   },
+   {
+    "Id": "1355168291",
+    "Language": "SFX",
+    "Hash": "883941435",
+    "ObjectPath": "Init",
+    "ShortName": "Init",
+    "Path": "Init.bnk",
+    "IncludedAuxBusses": [
+     {
+      "Id": "348963605",
+      "Name": "Reverb",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb"
+     },
+     {
+      "Id": "1857588325",
+      "Name": "Rev_Outdoor",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\Rev_Outdoor"
+     },
+     {
+      "Id": "2172616000",
+      "Name": "Rev_Cave",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\Rev_Cave"
+     },
+     {
+      "Id": "2715877408",
+      "Name": "Rev_Main",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\Rev_Main"
+     },
+     {
+      "Id": "3282735431",
+      "Name": "Rev_Tunel",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\Rev_Tunel"
+     },
+     {
+      "Id": "3674175296",
+      "Name": "Rev_Outdoor_Ambience",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\Rev_Outdoor_Ambience"
+     },
+     {
+      "Id": "4006674087",
+      "Name": "Rev_ShortTunel",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\Rev_ShortTunel"
+     },
+     {
+      "Id": "4221949740",
+      "Name": "BoostTail",
+      "ObjectPath": "\\Master-Mixer Hierarchy\\Default Work Unit\\Master Audio Bus\\Reverb\\BoostTail"
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "412632485",
+      "Name": "VO_Volume_RTPC",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volumes_RTPC\\VO_Volume_RTPC"
+     },
+     {
+      "Id": "755495101",
+      "Name": "TimeInAir_RTPC",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\TimeInAir_RTPC"
+     },
+     {
+      "Id": "1883033791",
+      "Name": "SideChain",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\SideChain"
+     },
+     {
+      "Id": "2585960002",
+      "Name": "Master_Volume_RTPC",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volumes_RTPC\\Master_Volume_RTPC"
+     },
+     {
+      "Id": "2654583815",
+      "Name": "SFX_Volume_RTPC",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volumes_RTPC\\SFX_Volume_RTPC"
+     },
+     {
+      "Id": "3131952431",
+      "Name": "Music_Volume_RTPC",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volumes_RTPC\\Music_Volume_RTPC"
+     },
+     {
+      "Id": "3526594642",
+      "Name": "UI_Volume_RTPC",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Volumes_RTPC\\UI_Volume_RTPC"
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "4091656514",
+      "Name": "GameState",
+      "ObjectPath": "\\States\\Default Work Unit\\GameState",
+      "GUID": "{1815FA72-0220-45BF-9A41-AD51B18FB977}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\GameState\\None",
+        "GUID": "{C4E10DA8-CCA3-49CF-89EA-CC6A6CDD798C}"
+       },
+       {
+        "Id": "762757699",
+        "Name": "Gameplay_State",
+        "ObjectPath": "\\States\\Default Work Unit\\GameState\\Gameplay_State",
+        "GUID": "{5E5876D0-703B-4189-8F2F-F9F198CDF1E6}"
+       },
+       {
+        "Id": "3205958645",
+        "Name": "MainMenu_State",
+        "ObjectPath": "\\States\\Default Work Unit\\GameState\\MainMenu_State",
+        "GUID": "{A7C69E71-C0FD-4E0C-BE88-2166BCFD4E07}"
+       },
+       {
+        "Id": "3112137713",
+        "Name": "InGame_MainMenu_State",
+        "ObjectPath": "\\States\\Default Work Unit\\GameState\\InGame_MainMenu_State",
+        "GUID": "{EC18B602-4179-4C83-8440-09A67F34F64C}"
+       },
+       {
+        "Id": "915658673",
+        "Name": "LoadingScreen_State",
+        "ObjectPath": "\\States\\Default Work Unit\\GameState\\LoadingScreen_State",
+        "GUID": "{177E545A-15F2-4A01-9880-2E17D5A45FFB}"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

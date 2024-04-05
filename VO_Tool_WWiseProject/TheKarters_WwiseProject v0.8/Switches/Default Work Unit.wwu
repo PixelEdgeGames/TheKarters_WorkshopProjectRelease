@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{5BFF2715-3696-4F1B-AC1B-FBA30C97CFA2}" SchemaVersion="103">
+	<Switches>
+		<WorkUnit Name="Default Work Unit" ID="{5BFF2715-3696-4F1B-AC1B-FBA30C97CFA2}" PersistMode="Standalone">
+			<ChildrenList>
+				<SwitchGroup Name="VehicleType_Switch" ID="{69ADD706-DCC1-45CA-ADC8-E0D65A20428D}">
+					<ChildrenList>
+						<Switch Name="E_VEHICLE_0_DEFAULT" ID="{07138C2A-AE3D-4DF6-8DC4-206556D656BE}"/>
+						<Switch Name="E_VEHICLE_1_BUGGY" ID="{BF3412E9-FB9D-4642-8B1D-38E46B7F9BCA}"/>
+						<Switch Name="E_VEHICLE_2_BLACK" ID="{54F90E28-F1EE-45D5-9251-1AB516D8B1C2}"/>
+						<Switch Name="E_VEHICLE_3_ARROW" ID="{9113DA1C-E36D-4258-AFD0-3BF6D63800EA}"/>
+						<Switch Name="E_VEHICLE_4_F1" ID="{02A50552-A39F-4D30-BF23-881BC4C9702B}"/>
+						<Switch Name="E_VEHICLE_5_THREE_WHEELS" ID="{C66092D2-C6CF-453D-B442-4C9E86C05796}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="BoostType_Switch" ID="{2EAF9466-4EF4-4F2A-A165-C2159F655DE4}">
+					<ChildrenList>
+						<Switch Name="EBOOST_DRIVE_TYPE" ID="{5E327430-6306-4CEC-8B5C-A7CE6CE4966D}"/>
+						<Switch Name="EBOOST_DRIVE_TYPE_2" ID="{47654B8B-2490-4CD6-8D52-0D2234275453}"/>
+						<Switch Name="EBOOST_DRIVE_TYPE_3" ID="{D178D0A6-7CBD-4768-9231-62933673E13A}"/>
+						<Switch Name="EBOOST_BOOSTPAD" ID="{9E84385A-F041-43E0-AC02-8C1A2768EAC1}"/>
+						<Switch Name="EBOOST_BOOSTER" ID="{71736248-9404-46C5-BB68-606046FB9185}"/>
+						<Switch Name="EBOOST_JUMP_LANDED" ID="{98978413-B76F-4168-B87E-805D5516661C}"/>
+						<Switch Name="EBOOST_STAR_AURA" ID="{B2D1895F-1D8A-4202-A669-628E7D803427}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="WeaponType_Switch" ID="{0864568A-F643-45A8-AFE7-B968351CC61A}">
+					<ChildrenList>
+						<Switch Name="BAZOOKA_00" ID="{5228852E-C650-49FE-B64D-76071C3462D6}"/>
+						<Switch Name="BOOST_01" ID="{7026C20F-5D6A-45BD-9985-4035A56B879C}"/>
+						<Switch Name="HOMING_MISSLE_02" ID="{B068BCBA-F462-41D8-A467-001FFF014E9F}"/>
+						<Switch Name="MLOT_03" ID="{1A62438C-CE3C-48B0-BC2B-D1C016064533}"/>
+						<Switch Name="PORTALGUN_04" ID="{BA61FB2A-D61D-4B46-9624-89201DF98DE8}"/>
+						<Switch Name="SHOTGUN_05" ID="{DB9F50DF-6A4D-4382-BD8E-8EF63CCAA298}"/>
+						<Switch Name="TARCZA_06" ID="{7EC44C16-1223-410A-ADB7-0DC257811CC5}"/>
+						<Switch Name="TESLAGUN_07" ID="{1EA205EF-58D5-4FD8-9848-0768D49ADE05}"/>
+						<Switch Name="TESLASHIELD_08" ID="{D783FAAA-AC72-44CD-B8EF-9DECF7821630}"/>
+						<Switch Name="HEAL_AURA_11" ID="{EB9E3C74-12DC-4F79-A96C-1620E1AAE18F}"/>
+						<Switch Name="TELEPORT_DASH_12" ID="{CFDD7025-B23D-4F6F-90A1-E9E64F8DB9A2}"/>
+						<Switch Name="MINIGUN_13" ID="{09A0FB63-D17C-4A48-8C56-A448E5548915}"/>
+						<Switch Name="POISONGUN_14" ID="{2AABECDE-F5A0-444E-B389-8D64924EFFC4}"/>
+						<Switch Name="STAR_10" ID="{CF5609A2-27D2-46EA-8EB2-7B4EEB4B1B60}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="IsMovingBackward_Switch" ID="{A7E360EE-2C7C-4C85-9E21-86DF91631AB7}">
+					<ChildrenList>
+						<Switch Name="TRUE" ID="{DEABCAEC-DB96-4DA0-862E-474DC1E5E2C2}"/>
+						<Switch Name="FALSE" ID="{A9EE5B1E-5F47-4039-9847-47DA00F1665A}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="IsDrifting_Switch" ID="{9E766747-2FD2-48F4-8132-C1C9E41803AB}">
+					<ChildrenList>
+						<Switch Name="TRUE" ID="{043D6429-3F1D-4F44-9083-630E3B06BB3C}"/>
+						<Switch Name="FALSE" ID="{530A10F5-E2BC-41B3-B362-A2635A6CEA60}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="IsBoosting_Switch" ID="{D50EB809-771F-42DF-AD5E-C685BCEE9F19}">
+					<ChildrenList>
+						<Switch Name="TRUE" ID="{1C1FB3C7-88F4-4A7C-A140-5130DDBE94EB}"/>
+						<Switch Name="FALSE" ID="{BDBB9C31-553F-4DB7-B6B5-077C1C79968D}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="IsBreaking_Switch" ID="{8618D034-10E9-434B-87E7-2C6DA4E0637F}">
+					<ChildrenList>
+						<Switch Name="TRUE" ID="{49982C0B-287B-487D-A1C4-044A1DEF66BE}"/>
+						<Switch Name="FALSE" ID="{4B05CAA6-3B09-4006-9001-84787C2F725C}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="IsPressingAccelButton_Switch" ID="{9ECEFC10-AF6B-4C80-9D61-FC9AF96D5EAD}">
+					<ChildrenList>
+						<Switch Name="TRUE" ID="{86A00467-E21A-4FDC-BB6A-1675BA8DE908}"/>
+						<Switch Name="FALSE" ID="{E86017A8-D11B-4E81-A434-64A63F96C355}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="IsPlayerALocalHuman_Switch" ID="{DCF025A4-CF28-4F78-B084-7A55FEA60AA8}">
+					<ChildrenList>
+						<Switch Name="TRUE" ID="{3E2D5AD2-D461-4A6F-AC04-E6E944F10083}"/>
+						<Switch Name="FALSE" ID="{912A8F5F-0B0A-4028-854B-BFAD474AFD61}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="LandIntensity_Switch" ID="{A02D9CEC-ADE5-423E-9D61-7F175459CAE2}">
+					<PropertyList>
+						<Property Name="UseGameParameter" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="SOFT" ID="{89B38A6F-F477-47A3-8894-65CFB6545B07}"/>
+						<Switch Name="MEDIUM" ID="{C76100F3-6C42-455C-AEF6-6F96471E742B}"/>
+						<Switch Name="HARD" ID="{D8E97F44-9C63-41E9-8DD0-F54F1A2EACFB}"/>
+					</ChildrenList>
+					<SwitchOnRTPC>
+						<GameParameterRef Name="TimeInAir_RTPC" ID="{FB014E28-434D-4BC6-979D-6865ECC1D8D5}"/>
+						<Curve Name="" ID="{A4183A42-6503-44C0-BFDC-1C42434F0FE9}">
+							<PropertyList>
+								<Property Name="Flags" Type="int32" Value="65537"/>
+							</PropertyList>
+							<PointList>
+								<Point>
+									<XPos>0</XPos>
+									<YPos>0</YPos>
+									<Flags>5</Flags>
+								</Point>
+								<Point>
+									<XPos>0.001</XPos>
+									<YPos>1</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>60</XPos>
+									<YPos>2</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>149.36709</XPos>
+									<YPos>3</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>300</XPos>
+									<YPos>3</YPos>
+									<Flags>37</Flags>
+								</Point>
+							</PointList>
+						</Curve>
+					</SwitchOnRTPC>
+				</SwitchGroup>
+				<SwitchGroup Name="Braking_Intensity" ID="{54F64DDC-9925-4E85-BDF1-20DF740E007A}">
+					<PropertyList>
+						<Property Name="UseGameParameter" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="SOFT" ID="{9C2F155E-6CE7-4DB0-B144-F47504A37033}"/>
+						<Switch Name="MEDIUM" ID="{DBE172A0-469D-4C7F-A219-F4A9FDCC07DB}"/>
+						<Switch Name="HARD" ID="{F0C75A3C-7077-46A2-9D88-6F7E38A9EB3D}"/>
+					</ChildrenList>
+					<SwitchOnRTPC>
+						<GameParameterRef Name="VehicleVelocity_RTPC" ID="{D1C8A2B7-9B99-463B-B506-0E9DC10B985F}"/>
+						<Curve Name="" ID="{E5A8EEC1-D338-43C2-AB37-2913A201DD17}">
+							<PropertyList>
+								<Property Name="Flags" Type="int32" Value="65537"/>
+							</PropertyList>
+							<PointList>
+								<Point>
+									<XPos>0</XPos>
+									<YPos>1</YPos>
+									<Flags>5</Flags>
+								</Point>
+								<Point>
+									<XPos>45</XPos>
+									<YPos>2</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>70</XPos>
+									<YPos>3</YPos>
+									<Flags>0</Flags>
+								</Point>
+								<Point>
+									<XPos>150</XPos>
+									<YPos>3</YPos>
+									<Flags>37</Flags>
+								</Point>
+							</PointList>
+						</Curve>
+					</SwitchOnRTPC>
+				</SwitchGroup>
+				<SwitchGroup Name="CharacterAction_Switch" ID="{2B864265-842F-42BE-88D1-AC5B5DBC9513}">
+					<ChildrenList>
+						<Switch Name="Lost" ID="{0542C43E-B036-4964-B180-D476F780DEA1}"/>
+						<Switch Name="Greeting" ID="{8BC29C90-EE46-4FC1-852A-E073BA01D63F}"/>
+						<Switch Name="Win" ID="{05CB9679-8F9B-41E6-949F-D583949EF111}"/>
+						<Switch Name="Damaged_Spoken" ID="{F66BC0C3-617A-462A-A5D0-BF8C802F4FA2}"/>
+						<Switch Name="Damaged_NonVerbal" ID="{ECCB7B6F-2E96-40E1-8004-EA2913FB2414}"/>
+						<Switch Name="Death_Spoken" ID="{953C56B6-6C1D-4176-8B61-E34A07E2B1E5}"/>
+						<Switch Name="Death_NonVerbal" ID="{CA30AF4A-7E03-4AF0-9658-0524F15CC215}"/>
+						<Switch Name="WeaponDeactivated_Spoken" ID="{200DA3FB-2487-4419-9E12-818780F2C7DC}"/>
+						<Switch Name="WeaponDeactivated_NonVerbal" ID="{5ED244DD-F0C3-4105-ACA8-F48FC0295AA0}"/>
+						<Switch Name="Trick_Spoken" ID="{5A1461F5-3C08-4F25-94C5-47052330A2D0}"/>
+						<Switch Name="Trick_NonVerbal" ID="{1DAD331D-4093-4259-A664-F65CCDC27723}"/>
+						<Switch Name="WeaponActivate_Spoken_PerWeapon" ID="{EDB90C4B-95FF-4E61-8772-8D230F3A7B4C}"/>
+						<Switch Name="WeaponActivate_Spoken_Common" ID="{93124420-D15B-4DFE-9B62-E3E3AE91D157}"/>
+						<Switch Name="Passing_Spoken" ID="{5DAF1ED1-9923-497C-8815-7E17A196F050}"/>
+						<Switch Name="Passing_NonVerbal" ID="{3DF75FAE-6325-426D-A5C3-2E6A91FF64C8}"/>
+						<Switch Name="CatchingWeapon_Spoken_PerWeapon" ID="{683625F2-B382-462D-9281-E8E94B9ED536}"/>
+						<Switch Name="CatchingWeapon_NonVerbal" ID="{31B7C5AB-AD92-4743-A1F3-19EB67188B65}"/>
+						<Switch Name="CatchingWeapon_Spoken_Common" ID="{23635D25-6549-4B3C-B409-AE1C6B7FC70A}"/>
+						<Switch Name="BoostpadAction" ID="{1E58F30D-2886-4C96-AD43-2A5CF73A0B89}"/>
+						<Switch Name="OutsideTrackReAction" ID="{A7D06505-D31C-480C-B7AD-53A0160DCEAE}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="BiomeScene_Switch" ID="{4CE05B84-2E4A-4AF1-9A49-B6B08FB729D4}">
+					<ChildrenList>
+						<Switch Name="Biome1_Scene1" ID="{64CAF124-E4DA-4BE1-8EEC-9AE7A837DDF0}"/>
+						<Switch Name="Biome1_Scene2" ID="{36F14349-ED34-4139-836B-7ECC8FDBE9A9}"/>
+						<Switch Name="Biome1_Scene3" ID="{B073CD11-F265-4856-9FDE-D4459B817E6D}"/>
+						<Switch Name="Biome1_Scene4" ID="{94B65CA9-B043-46F3-BA32-CF95150E32C6}"/>
+						<Switch Name="Biome2_Scene1" ID="{DD276551-F922-4DAB-92E9-1BD953A8D1EB}"/>
+						<Switch Name="Biome2_Scene2" ID="{64A919B4-941E-4861-B9C9-3E3C9A43685A}"/>
+						<Switch Name="Biome2_Scene3" ID="{DA92F8B3-954C-41DD-9AE4-6C35C5B717CD}"/>
+						<Switch Name="Biome2_Scene4" ID="{373A5FC3-C4F3-4D86-9252-4267E10871A6}"/>
+						<Switch Name="Biome3_Scene1" ID="{6971FC64-8AEB-4EDA-9D55-92AFB9FB5AAE}"/>
+						<Switch Name="Biome3_Scene2" ID="{D98E0629-FFCC-4E66-A3D6-B20223878A8A}"/>
+						<Switch Name="Biome3_Scene3" ID="{6E411235-E1A8-4A62-A196-6951FE40A16F}"/>
+						<Switch Name="Biome3_Scene4" ID="{5CE2D22C-086A-42AC-A9E3-A80C656799F6}"/>
+						<Switch Name="Biome4_Scene1" ID="{8D9869F6-9595-47F1-86B1-E31B108979FB}"/>
+						<Switch Name="Biome4_Scene2" ID="{2F850D50-6135-4AAE-B998-61EEF9BA0593}"/>
+						<Switch Name="Biome4_Scene3" ID="{87755D3B-32AA-4C3C-89BD-9DED3B6C667F}"/>
+						<Switch Name="Biome4_Scene4" ID="{7608583E-0C6B-4892-9FBB-9F7F9345F4C9}"/>
+						<Switch Name="Biome999_Scene2" ID="{1FA033A1-91A3-4222-A340-1CC896762D6D}"/>
+					</ChildrenList>
+				</SwitchGroup>
+				<SwitchGroup Name="MusicIntroOutro_Switch" ID="{55B233D5-5284-4A7F-8C8D-C024A6E11A68}">
+					<ChildrenList>
+						<Switch Name="Music_Intro" ID="{07B3C03B-7FCC-4B50-A65B-457987253052}"/>
+						<Switch Name="Music_Outro" ID="{747BEBCD-7163-4FCE-8E1C-B4A2F6D3F73A}"/>
+						<Switch Name="Music_BeforeRace" ID="{B802378C-1305-404D-93B2-A4632FB9D35B}"/>
+					</ChildrenList>
+				</SwitchGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</Switches>
+</WwiseDocument>

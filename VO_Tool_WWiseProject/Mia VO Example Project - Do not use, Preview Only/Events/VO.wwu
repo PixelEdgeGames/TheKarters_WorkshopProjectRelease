@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{DE30A7CE-413A-41D7-A98C-FD2611C7A0F5}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="VO" ID="{DE30A7CE-413A-41D7-A98C-FD2611C7A0F5}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="_VO_Event_CopyMeAndChangeNameAndAssign" ID="{68C54C72-F3D5-4135-992C-BB0FD640F680}"/>
+				<Event Name="VO_Bubble" ID="{8D71EABA-72A5-4D01-B24F-A7677FE4C43F}">
+					<ChildrenList>
+						<Action Name="" ID="{3C86AB3E-CFC6-474D-9A60-1961EC778DF0}" ShortID="812593090">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_Bubble" ID="{775CE9A5-94A1-4FE7-AC66-C53733CA787F}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VO_MamaBarks" ID="{4189C1B7-A8DC-4E2C-B879-8ABD1B5BAE8D}">
+					<ChildrenList>
+						<Action Name="" ID="{EC51B81B-AEA5-49D4-9EFF-1FA151AEE707}" ShortID="281870257">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_MamaBarks" ID="{109EFCFA-1FCC-4952-BD9A-32FC53FED971}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VO_MatAndMax" ID="{28123897-0D27-437E-9927-9F89FB809FD9}">
+					<ChildrenList>
+						<Action Name="" ID="{581B5B62-3C98-4753-8A89-C82DC643DAA8}" ShortID="925422587">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_MatAndMax" ID="{6170D11B-9CBF-4FD7-830C-B26700EB455B}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VO_Mia" ID="{4B84B2C0-3DA8-4F92-9368-A387B7817697}">
+					<ChildrenList>
+						<Action Name="" ID="{FF2D8E6A-130A-43CC-9AF3-F82B0D0E7FF4}" ShortID="894069916">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_Mia" ID="{26CB9FDE-B8DD-4FD0-9F8A-15CCA107E147}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VO_Pablo" ID="{53BC5279-394B-4A76-87E2-CD06BC5464FB}">
+					<ChildrenList>
+						<Action Name="" ID="{686E0766-F63A-48BD-9531-F20F261468A3}" ShortID="1038953189">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_Pablo" ID="{2F88A7D0-F709-43A9-82BC-FBA05630860E}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VO_SirRonald" ID="{460781F8-A1C0-40FD-9BCC-8CF720EA2015}">
+					<ChildrenList>
+						<Action Name="" ID="{1F37A868-CF6E-463C-9482-574257109B97}" ShortID="999069915">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_SirRonald" ID="{44530F8A-C268-474C-A18B-C11762562848}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="VO_ZigZagZoom" ID="{3AE87699-25B2-4DD0-AB4A-7522262E984B}">
+					<ChildrenList>
+						<Action Name="" ID="{CA51BD09-BE5E-42D0-ADFF-DAA2BAC4BFC7}" ShortID="661918080">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VO_ZigZagZoom" ID="{595776ED-CFE9-4409-9AE5-FF0EA2954619}" WorkUnitID="{24D48F31-F7CB-483B-9513-803B9F67CE81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

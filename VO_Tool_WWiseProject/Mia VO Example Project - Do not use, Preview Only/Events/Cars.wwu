@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{DB5A99D6-F9B5-4839-AE95-E1E4009D432E}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="Cars" ID="{DB5A99D6-F9B5-4839-AE95-E1E4009D432E}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="VehicleCreated_Event" ID="{023D185F-A4C6-4BDB-8750-218B0139972D}">
+					<ChildrenList>
+						<Action Name="" ID="{DD2553ED-8BDC-475D-9865-2A55D912188C}" ShortID="6272749">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Vehicle_wheels_gravel" ID="{5B7789C9-F51A-4BBF-8E07-1D3E1048C207}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{D5123154-1006-41B0-A026-F9A31E3EAAC4}" ShortID="74984240">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Idle_Mechanical" ID="{BF338363-F536-4049-A958-A3E3534D96CD}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F9CF5C3B-A332-4FF0-BC23-594B62A37EAB}" ShortID="373082989">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Idle_Steams" ID="{247D9CE5-6156-4E44-A517-DB11DB068EC1}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A8315640-9BAD-4613-98F9-27EEED3B05AC}" ShortID="648310544">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VehicleType" ID="{CCEB242D-B4C3-4BA6-9F18-33E6387B0528}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{150AFC95-6677-4D41-8872-B80D5179572E}" ShortID="988008478">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift_01_Asphalt" ID="{0BC02F98-6A31-4E92-9FFE-DB171CA51BAB}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{49C8CB7C-E752-4A88-9FA8-9F7F1A1F954A}" ShortID="192898327">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Metal_Elements" ID="{90F96760-C881-40B8-B40F-05C0DD245DC2}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{4177844A-F900-4BB6-9F65-9FF4427E5746}" ShortID="532396037">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp_Engine" ID="{753F449A-5F08-4D5E-8D04-41E25F4958C5}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{49199ECC-EDFD-4F5B-A525-09ACBCDD9FBB}" ShortID="526935748">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp_Dirt_Lp" ID="{242321A6-62DB-4479-96BA-6D78BEEE0B2E}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{6E845ABF-32C5-413A-BA48-48356741ED90}" ShortID="891028843">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp_Metal" ID="{2829E17B-12F2-427E-91FF-1660BF52F880}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{0B517212-7789-4494-90B4-647799FC9BB8}" ShortID="51774316">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp_Engine" ID="{753F449A-5F08-4D5E-8D04-41E25F4958C5}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{0CE47D00-222E-49AC-BE0C-CB7008D50BFC}" ShortID="149323950">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VehicleType_RandomSpawn" ID="{2E28B9D0-D626-4CB7-8813-4B618ECEDD86}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{E602353C-6F3E-40F9-896E-F53534030E82}" ShortID="992597937">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift" ID="{3E6D3CF5-F0E5-4208-AF16-BD3BCC17F911}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{94B03BD6-3AC5-411E-A91E-B9E25BA238C3}" ShortID="765309554">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="VehicleType_Switch" ID="{A45F117C-4727-47B7-BEBF-470D25F7879A}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
