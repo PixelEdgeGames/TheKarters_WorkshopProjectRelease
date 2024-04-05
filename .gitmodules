@@ -7,3 +7,6 @@
 [submodule "Assets/Workshop_Content"]
 	path = Assets/Workshop_Content
 	url = git@github.com:PixelEdgeGames/TheKarters_Workshop_ContentReleaseOfficial.git
+[submodule "Assets/Workshop_Content_PrivateOfficial"]
+	path = Assets/Workshop_Content_PrivateOfficial
+	url = git@github.com:PixelEdgeGames/TheKarters_Workshop_Content.git
