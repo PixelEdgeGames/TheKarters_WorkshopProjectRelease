@@ -14,7 +14,7 @@ using UnityEngine;
 
 public class PTK_ModItemConfigurator
 {
-    public const string strWorkshopContentDirName = "Workshop_Content"; // for official content it is "Workshop_Content_PrivateOfficial"
+    public const string strWorkshopContentDirName = "Workshop_Content_PrivateOfficial"; // for official content it is "Workshop_Content_PrivateOfficial"
 
     public const string rootPath = "Assets/" + strWorkshopContentDirName;
     private Regex Pattern_CharacterOnly = new Regex(strWorkshopContentDirName + @"/Characters/(?<characterName>[^/]+)");
