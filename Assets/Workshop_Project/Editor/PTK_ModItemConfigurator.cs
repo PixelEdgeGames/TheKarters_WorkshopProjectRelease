@@ -14,16 +14,18 @@ using UnityEngine;
 
 public class PTK_ModItemConfigurator
 {
-    public const string rootPath = "Assets/Workshop_Content";
-    private Regex Pattern_CharacterOnly = new Regex(@"Workshop_Content/Characters/(?<characterName>[^/]+)");
-    private Regex Pattern_Character = new Regex(@"Workshop_Content/Characters/(?<characterName>[^/]+)/Outfits/(?<outfit>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
-    private static readonly Regex Pattern_AnimConfig = new Regex(@"Workshop_Content/Characters/(?<characterName>[^/]+)");
+    public const string strWorkshopContentDirName = "Workshop_Content"; // for official content it is "Workshop_Content_PrivateOfficial"
 
-    private Regex Pattern_Vehicles = new Regex(@"Workshop_Content/Vehicles/(?<Name>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
-    private Regex Pattern_Wheels = new Regex(@"Workshop_Content/Wheels/(?<Name>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
-    private Regex Pattern_Stickers = new Regex(@"Workshop_Content/Stickers/(?<Name>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
+    public const string rootPath = "Assets/" + strWorkshopContentDirName;
+    private Regex Pattern_CharacterOnly = new Regex(strWorkshopContentDirName + @"/Characters/(?<characterName>[^/]+)");
+    private Regex Pattern_Character = new Regex(strWorkshopContentDirName + @"/Characters/(?<characterName>[^/]+)/Outfits/(?<outfit>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
+    private static readonly Regex Pattern_AnimConfig = new Regex(strWorkshopContentDirName + @"/Characters/(?<characterName>[^/]+)");
 
-    private Regex Pattern_Tracks = new Regex(@"Workshop_Content/Tracks/(?<Name>[^/]+)/");
+    private Regex Pattern_Vehicles = new Regex(strWorkshopContentDirName + @"/Vehicles/(?<Name>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
+    private Regex Pattern_Wheels = new Regex(strWorkshopContentDirName + @"/Wheels/(?<Name>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
+    private Regex Pattern_Stickers = new Regex(strWorkshopContentDirName + @"/Stickers/(?<Name>[^/]+)/Color Variations/(?<materialVar>[^/]+)");
+
+    private Regex Pattern_Tracks = new Regex(strWorkshopContentDirName + @"/Tracks/(?<Name>[^/]+)/");
 
     public void ConfigureGameplayAddressableContentItem(PTK_PackageExporter exporter,string strFullPath, string strItemOrPrefabAddressableKey, PTK_Workshop_CharAnimConfig animConfig)
     {
@@ -54,7 +56,7 @@ public class PTK_ModItemConfigurator
                 Debug.LogError("Cant match PTK_Workshop_Char Anim Config file name!");
             }
         }
-        else if (strFullPath.Contains("Workshop_Content/Characters"))
+        else if (strFullPath.Contains(strWorkshopContentDirName + "/Characters"))
         {
             var match = Pattern_Character.Match(strFullPath);
 
@@ -165,7 +167,7 @@ public class PTK_ModItemConfigurator
                 }
             }
         }
-        else if (strFullPath.Contains("Workshop_Content/Vehicles"))
+        else if (strFullPath.Contains(strWorkshopContentDirName + "/Vehicles"))
         {
             var match = Pattern_Vehicles.Match(strFullPath);
 
@@ -183,7 +185,7 @@ public class PTK_ModItemConfigurator
                 UpdateModFileItemFor_CItemWithColorVariant(exporter, itemColorVariant, strFullPath, strPrefabAddressableKey);
             }
         }
-        else if (strFullPath.Contains("Workshop_Content/Wheels"))
+        else if (strFullPath.Contains(strWorkshopContentDirName + "/Wheels"))
         {
             var match = Pattern_Wheels.Match(strFullPath);
 
@@ -200,7 +202,7 @@ public class PTK_ModItemConfigurator
                 UpdateModFileItemFor_CItemWithColorVariant(exporter, itemColorVariant, strFullPath, strPrefabAddressableKey);
             }
         }
-        else if (strFullPath.Contains("Workshop_Content/Stickers"))
+        else if (strFullPath.Contains(strWorkshopContentDirName + "/Stickers"))
         {
             var match = Pattern_Stickers.Match(strFullPath);
 
@@ -217,7 +219,7 @@ public class PTK_ModItemConfigurator
                 UpdateModFileItemFor_CItemWithColorVariant(exporter, itemColorVariant, strFullPath, strPrefabAddressableKey);
             }
         }
-        else if (strFullPath.Contains("Workshop_Content/Tracks"))
+        else if (strFullPath.Contains(strWorkshopContentDirName + "/Tracks"))
         {
             var match = Pattern_Tracks.Match(strFullPath);
 
