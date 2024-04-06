@@ -23,7 +23,7 @@
 </p>
 
 <p>
- <strong>Important Notice:</strong>   We recommend against using this version for your projects just yet. Starting from the forthcoming <strong>version 0.9</strong>, which will be released in conjunction with our game's closed beta tests in the upcoming weeks, you will be encouraged to fully utilize these tools. This will also mark an exciting phase where you'll be able to test your creations directly within the game environment. 
+ <strong>Important Notice:</strong>   We recommend against using this version for your projects just yet. Starting from the forthcoming <strong>version 0.9</strong>, which will be released in conjunction with our game's upcoming closed beta tests, you will be encouraged to fully utilize these tools. This will also mark an exciting phase where you'll be able to test your creations directly within the game environment. 
 </p>
 
 <h2>🔧 Supported Mods Types</h2>
