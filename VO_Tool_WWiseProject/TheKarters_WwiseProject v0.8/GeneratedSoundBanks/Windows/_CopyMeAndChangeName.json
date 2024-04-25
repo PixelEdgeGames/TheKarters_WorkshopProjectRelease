@@ -1,0 +1,25 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Windows",
+  "BasePlatform": "Windows",
+  "SchemaVersion": "12",
+  "SoundbankVersion": "140",
+  "RootPaths": {
+   "ProjectRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\",
+   "SourceFilesRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\.cache\\Windows\\",
+   "SoundBanksRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\GeneratedSoundBanks\\Windows\\",
+   "ExternalSourcesInputFile": "",
+   "ExternalSourcesOutputRoot": "C:\\Users\\sbocz\\Documents\\Projects\\TheKarters_WorkshopProjectRelease_Public\\VO_Tool_WWiseProject\\TheKarters_WwiseProject v0.8\\GeneratedSoundBanks\\Windows"
+  },
+  "SoundBanks": [
+   {
+    "Id": "208773473",
+    "Language": "SFX",
+    "Hash": "3941229787",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\VO\\_CopyMeAndChangeName",
+    "ShortName": "_CopyMeAndChangeName",
+    "Path": "_CopyMeAndChangeName.bnk"
+   }
+  ]
+ }
+}

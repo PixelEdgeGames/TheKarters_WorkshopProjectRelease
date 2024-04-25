@@ -1,0 +1,1575 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{D1467408-D192-4DCC-8D15-740EAD43AEB3}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="Enviro" ID="{D1467408-D192-4DCC-8D15-740EAD43AEB3}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Folder Name="Env_VulcanoMap" ID="{B3F75B1F-144C-40BC-99F2-83432353CEAA}" ShortID="185624765">
+					<ChildrenList>
+						<Event Name="Play_Env_Lava" ID="{70CE860B-E40F-4D30-84C7-2B98E30766B9}">
+							<ChildrenList>
+								<Action Name="" ID="{CC08C120-ED09-4812-9195-D528EFB99C0A}" ShortID="842194965">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lava_Bubble_Burst" ID="{5CBF95CB-AE98-4D9C-A434-4302185DB7D6}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{BC36087B-03C0-44BA-96D4-B1856ED38D1B}" ShortID="407311107">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lava_Steam_Burst" ID="{021057A4-7DF2-43BF-87E5-28787196BE3F}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{BE506EBA-1368-4072-9482-FEA31B8BB803}" ShortID="857619980">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lava_Burst_Large" ID="{9E484A59-CA5A-40E8-89F8-28B0BE797509}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{96679874-4CCB-4B28-97FC-E3B57FD55D65}" ShortID="782217897">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Sparks_v1_Lp" ID="{D79EB890-5DFA-48CC-BF96-E644559C32C5}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{56754C3B-67A7-43CE-BB1C-0B6E2EA250C1}" ShortID="957465478">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Magma_Lp" ID="{E8FE27CD-73B0-4C2C-A1E0-8200364CE3F2}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{943FFAAF-18EB-4C0B-8C03-00B56DB69FB8}" ShortID="59347753">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Draft" ID="{034964B4-ECE1-4D2E-BD07-885064B84969}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Chains_Movement" ID="{8F6C0F90-8C87-40F0-865A-ACE3C9F06629}">
+							<ChildrenList>
+								<Action Name="" ID="{67E9D3D4-7037-44EE-A295-EFD4A69329A0}" ShortID="632900944">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Chains_Movement" ID="{EBB2F460-D558-455F-A693-2C1250689C5B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Folder Name="Env_Gears" ID="{51524031-54BA-4E69-ACB9-3820017F920F}" ShortID="181727179">
+							<ChildrenList>
+								<Event Name="Play_Env_Medium_Gear" ID="{F7F60C69-68E1-472C-81E8-CDCE8A212A58}">
+									<ChildrenList>
+										<Action Name="" ID="{87FCD04E-B6C3-4E9E-879B-618565292363}" ShortID="825600547">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Env_Medium_Gear" ID="{75131CC4-164F-4CA3-9A6D-D5B9BA0C0EAA}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{6AF99507-BF3F-4690-BE65-5A246D9C1300}" ShortID="625494845">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Env_Iron_Hammer" ID="{BCA4F8DC-1C42-4D21-BD9C-A2068469F0A0}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Env_Small_Gear" ID="{FCA4FF16-97A1-4CB6-AE85-148213C89C5F}">
+									<ChildrenList>
+										<Action Name="" ID="{5F01EA3A-24CF-4E60-937C-9584766E3F04}" ShortID="762911821">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Env_Small_Gear" ID="{445F2E00-2115-4E04-84F0-F91F2074EDBF}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Folder Name="Env_Big_Gear" ID="{F1146D7C-2BD7-425A-ADD4-BB379BF11554}" ShortID="337275992">
+									<ChildrenList>
+										<Event Name="Play_Env_Big_Gear" ID="{12E6449E-405E-40C1-A454-ABB5FCA30BB6}">
+											<ChildrenList>
+												<Action Name="" ID="{EAF354EF-4997-4974-9F7B-B2071B730ED9}" ShortID="997816181">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Big_Gear" ID="{12C845DC-975C-4425-82B6-2A8CED395D94}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{239FAD6E-CED6-48EA-B664-198904569262}" ShortID="55638180">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Big_Gear_Elements_Squeak_Long" ID="{C747227B-52E8-4429-A7A6-9094F9BCB30D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{0BFBFA8B-BB8F-4864-97E9-68F94D30534E}" ShortID="591457002">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Big_Gear_Elements_Squeak_v2" ID="{200E14C1-C4AA-4239-914A-9A18DFDC1221}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{75034737-19E7-4438-B044-062C9312D10E}" ShortID="337357532">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Big_Gear_Elements_Rattle" ID="{4D237364-27C8-4E69-82F9-8A1346C051DD}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+												<Action Name="" ID="{8709F705-31F2-44CB-9158-A5AC8395FF97}" ShortID="204478654">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Iron_Hammer" ID="{BCA4F8DC-1C42-4D21-BD9C-A2068469F0A0}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Play_Env_Big_Gear_Wind" ID="{6CA682C6-4EC2-4C22-82D4-4E7D2DD8A519}">
+											<ChildrenList>
+												<Action Name="" ID="{291163D7-E7CD-4A22-A512-9CE7AE1E3532}" ShortID="549487931">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Big_Gear_Wind" ID="{3A537DA1-D0E5-414D-BCB2-7FDC685577D8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+										<Event Name="Play_Env_Big_Gear_Elements_Rattle" ID="{F10406CD-3E55-4D40-9D1A-01EAF06FA6AC}">
+											<ChildrenList>
+												<Action Name="" ID="{CB23827F-25A9-4AC2-9496-F1E7C7629598}" ShortID="353760243">
+													<ReferenceList>
+														<Reference Name="Target">
+															<ObjectRef Name="Env_Big_Gear_Elements_Rattle" ID="{4D237364-27C8-4E69-82F9-8A1346C051DD}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+														</Reference>
+													</ReferenceList>
+												</Action>
+											</ChildrenList>
+										</Event>
+									</ChildrenList>
+								</Folder>
+								<Event Name="Play_Env_Metl_Creack_Big" ID="{2AA70B5B-73D8-478D-8A33-683E0EF209BB}">
+									<ChildrenList>
+										<Action Name="" ID="{C5F7738E-9305-4A5B-B3E5-EB3A6F91E250}" ShortID="391547248">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Env_Metl_Creack_Big" ID="{DC958345-CBAF-4A94-84B3-E929FE6EAB72}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_Env_BigMachine_Lp" ID="{5D68176D-0B91-4350-B9EE-61476C39C7E9}">
+									<ChildrenList>
+										<Action Name="" ID="{768DB1E9-F668-41AB-9A29-7E5B2473184F}" ShortID="872974895">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Env_BigMachine_Lp" ID="{3B20AB3F-2387-4703-B707-484762018185}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Event Name="Play_Env_Lava_Flow_Lp" ID="{918E0498-410B-4B13-B331-F00DE8BED5DA}">
+							<ChildrenList>
+								<Action Name="" ID="{068DECCC-32DE-4D72-9A57-87BE38D68A84}" ShortID="237605667">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lava_Flow_Lp" ID="{9427759F-AD25-407B-BC5A-43A546573189}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B47F794A-3F0D-4C99-AC5D-398BA966E167}" ShortID="189226900">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lava_Steam_Burst" ID="{021057A4-7DF2-43BF-87E5-28787196BE3F}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Boil" ID="{C4FDD085-4836-4F8B-8B02-7519699137E8}">
+							<ChildrenList>
+								<Action Name="" ID="{1AC224D1-B739-40EA-9D39-1919E8268722}" ShortID="685344969">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Boil" ID="{634502E9-8339-4E6B-9D79-8D99AF1BAA8E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Lava_01" ID="{5019E2D8-2CC3-4F4E-9B1A-B5D6CE3F52A4}">
+							<ChildrenList>
+								<Action Name="" ID="{093D90FF-0865-4F38-A1FE-E67625B10617}" ShortID="97522870">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Draft_01" ID="{E5F40702-6F4B-4FA0-AEEB-17D844792BF8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_BeachMap" ID="{5FA6CC70-9628-4792-A22C-3D73C2A90105}" ShortID="910927667">
+					<ChildrenList>
+						<Event Name="Play_Env_Ocean_Medium" ID="{1E66D2D3-ECC8-485A-A384-F31BE8BDBAB7}">
+							<ChildrenList>
+								<Action Name="" ID="{5C36FB93-FCA9-4292-B862-7BBCC96A2858}" ShortID="900253097">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Ocean_Medium_Lp" ID="{B86546AD-54D1-4B2B-9E0F-2686738970B8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Seaguls" ID="{7AB8D6EA-C773-4C3D-960D-5939BD2A00CF}">
+							<ChildrenList>
+								<Action Name="" ID="{FBBB40FC-5B55-4627-8E68-A815D6C522F1}" ShortID="405136600">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Seaguls_Os" ID="{5E3BB5FF-7018-4EBB-9D28-42FC2B991DF8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Ocean_Soft" ID="{10F68688-ADD5-4616-998C-E65014B1527D}">
+							<ChildrenList>
+								<Action Name="" ID="{BC9362FC-9530-411E-8709-6F062EF17A3B}" ShortID="270154559">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Ocean_Soft_Lp" ID="{931B52CC-5DF2-4C8B-BBF5-98E5DDCD6565}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_CaveWaves" ID="{28C60729-47B2-4DFB-910E-F3BEF478BAEE}">
+							<ChildrenList>
+								<Action Name="" ID="{5CA6CBB6-1D9A-44B9-96C8-ACF113924D1F}" ShortID="1005811701">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CaveWaves_Lp" ID="{BC342751-AE78-4C28-BF1C-504184FB50FB}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Pond" ID="{8FA4F483-5325-472A-8E03-AAF2A77B1631}">
+							<ChildrenList>
+								<Action Name="" ID="{2BCBA045-A56D-4FC7-977B-4BC52FCFFA20}" ShortID="27330857">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Pond" ID="{93E92B73-442F-4CF5-9ED1-8DB0CA76DA20}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Rustle_Branch" ID="{4B8A1CF2-4C62-4691-B53D-FBC4C0C7B320}">
+							<ChildrenList>
+								<Action Name="" ID="{7B2EA3CD-2AA7-433E-8483-9686AD0DF262}" ShortID="880108210">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Rustle_Branch" ID="{7FDD06A8-5BF7-4178-8EDB-DD5A620F9262}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3FBEB9A5-D19B-49A9-8FBD-38DEA44102EA}" ShortID="630490989">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Animals" ID="{036BABF3-BDD7-4175-A66E-BE5B8C632538}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3C4B99B3-FDDD-4FAF-BFBD-4193477F1A89}" ShortID="825049112">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_WoodCreack_Os" ID="{4ACE424D-7E87-410A-B1AA-EE8E6C5ED24C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D314F659-913C-4839-8DD1-0A3827C7B7B1}" ShortID="586898082">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Rustle_Branch_0" ID="{5FD3B696-02C2-4AB9-A703-2FAFF67D4792}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Huge_Wooden_Squeak" ID="{226043D5-B37F-4FE7-B511-00A91AA32AFA}">
+							<ChildrenList>
+								<Action Name="" ID="{47A5AAC0-6C87-4FC5-A3E3-E8A3D438B0A4}" ShortID="168530976">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Huge_Wooden_Squeak" ID="{8D335CC3-0331-4171-A838-D689A92D15AA}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Wooden_Creaks_v2_01" ID="{45955531-0291-4CB7-A456-D2B981CBEC1E}">
+							<ChildrenList>
+								<Action Name="" ID="{432C3A1F-F7D7-4DB5-BD40-43B7A8662496}" ShortID="636630681">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wooden_Creaks_v2" ID="{5B266075-12E4-464F-B732-F1C922905818}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Wooden_Creaks_v1_01" ID="{CFBBC563-FE0E-431E-A995-7F9CAB9B06E6}">
+							<ChildrenList>
+								<Action Name="" ID="{B17389CB-DE3D-4C25-8354-966DBA0B67E5}" ShortID="134744110">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wooden_Creaks_v1" ID="{ED75BEE3-2674-4B61-B2D3-99E26FD5D14B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Jelly" ID="{2C9DBB10-8E16-4F80-A248-10FE36F59AAC}">
+							<ChildrenList>
+								<Action Name="" ID="{BAB45326-82C5-4A37-847D-B9A8B5EC9E37}" ShortID="767927533">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Jelly" ID="{26A4D207-115B-48BB-A68D-18FE44509D28}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{DAE9D2EA-5697-44EB-AD30-6BDBC9F426F3}" ShortID="591196734">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Sticky" ID="{599AC6E9-1A7A-4591-A6AB-08AAE9B459E1}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Animals" ID="{94D2CB31-88B6-4A87-A374-95BAA1D33184}"/>
+						<Event Name="Play_Env_RockMonster" ID="{CD2A4F82-6E6F-4474-9906-1A81FC3070EE}">
+							<ChildrenList>
+								<Action Name="" ID="{4E96FCFC-73A1-45A8-9F5A-13DF6A0D2536}" ShortID="505627467">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RockMonster" ID="{5B75812A-879F-43C0-A387-861CB0A99F25}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Bumping_Bottles" ID="{00136C22-0D6E-4366-9BC2-9ADEECF9ABA8}">
+							<ChildrenList>
+								<Action Name="" ID="{029FC8FC-50F7-4E66-A8AA-C9500E33A150}" ShortID="694738689">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Bumping_Bottles" ID="{8AFCB379-234B-421E-AAA4-3C0B412E4E74}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_Universal" ID="{5E3B92C0-2E84-4022-9030-07A8671C8B04}" ShortID="361530803">
+					<ChildrenList>
+						<Event Name="Play_Env_Wooden_Creaks_v2" ID="{D16293CE-AB53-4541-B1EB-4FA2AACAD282}">
+							<ChildrenList>
+								<Action Name="" ID="{FD3D1F9F-34B5-4B3D-A601-6FE08A6FE692}" ShortID="485091514">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wooden_Creaks_v2" ID="{5B266075-12E4-464F-B732-F1C922905818}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Wooden_Creaks_v1" ID="{02834AC8-5D46-43C0-B1F2-6A5223D19588}">
+							<ChildrenList>
+								<Action Name="" ID="{C17E98C0-771F-4108-AD04-1FFBE35499A1}" ShortID="477279706">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wooden_Creaks_v1" ID="{ED75BEE3-2674-4B61-B2D3-99E26FD5D14B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Falling_Rocks_Soft" ID="{526107B5-99FC-4143-A62F-E9DD3E6A5849}">
+							<ChildrenList>
+								<Action Name="" ID="{E767674C-5A08-4A40-83D7-4986DF5C1B6B}" ShortID="863165548">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Falling_Rocks_Soft" ID="{D520F4B7-E13C-4CE9-8C23-0580A57BB0D4}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Falling_Rocks_Medium" ID="{D3DBD327-F6A4-4158-9743-5EA6D59193CB}">
+							<ChildrenList>
+								<Action Name="" ID="{D31FE804-ACFE-4483-B49F-5DAAF5AF4129}" ShortID="62797639">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Falling_Rocks_Medium" ID="{1538CCDB-CF71-4824-B920-DD481ACC1512}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Cave_Draft" ID="{4E8819E1-8121-45E8-8BBD-5590C9EA2CF2}">
+							<ChildrenList>
+								<Action Name="" ID="{0E387E65-81B2-4315-8903-942C0FB86118}" ShortID="233216467">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Cave_Draft" ID="{AFBDC527-C8F6-4CCB-AE6E-3B648192E5FE}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Wooden_Squeaks" ID="{8C0658B6-675F-4B16-850E-AC5BBD5B4FCE}">
+							<ChildrenList>
+								<Action Name="" ID="{899B0126-7C98-4D53-B897-BBA3F3A83C5A}" ShortID="309491646">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wooden_Squeaks" ID="{D082EAD6-3F15-4588-AB1C-5BF39A5B063C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_JungleMap" ID="{24F31292-3AA6-428B-9B69-C0F75944DBA4}" ShortID="344453597">
+					<ChildrenList>
+						<Event Name="Play_Env_Lake" ID="{B958CE1E-E8BB-49FA-89B7-13A8DCDA6D8D}">
+							<ChildrenList>
+								<Action Name="" ID="{5434C139-6B9C-4D39-9B72-022ABB4A771B}" ShortID="500265101">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lake" ID="{3E1A4D78-6BC9-4FB0-BEF1-C0F325182FDB}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{FC48A8EF-CA13-4AF0-A9D5-2840FA551750}" ShortID="1051533638">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Lake_Insects" ID="{93164194-9410-40C3-AC66-2D555E2033F0}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Trees" ID="{B7B5F518-CD2A-4D46-B17D-7303FCCD3424}">
+							<ChildrenList>
+								<Action Name="" ID="{D4B40323-E6B5-4986-A7FA-EFCB614028F8}" ShortID="677653691">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Trees" ID="{29381928-7CF0-42F5-AE83-358D81AD0BA4}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{35EDBD7D-BA8D-4511-B8EA-594579858989}" ShortID="447439523">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Monkeys" ID="{1591C7E2-DA18-4B94-A132-788EEF70DC9E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{56BDBE3B-714F-4751-9BDD-D7C6A7A7804F}" ShortID="144214184">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Animals" ID="{B3E12397-E453-4412-9B9C-C89602035256}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{23F161A5-39AD-4985-8BDB-9F09015133EB}" ShortID="225183346">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Insects" ID="{952B18EE-D5FB-4AC5-ACA0-13B345DAA593}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_BrickFall_Soft" ID="{35AE38AC-04BB-4CB9-96C9-BE9554361D6C}">
+							<ChildrenList>
+								<Action Name="" ID="{70114132-E990-4912-9D9B-21A3975219A9}" ShortID="668445955">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Brick_Soft" ID="{B70ECFD5-E339-41F5-8DCC-110EFAC8C91B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D474B42B-4CCF-4ABD-9352-5ED96DEFD573}" ShortID="32283696">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Brick_Debris" ID="{4AB2A037-ECAC-477D-938E-B7EFCB5243AF}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7B79D169-9206-4D90-A9C4-33E57FB987D4}" ShortID="99026971">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Brick_Medium" ID="{6451A51C-EED0-44B5-9EA1-652F7B14AD0C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Falling_Rocks_Medium_01" ID="{5EF4D998-0850-4DF1-9404-E735FD91D75E}">
+							<ChildrenList>
+								<Action Name="" ID="{E080BFEC-DC3E-4510-8DAC-535E77EFA988}" ShortID="873370505">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Falling_Rocks_Medium" ID="{1538CCDB-CF71-4824-B920-DD481ACC1512}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_OceanMap" ID="{54113A50-D4ED-4A2D-BFB4-88642E831872}" ShortID="707448130">
+					<ChildrenList>
+						<Event Name="Play_Env_Huge_Wooden_Squeak_01" ID="{38C0B6F6-5D5B-46B8-A88D-E70C2A2C3653}">
+							<ChildrenList>
+								<Action Name="" ID="{73A0FB15-D684-4024-B180-5C3CDEA36E31}" ShortID="416467204">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Huge_Wooden_Squeak" ID="{CFC3EF28-CD87-419C-A675-591208C00B2D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Metal_Ship" ID="{990F8F67-56CB-4E4A-BDF6-6FA9BDF40D77}">
+							<ChildrenList>
+								<Action Name="" ID="{E8972B8A-C323-4AFC-B2A0-FE64A42AB306}" ShortID="172530107">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Metal_Rumble_Long" ID="{1B2F1D23-0B7F-400D-A9B5-CFAE7CCDC36D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E4E3406C-A51B-4175-887D-2271F51B495A}" ShortID="647843605">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Metal_Rumble_Short" ID="{79774656-FE3E-4C88-AC6E-DFF848046F2C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_MetalShot" ID="{1622E182-526C-4164-8C9F-B10472F2EF4B}">
+							<ChildrenList>
+								<Action Name="" ID="{4E502C0D-AA28-41FF-A767-B0155DCD780A}" ShortID="734991176">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_MetalShot" ID="{2CFC92B5-F843-4F55-A0A0-66FCE93E05E3}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Bubbles" ID="{FE0A5D1B-5D4D-4C59-BF99-35EA5EA67C62}">
+							<ChildrenList>
+								<Action Name="" ID="{34A3A77F-DE0D-46DA-AB41-AF26AD4F0413}" ShortID="918222018">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Bubbles" ID="{97D1EEB9-D770-4D77-BAAF-BF8193433169}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Metal_Anchor" ID="{0A129473-8E40-4083-8691-CE26FFC23859}">
+							<ChildrenList>
+								<Action Name="" ID="{948AB3BC-2C5C-4E66-A12D-7F3E699C359E}" ShortID="870826211">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Metal_Anchor" ID="{1D70998F-3451-4627-B899-11B02A57DB3E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Bubbles_Lp" ID="{BAD4FCAE-F1AA-4187-9BF9-33435BD76748}">
+							<ChildrenList>
+								<Action Name="" ID="{566D039B-5F14-45F2-B5B2-B8DB68878B72}" ShortID="292969978">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Bubbles_Lp" ID="{9E68F82D-2CEC-4F71-B293-64709D792B6B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{AE7C9D75-CB4E-433E-9266-4431D9FEFAF2}" ShortID="820496547">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Bubbles" ID="{97D1EEB9-D770-4D77-BAAF-BF8193433169}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Jelly_01" ID="{475F4C37-988B-4CF3-B2D8-1E2DC7B1CF51}">
+							<ChildrenList>
+								<Action Name="" ID="{21FC629B-170A-4118-97A1-ACB5D6EDFDDE}" ShortID="915957804">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Jelly" ID="{023DA233-D53E-4F0F-81B1-693167889BB8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Sticky" ID="{A6518BD4-DC0D-484C-A337-D9ACBDBE6A44}">
+							<ChildrenList>
+								<Action Name="" ID="{DACAF9D2-0E13-40E2-9612-56AA3894DE0E}" ShortID="197368958">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Sticky" ID="{EFE52C4F-0BBC-49BC-B344-AC45261FF1A6}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_RailRoadMap" ID="{981156D6-9647-4B94-BA8D-A8072C4C4A5C}" ShortID="519649134">
+					<ChildrenList>
+						<Event Name="Play_Env_Falling_Rocks_Soft_01" ID="{34F96BDC-F917-461E-8D0D-944B0024C224}">
+							<ChildrenList>
+								<Action Name="" ID="{4BB8A1EE-DA4C-4433-979B-D44FA68B29AF}" ShortID="83824131">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Falling_Rocks_Soft" ID="{D520F4B7-E13C-4CE9-8C23-0580A57BB0D4}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Falling_Rocks_Medium_02" ID="{A8B8B6EF-5820-4674-9953-DDA439AC594A}">
+							<ChildrenList>
+								<Action Name="" ID="{E49146F4-2C30-4DBF-9349-1216E24764EF}" ShortID="575972684">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Falling_Rocks_Medium" ID="{1538CCDB-CF71-4824-B920-DD481ACC1512}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Fluttering_Material_Medium_02" ID="{EA18AA8B-FB6C-41CB-BFC8-E27EC1F1C7A0}">
+							<ChildrenList>
+								<Action Name="" ID="{F39553D5-4F90-4E7B-BF2F-67884ACD9722}" ShortID="1047919735">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Fluttering_Material_Medium" ID="{D9C20BB3-3C64-42D7-BC6C-31ACCA9594F2}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Fluttering_Material_Soft" ID="{1E0CE8FC-17B8-4AD9-88B1-E39A314AC966}">
+							<ChildrenList>
+								<Action Name="" ID="{E53BC811-5967-4281-8522-CACAD4265DA8}" ShortID="655059147">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Fluttering_Material_Soft" ID="{D40CC7B9-265B-4867-94BD-C12E319EC45E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Campfire_Lp" ID="{F3535981-420F-40CE-BC22-C20AA32D5120}">
+							<ChildrenList>
+								<Action Name="" ID="{CE1EC01D-75AD-4A35-B3A1-057C75B05F05}" ShortID="136287892">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Campfire_Lp" ID="{AC78278A-6222-46F8-8727-348899F2D653}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Chinkens" ID="{072740ED-3DB8-413A-BA45-9B41B64A9334}">
+							<ChildrenList>
+								<Action Name="" ID="{E9FC0F3E-7CD4-4C1D-8C3E-F403AF2D1A44}" ShortID="697031280">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Chinkens" ID="{97157D40-F5C4-483D-8184-C23A8DB52FD4}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{305FC4D3-38D2-469A-88DB-43641B298AC7}" ShortID="855088640">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Cock_Os" ID="{FD7EF410-6EE7-4D7B-B243-36FD97078D6E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Dog_Barking_Os" ID="{7E389F3F-37A9-453A-A18C-5F446A954A63}">
+							<ChildrenList>
+								<Action Name="" ID="{F41ED270-DA70-4ACD-B1E0-A59FA5FC36D6}" ShortID="504449563">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Dog_Barking_Os" ID="{F0DA31BC-4FA7-4605-A8DA-2351382371CE}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Hay_Movement" ID="{94D39158-E6E5-4CAC-BDD9-3388A963A555}">
+							<ChildrenList>
+								<Action Name="" ID="{04687A34-C4C7-4654-802F-B1B81A715713}" ShortID="461321609">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Hay_Movement" ID="{F2907FFA-3E66-40C9-8200-EAEDB709F8CE}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Swing_Sign" ID="{10895C81-06FD-4DE2-A091-FCE83E8C90AF}">
+							<ChildrenList>
+								<Action Name="" ID="{0A07BDC4-F452-44BF-AB45-4AE0A0A3D455}" ShortID="919916623">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Swing_Sign" ID="{B3CA957B-FDFF-4F8B-9BD8-8B4B6005CA9D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Wolf_Howl" ID="{9368374D-23C5-4C45-AF52-DD044B1BC815}">
+							<ChildrenList>
+								<Action Name="" ID="{A87498DD-01DD-4B4F-8B96-809BF9B37D15}" ShortID="27638766">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wolf_Howl" ID="{54353296-916E-4E0D-974E-C284C2470F7B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Mine" ID="{8F0E3EC5-B063-46B5-8CFA-6E44E8612B67}">
+							<ChildrenList>
+								<Action Name="" ID="{F9DE899B-868C-4250-A2F9-31A82099C722}" ShortID="466748467">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Pickaxe" ID="{84DB4005-C55D-4129-BD54-F237CEE79BEC}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{A254CE82-0562-454A-ABC0-D791F38FAF47}" ShortID="349522829">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Mine_Impact" ID="{86E73D3E-05F8-4349-9062-EFD250EB688E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Swinging_Lamp" ID="{010F3BC8-BD2D-4998-85AA-EDEBD87BD277}">
+							<ChildrenList>
+								<Action Name="" ID="{076699BC-7643-40E9-A1CF-6EE7D40E968D}" ShortID="923975035">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Swinging_Lamp" ID="{3742311F-A176-4E1B-B989-5B670E0C8600}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Raven" ID="{EEEDD316-955A-43FD-8E62-955F24C00599}">
+							<ChildrenList>
+								<Action Name="" ID="{C9254B24-C8B5-43EC-B19C-4D9B5F7BB3B1}" ShortID="54652704">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Raven" ID="{64317C80-B203-4DB7-B438-4CE0718BCB82}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Grass_02" ID="{BFF67635-A8DD-41B2-BB08-FB924F94E372}">
+							<ChildrenList>
+								<Action Name="" ID="{897EB7E0-9CB1-4727-AED1-D6152F5BF761}" ShortID="177693403">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Grass" ID="{A8B6E28B-2B78-437A-9445-6CFE817333CA}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{370A2A20-3E2B-4F90-8A27-ED009B35D673}" ShortID="992351551">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Rustle_Grass" ID="{9ACCD480-49F7-446B-A44C-E9E012165238}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_RoadCityMap" ID="{E7A25C06-6431-49BD-82AE-791B3A7BD55E}" ShortID="246491786">
+					<ChildrenList>
+						<Event Name="Play_Env_ChurchBells" ID="{6DC34FE8-8350-4C83-94CC-6001CC1E9359}">
+							<ChildrenList>
+								<Action Name="" ID="{502613C8-A4C0-47B2-B87A-DC7212030D70}" ShortID="235022123">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_ChurchBells" ID="{8510EE7A-0974-4278-8B71-953A2B5030F2}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Saloon_People" ID="{D47642EE-57FC-4BCA-96C4-FB1D68CA0FA7}">
+							<ChildrenList>
+								<Action Name="" ID="{AE928EB5-86E2-40FB-8AD4-B8FC0A575221}" ShortID="260130706">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Saloon_People" ID="{6AAF479B-0165-4AEB-B064-EDF0E8FA8123}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Hay_Movement_01" ID="{6DB0EAC2-88BE-424F-8FD1-09E4B52AE518}">
+							<ChildrenList>
+								<Action Name="" ID="{71119D14-A23F-4708-88CE-2B70B4A6C261}" ShortID="891200430">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Hay_Movement_01" ID="{CFD16FB7-315B-4B8C-82C8-5EFE22DBBF3A}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_CornField" ID="{1CBB3789-C163-4B20-9C18-FD2763657E8F}">
+							<ChildrenList>
+								<Action Name="" ID="{04BFABB2-F484-4725-B4AE-7757BA74E92F}" ShortID="874727340">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CornField" ID="{EB5D95D1-642C-42F8-9DBB-EF0078A22587}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Locomotive_Steam" ID="{6B538001-D222-411B-A2B3-29DD4D5D2130}">
+							<ChildrenList>
+								<Action Name="" ID="{9855BC53-868A-429A-A479-E99BA7E724D0}" ShortID="68736242">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Locomotive_Steam" ID="{9A668480-9DCD-4BC7-9574-6E73DD5A6715}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{F5EB1D0F-A0BE-46AE-81F0-3B615236AE0A}" ShortID="674681484">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Locomotive_Lp" ID="{6E3DB0CF-A036-41E2-963C-FC8F036EF45B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Locomotive_Steam_Bell" ID="{96FE791E-6BAB-41DF-8B3E-841531703AA2}">
+							<ChildrenList>
+								<Action Name="" ID="{097A5EC4-DD18-4566-9F1A-1FF34364D33A}" ShortID="448752618">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Locomotive_Steam_Bell" ID="{B18693F1-3D78-475A-94A6-4693F5FC7ED4}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Raven_01" ID="{104D31A4-8114-4927-A366-2AFA3F76E03F}">
+							<ChildrenList>
+								<Action Name="" ID="{FD658289-4A0F-40A3-B5C8-DD5D408A96DB}" ShortID="109436274">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Raven" ID="{42EB7B01-D239-4FF4-8DB6-DE9FCF3868F3}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_HangingObject" ID="{EFA8B815-7169-462B-9803-B432EFD928CE}">
+							<ChildrenList>
+								<Action Name="" ID="{302D6825-EA05-4F3F-89C2-197808F92ACF}" ShortID="827889958">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_HangingObject" ID="{2A0B2ECB-0B59-4BC1-97C5-F05D153022E6}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_WaterTank" ID="{268BE42A-87D8-4BAE-BACF-8326DAFC2213}">
+							<ChildrenList>
+								<Action Name="" ID="{7EC8CBB2-ECF6-49B8-89F4-795F1E936596}" ShortID="221294157">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_WaterTank" ID="{1F763D47-45B8-4AE1-8352-6F3429B02F26}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_WindMill_Lp" ID="{1D0CBC71-D77B-407B-A6F4-8C2E0058BCA6}">
+							<ChildrenList>
+								<Action Name="" ID="{497B0CD7-1EC4-4C1F-9218-93A451821F1D}" ShortID="768891447">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_WindMill_Lp" ID="{A73EF21E-9163-42D1-A520-EC81CB45749C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Dog_Barking_Os_01" ID="{9751FFA6-0FC6-4E17-9EBD-02C4BFEAFDF9}">
+							<ChildrenList>
+								<Action Name="" ID="{2BEFC9AD-DA0D-4C69-9EE3-B205F2F56D93}" ShortID="600037410">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Dog_Barking_Os" ID="{D4FD3E9A-9B1D-4A1D-8BB4-539564531921}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Farm" ID="{2083E7C8-F297-4329-B8E5-E83C10CE415A}">
+							<ChildrenList>
+								<Action Name="" ID="{F9668580-D475-4FFC-8C3B-97166B1D3D73}" ShortID="159168865">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Horse" ID="{F9F13965-7DAD-4767-9A44-088BB568F311}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7CFE5860-26F4-4F79-9773-9695BCCA3BF9}" ShortID="1023656779">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Cow" ID="{BB45A64F-836B-4D37-89AB-6E4E77A5F95D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{0749BDF8-8ED1-4525-A0F1-81B296322289}" ShortID="595610607">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Dog_Barking_Os" ID="{D4FD3E9A-9B1D-4A1D-8BB4-539564531921}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Swinging_Lamp_01" ID="{2C404471-97A5-4FA2-BAF2-5BC65A0403AD}">
+							<ChildrenList>
+								<Action Name="" ID="{B8A39F61-4E24-4A67-A82B-2766BE5BA437}" ShortID="197115757">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Swinging_Lamp" ID="{F43D570B-7C23-41BA-8855-44235C025C30}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Bullets" ID="{C145996F-7E6F-4567-82DE-2AB19E313DF9}">
+							<ChildrenList>
+								<Action Name="" ID="{10BB0308-D906-4E48-BC8D-E730883E603A}" ShortID="888983228">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Bullets" ID="{161D2991-2D08-4C75-A94D-6999459402A7}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Tools" ID="{D2678153-D31B-45F7-B35F-878927A2A242}">
+							<ChildrenList>
+								<Action Name="" ID="{BC072086-A3CB-438D-BFF1-A4626EB27521}" ShortID="244603717">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Tools" ID="{3EA8B9E9-9DAE-4037-8696-E234F6D0FEA9}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_CreakWood" ID="{7A76D47E-375B-45EF-9862-AFC2D75793BD}">
+							<ChildrenList>
+								<Action Name="" ID="{95075285-FB19-476A-861E-D8B69A9056EB}" ShortID="318325572">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CreakWood" ID="{DEED276F-0415-429F-A3DC-368494F8FBCC}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{87F56D79-D459-4C49-AE92-DB6D7A919830}" ShortID="531709729">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RustleWood" ID="{EDF4F397-6BEF-498D-8B0F-440BE6E8C074}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Huge_Wooden_Squeak_02" ID="{5FE8A33E-6409-456D-A43B-F88F5471F3E2}">
+							<ChildrenList>
+								<Action Name="" ID="{C086A881-E635-497D-98B3-0A2709853DF8}" ShortID="27339949">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Huge_Wooden_Squeak" ID="{C151E1D7-995C-42C8-90D1-660B4A89A1D6}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Branch" ID="{DFD806C5-F3FD-4395-B7AE-7D3B73CAB1A6}">
+							<ChildrenList>
+								<Action Name="" ID="{CD34A5C4-6896-47AC-BE04-A4D4AF2F13B5}" ShortID="983795910">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Branch" ID="{C0030615-D615-4ABA-8D7B-591D8196B46F}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{4F32D7FF-D9B2-4C22-BC9E-B54CB081FAB6}" ShortID="968790864">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CreakWood" ID="{B55542AC-FFE8-4DBC-B1AB-F46D5DB5AB63}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{64D0D7B1-0BF9-44E9-BA5F-8B93AA303F45}" ShortID="374040933">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RustleWood" ID="{E9668A7B-1383-495C-8842-DEFC424E99BA}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Scissors" ID="{235B7E4C-3522-4665-A0BF-CBBB3600967C}">
+							<ChildrenList>
+								<Action Name="" ID="{0CE57F38-7AB4-442E-B8BE-EA410D901A7C}" ShortID="473330389">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Scissors" ID="{20A61D43-5159-4CA1-9D48-33E8AD23153A}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_CanyonRoadMap" ID="{8E94663F-B624-4146-AA44-D34392DFFA04}" ShortID="523352040">
+					<ChildrenList>
+						<Event Name="Play_Env_Campfire_Lp_01" ID="{DF344E76-AE1A-46F4-AFB1-0BA2BEC71EA8}">
+							<ChildrenList>
+								<Action Name="" ID="{0E9F1A9A-7FE3-4BD2-8A32-0BD450B24E8D}" ShortID="712271784">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Campfire_Lp" ID="{9BE3D9FA-CC21-4144-AED7-BCC876ED49B3}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Furnace_01_Lp" ID="{9414532A-8747-4DD6-86C8-408546289FC1}">
+							<ChildrenList>
+								<Action Name="" ID="{7F887DE0-5FEE-4190-B8F0-9FDC52F2D3A5}" ShortID="1023121892">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Furnace_01_Lp" ID="{A7125830-D025-4392-A18A-BF21E5C3CB66}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Train" ID="{396FFF70-1C58-4CD6-A648-875398750B1A}">
+							<ChildrenList>
+								<Action Name="" ID="{9C3AA575-21CB-4A0B-A1EC-55E0CD644456}" ShortID="879250626">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Train" ID="{4536D515-E847-4B22-B397-D0FE25A922A9}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Mine_Pickaxe" ID="{9CEAFC78-AEF5-4203-9968-8BA5373A3981}">
+							<ChildrenList>
+								<Action Name="" ID="{C8AF5C12-EAD9-407B-9706-7305F60282B7}" ShortID="92211633">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Mine_Pickaxe" ID="{74B315B2-F669-4277-B641-07CB3B4477F0}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Mine_Mechanism_Lp" ID="{B5CE267E-0BE5-433B-B392-6D684B563272}">
+							<ChildrenList>
+								<Action Name="" ID="{9B6AE410-6D0F-4F4E-8F32-19F7FEE75F9E}" ShortID="373856442">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Mine_Mechanism_Lp" ID="{571FF3E5-8ED1-4BBD-A993-C688D765D1E8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Explossion" ID="{61FA502A-A109-42BF-A11E-8D395A7839C9}">
+							<ChildrenList>
+								<Action Name="" ID="{9FA7D544-3DA9-4EF3-9A0E-1BC78042DC3B}" ShortID="256819298">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Explossion" ID="{36D073B6-6C47-4254-80C6-96E91B0A8F4B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Explossion_Open" ID="{A603E159-C0DA-4A82-95D3-4E5BDDD2D7D7}">
+							<ChildrenList>
+								<Action Name="" ID="{55688395-9FC6-4898-8E0A-95BB007A18D3}" ShortID="1027223176">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Explossion_Open" ID="{D03024AF-9218-4F4F-88EF-EE31141C48C6}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_MineRoadMap" ID="{C9737879-2B36-43E6-8F03-108AA8AF2A82}" ShortID="440293438">
+					<ChildrenList>
+						<Event Name="Play_Env_Mine_Mechanism_Lp_01" ID="{2117A915-13F7-4F9C-89ED-A1965AF6688D}">
+							<ChildrenList>
+								<Action Name="" ID="{0F3DBA49-7AFE-46AD-8430-C9354CA7AB62}" ShortID="152714204">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Mine_Mechanism_Lp" ID="{2FA735B5-BE0F-4550-9974-9BAF86519E8D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Explossion_Mine" ID="{8909FA50-31FA-4F48-96AB-D0170D454A1F}">
+							<ChildrenList>
+								<Action Name="" ID="{A93020B6-0891-4F81-9102-216566A96F81}" ShortID="344062920">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Explossion_Mine" ID="{83D42393-177F-4448-A556-E150716E0872}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Explossion_01" ID="{F95D0267-9F0A-43A1-999F-2C423E3A9C3D}">
+							<ChildrenList>
+								<Action Name="" ID="{17A792FC-437A-4DEC-8449-D7225630602A}" ShortID="1026918593">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Explossion" ID="{D0A7B94F-9BC8-4D7F-BD2F-AB6562D6E97B}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Water" ID="{C3AE4925-573F-4A5E-8791-002F54540805}">
+							<ChildrenList>
+								<Action Name="" ID="{A727BC74-C895-49FA-A29E-7D017C184299}" ShortID="890466403">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Water" ID="{ED278215-966D-4541-8A27-DA6173AF7727}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Bat" ID="{9D82E03D-891A-4BBE-8E29-F2D27F6E6079}">
+							<ChildrenList>
+								<Action Name="" ID="{22F42EE8-CAD4-4C6A-885D-D581D335C918}" ShortID="142462746">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Bat" ID="{510B619F-5A88-4C28-9B6C-96F686D82863}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Mine_Pickaxe_01" ID="{C081A0DF-555B-4D5A-8B0D-46D2D3D4AAC9}">
+							<ChildrenList>
+								<Action Name="" ID="{7387ADCA-9293-4266-A23B-0D3E81D0DB44}" ShortID="906333478">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Mine_Pickaxe_01" ID="{24FA3E25-4BEE-4D89-8DC7-B6B1D6C0D116}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_GiantSpider_Idle" ID="{50C39107-F8D0-4C20-B834-D225D4B26E5B}">
+							<ChildrenList>
+								<Action Name="" ID="{9587983B-36CA-4A0B-94E7-7323DA93A3F9}" ShortID="1029957743">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_GiantSpider_Idle" ID="{75578B15-AD60-4389-95EF-6A15584FC1C4}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_MediumSpider_Idle" ID="{EBDD73A8-5A16-4C66-B240-9594C674C055}">
+							<ChildrenList>
+								<Action Name="" ID="{4D7D54D6-9A95-4D5F-B250-3EA030CB401A}" ShortID="960826305">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_MediumSpider_Idle" ID="{291E2024-D22F-4ABB-A116-1F7FB88CFBD0}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_MediumSpider_Movement" ID="{E937FF9F-9115-4C7A-A9D6-A1966F8E3D38}">
+							<ChildrenList>
+								<Action Name="" ID="{35F22EF6-1413-4646-B0E0-CE77E455767E}" ShortID="129903546">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_MediumSpider_Movement" ID="{21C4C5CF-E31B-424D-8217-D20B48865929}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_GiantSpider_Movement" ID="{CBFDCBD5-DED1-4B4B-987C-D7825D8E941F}">
+							<ChildrenList>
+								<Action Name="" ID="{2E92083C-0B3F-43B7-BC0F-B890B17708C0}" ShortID="910376235">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_GiantSpider_Movement" ID="{7478BD05-FDC3-46DF-830B-A5E08BB475E7}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_GiantSpider_Movement_Lp" ID="{93433972-88DB-486C-AEEE-0C9108C916B3}">
+							<ChildrenList>
+								<Action Name="" ID="{7847DCFB-7219-425F-A1AD-922587A20F0C}" ShortID="214587303">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_GiantSpider_Movement_Lp" ID="{F7F2FE98-2119-406C-953A-CA4B74BA951F}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_ForestMap" ID="{5016E68F-0CED-43F1-9514-777F342F0B8A}" ShortID="759517007"/>
+				<Folder Name="Env_CityForestMap" ID="{01E21FC6-9785-4A2C-8400-3DB7D175E941}" ShortID="892505181">
+					<ChildrenList>
+						<Event Name="Play_Env_ChurchBells_01" ID="{564DE234-BF72-4970-A941-B5F73750B9E5}">
+							<ChildrenList>
+								<Action Name="" ID="{9198F731-B523-41F1-A441-537FC76BF2B2}" ShortID="187059562">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_ChurchBells" ID="{5D2DD2D5-D9B5-49A3-B400-BE41F94CE034}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_ForestAnimals" ID="{8F33B21B-3935-4F78-83AD-36D01B9CBAFC}">
+							<ChildrenList>
+								<Action Name="" ID="{DFD65779-DF66-4645-9F78-EDE8C600FF8B}" ShortID="932946581">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Woodpecker" ID="{4F49C5D1-9BB1-47D2-BA31-9B0E15CA5511}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7DF767EC-BA66-4157-874D-333128BA53BB}" ShortID="709475402">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Owl" ID="{B2D520CF-5488-4BFD-A4BC-54B34C943908}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Forest" ID="{68228155-2449-4D4E-8472-4F0A384D8A9F}">
+							<ChildrenList>
+								<Action Name="" ID="{687CD3A7-A651-42C3-9A1E-F28DEE327EB6}" ShortID="279651664">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RustleWood" ID="{BBFCE41B-3D86-409A-81CC-E760FD3D8A35}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B9F09BE4-BBA9-4F43-AF21-D960C2951AD3}" ShortID="424127723">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Branch" ID="{9A292126-5E42-46CE-A3AB-59480035F45C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{542D26E6-410E-4BAE-986B-BEA1A56381E3}" ShortID="977608838">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CreakWood" ID="{6FB1452D-C2D7-484A-9622-FB91B5CD976D}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_River" ID="{1B191B3F-E075-496E-B993-8E47DFC981BE}">
+							<ChildrenList>
+								<Action Name="" ID="{6B2FE252-62AA-45BD-99DA-601BC70F3B76}" ShortID="882605333">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_River" ID="{D4AFA173-464A-4929-B4C0-DB9A10C1937C}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Grass_01" ID="{4ADA908D-E713-4BB9-8392-998E088D29EF}">
+							<ChildrenList>
+								<Action Name="" ID="{C087763B-64DB-4A3B-8DAC-A265BB503988}" ShortID="512546488">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Grass" ID="{A7B9E6A7-9012-4AAC-9DE4-F249CAE429DF}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_River_Canal" ID="{BF3D0995-5B39-48E8-8080-B0D6C3E455D3}">
+							<ChildrenList>
+								<Action Name="" ID="{2758C9FC-2536-4237-B95B-D003D0C8E75F}" ShortID="768446114">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_River_Canal" ID="{A6FDE752-F2CA-4483-B0D5-FA80F8ADF2F8}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Fountain" ID="{E5E3D829-43A9-4A97-9BA7-C6B9B67CEACE}">
+							<ChildrenList>
+								<Action Name="" ID="{A719A0ED-61CC-4F05-AF71-50E84AA3E3F9}" ShortID="963973518">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Fountain" ID="{5FD7FE6D-922C-4372-9A82-E0492AA63A01}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_RuneStoneMap" ID="{5071E025-F98F-452F-A1CE-B3AC1A0AF79C}" ShortID="29746569">
+					<ChildrenList>
+						<Event Name="Play_Env_RuneStoneMap_Lp" ID="{7D43FA15-A18C-48EF-BD99-9E2ED96348E1}">
+							<ChildrenList>
+								<Action Name="" ID="{7C30D72E-2DF1-4D48-B4CD-C6B4D38C99BF}" ShortID="398093064">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RuneStone" ID="{C9A17430-8A31-40E4-AF10-2050ECACB118}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_RuneStone_Chains_Os" ID="{5AF322DF-B2E6-4F03-A4DF-942B846BB4E0}">
+							<ChildrenList>
+								<Action Name="" ID="{498B6306-D847-44E2-AE98-37CCBE585908}" ShortID="968421697">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RuneStone_Chains_Os" ID="{492E9B19-6495-49FC-B505-0D6DB29A21A2}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Trees_01" ID="{CD0AE6F0-8394-4E0D-BA91-1B26FC66102B}">
+							<ChildrenList>
+								<Action Name="" ID="{3E6EE379-BBC1-45C7-B9C3-2B6E07630202}" ShortID="121849240">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Branch" ID="{20847297-4255-4993-AF78-24AAECA19207}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{FB3A92FC-1945-4B04-8C7E-66544245ED35}" ShortID="594577984">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CreakWood" ID="{42F3DBE6-50C4-4BC6-AC2B-B1F1D0D4AF54}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E9855F33-AA4B-44D1-8685-618779DB411B}" ShortID="201332300">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RustleWood" ID="{5D594628-013E-4116-B447-8C724BED2E7F}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Animals_02" ID="{50D04EF8-B075-45C1-8D17-43323A279503}">
+							<ChildrenList>
+								<Action Name="" ID="{27E50049-4194-43AF-8053-2905A5326006}" ShortID="1061385977">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Owl" ID="{D485F2C7-5455-4077-8C86-A9899B3B2568}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3CD944B5-8B35-438C-BD1E-EE82A48EAEA7}" ShortID="818526372">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Woodpecker" ID="{9B976277-2BCE-44A6-8BC6-D34CB1721B61}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Env_ForestNightMap" ID="{873591E7-AA3D-4B23-80E2-77E348FDC590}" ShortID="844821553">
+					<ChildrenList>
+						<Event Name="Play_Env_SmallRune" ID="{0FFB0621-2A39-4DF2-B437-BBDBDE7F9974}">
+							<ChildrenList>
+								<Action Name="" ID="{C80BD839-84F7-43BF-B896-1ED8C6A48820}" ShortID="956723816">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_SmallRune" ID="{2B81E059-0CF9-4889-9D3F-F12824EC4AB3}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Env_Trees_03" ID="{19B8364F-47B2-45CE-B1BC-A11362CE1087}">
+							<ChildrenList>
+								<Action Name="" ID="{B3BFEA1B-608F-4CD6-8C29-1084B7F0BC4A}" ShortID="445246140">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Branch" ID="{52160AFA-EE23-4604-BB70-C98E1C4AF0F5}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1568EA50-820E-49D3-9D4E-6BAD4B881088}" ShortID="465550709">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_CreakWood" ID="{29D76802-1D28-4B9B-8232-2C2936B62B0A}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{7F591E81-BD3F-4378-88AC-D3D5AAB46F35}" ShortID="1043329816">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Rustle_Branch" ID="{6B810E1A-1225-47B4-92F8-0B8B94D27627}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1D306ED6-F138-45D4-8CFE-5921BD6DB0C4}" ShortID="336841314">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_RustleWood" ID="{5049FD5E-8386-47B2-9BC9-C8D814F3BF5F}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Wolf_Howl_01" ID="{7D800E4D-5AA5-4034-9CC9-7B7B02205CF6}">
+							<ChildrenList>
+								<Action Name="" ID="{12E36DCB-49B2-4F6F-A2A9-71839E6CF2C3}" ShortID="497109990">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Wolf_Howl_v2" ID="{4355EE09-40DD-46EC-B47D-DC60A7D7A202}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Owl_v2" ID="{FFA7EE8C-CD4C-4753-918E-FE69864BD5BD}">
+							<ChildrenList>
+								<Action Name="" ID="{2A3E4AB3-4621-4F48-8847-72B93FB2E7A3}" ShortID="833424051">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Owl_v2" ID="{D44FDFC6-E922-46AB-8322-DD442435C058}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Rnv_River" ID="{39FD7B2D-CC73-45BD-9789-0CE30B3B3D3B}">
+							<ChildrenList>
+								<Action Name="" ID="{15B73508-B459-47DE-A48E-6599A7E25449}" ShortID="1019871807">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Rnv_River" ID="{D555EC79-D594-42E5-A585-83226D9CA127}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Grass" ID="{928C5135-EE8E-41B7-BA09-E61DE31D5C80}">
+							<ChildrenList>
+								<Action Name="" ID="{603A8711-5B39-4C19-9B94-A9A9DF73DEA3}" ShortID="202077151">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Grass" ID="{F9D34E1B-D8CB-48F1-B113-935799177A18}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Env_Frogs" ID="{15591DEE-13B4-4D6A-9629-59DCC98BEFC1}">
+							<ChildrenList>
+								<Action Name="" ID="{566DFAFE-C7AA-431A-981E-4AF3BA17CA16}" ShortID="224541952">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Frogs" ID="{6D6B1D61-930D-4A34-B8F9-176B9773B1A9}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

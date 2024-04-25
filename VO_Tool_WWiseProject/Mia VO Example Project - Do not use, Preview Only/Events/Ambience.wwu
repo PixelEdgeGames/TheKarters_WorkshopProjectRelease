@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{C25A70FC-0E24-4C91-BAA6-10F5DED33B33}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="Ambience" ID="{C25A70FC-0E24-4C91-BAA6-10F5DED33B33}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="GameStarted_Event" ID="{C602F8E5-5A2C-4E71-880A-7EEB23A2C649}">
+					<ChildrenList>
+						<Action Name="" ID="{B588F229-5C7A-4F03-A42E-0ECBD477AF7B}" ShortID="878448915">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Amb_Jungle_01" ID="{A808D354-532F-4415-B473-6233CFCC7F55}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{CCFBD60A-F5D9-437E-B2C5-0B2120CE513D}" ShortID="556850010">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Amb_Jungle_02" ID="{FF0253C0-530E-4B51-914E-D7BF7777A169}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{66A0AC80-6926-4DB3-B642-3F48495E673F}" ShortID="378364553">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Env_Monkeys" ID="{1591C7E2-DA18-4B94-A132-788EEF70DC9E}" WorkUnitID="{48BE9BED-94AF-4AAE-A146-1B3780B2A62E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{B5B5EFA8-CDE3-4B00-B4C8-B7DC193BB532}" ShortID="800632895">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="TheKarters_Music_Jungle" ID="{9B42DA16-1D41-45E7-86A5-B68671EB4451}" WorkUnitID="{A7406F30-C5F2-4000-B54D-B14A0FF0E306}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="Amb_BeachMap" ID="{9EE206CA-46DF-49D9-8147-B2E4B3F2E0A5}" ShortID="428475677">
+					<ChildrenList>
+						<Event Name="Play_Amb_BeachMap" ID="{17657DC6-F038-4F52-9898-8CB291772AEA}">
+							<ChildrenList>
+								<Action Name="" ID="{9101DFF6-0DC4-4D73-B301-8520EFA4E8D4}" ShortID="284116138">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_BeachMap" ID="{5C2AE1E3-9D60-4D65-B42F-9099BC2EFD87}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Amb_BeachMap_Cave" ID="{44281F5B-8675-49E9-919C-145C4051F7B7}">
+							<ChildrenList>
+								<Action Name="" ID="{CFA4C931-B0C4-4634-8A60-B461AA6BC4AC}" ShortID="924101725">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_BeachMap_Cave" ID="{32566567-A7BD-4EC7-9DCD-E405081FBCEB}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_VulcanoMap" ID="{66DE0D75-98E1-47BE-B742-96A535A5CBC8}" ShortID="1011441397">
+					<ChildrenList>
+						<Event Name="Play_Amb_VulcanoMap" ID="{C3C3D467-19C5-4AD0-BC56-F215C0D736FC}">
+							<ChildrenList>
+								<Action Name="" ID="{C391E557-812A-4CF2-B32B-352E31E5213C}" ShortID="260491291">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_VulcanoMap_01" ID="{E44A2F74-EC3A-4647-A050-F11F0031ED40}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_JungleMap" ID="{1B3BBCF6-EB6A-4C43-9FB2-8851348C16ED}" ShortID="1032677681">
+					<ChildrenList>
+						<Event Name="Play_Amb_Jungle" ID="{83951038-4A21-4DFE-B309-E469DE0B4F78}">
+							<ChildrenList>
+								<Action Name="" ID="{756DA434-730C-4BEA-96AD-013634EAC50C}" ShortID="737375883">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_Jungle" ID="{7436BC4D-6D33-446C-BC93-10F3B9F5993C}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_RailRoadMap" ID="{1BE759D1-EAB2-4162-8AFA-54433D403857}" ShortID="667217972">
+					<ChildrenList>
+						<Event Name="Play_Amb_RailRoadMap" ID="{08BC9F2D-9850-4C82-9A91-F538B20C5707}">
+							<ChildrenList>
+								<Action Name="" ID="{4B118F39-B447-4C5B-B11A-3ADEA0F9D38E}" ShortID="616508988">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_RailRoacMap_01" ID="{FFAC9EE8-9086-4B1B-B24E-C60DF269EE61}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Amb_RailRoad_Cave" ID="{894F28FE-E4AE-4D9C-BB63-23955B4D5E22}">
+							<ChildrenList>
+								<Action Name="" ID="{088CD31E-0501-4513-A200-51F354131E5F}" ShortID="760982920">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_RailRoad_Cave" ID="{4FFD8D3F-1317-4974-BC76-B74DCB76637B}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_CityMap" ID="{61BA8B08-76BF-4EA5-8B61-F0F6DB89586C}" ShortID="570385515">
+					<ChildrenList>
+						<Event Name="Play_Amb_CityMap" ID="{0BE7B7A2-087C-4824-925E-A90F15651BFD}">
+							<ChildrenList>
+								<Action Name="" ID="{FC92C492-F8F2-4BF8-9974-F8E085CA8EE6}" ShortID="279192938">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_CityMap" ID="{E2041D98-4906-451F-8B42-FBABE89D721F}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_ForestNightMap" ID="{031EB2C0-8FFC-4EDD-AF54-D50EA7C803F4}" ShortID="778475706">
+					<ChildrenList>
+						<Event Name="Play_Amb_ForestNight_01" ID="{61F4AF01-AFA2-4F95-962F-C0FFF38AB219}">
+							<ChildrenList>
+								<Action Name="" ID="{49E75500-AC76-44D4-AC05-EE19285BAE4F}" ShortID="773820204">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestNight_01" ID="{FEF1DE01-BE50-4766-9A6E-513A976EFC8E}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{51416671-173D-45A9-9B5F-4DE8C0CD01D6}" ShortID="258003319">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestNight_02" ID="{E4703C94-73C6-42B2-91BE-23CEC6306AB0}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_CityForestMap" ID="{AEDEC877-4239-4F47-A444-66885BED6E1E}" ShortID="713298166">
+					<ChildrenList>
+						<Event Name="Play_Amb_CityFoerst_Forest" ID="{73555A46-D303-437B-8E32-BDF63D93039C}">
+							<ChildrenList>
+								<Action Name="" ID="{3384D5EE-E88E-4CAF-B683-8BFFB1FFC982}" ShortID="36992614">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestDay_01" ID="{D7E09A0A-3B77-48AE-9006-E5BD8F068233}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{9EA2400E-A8A9-4CDF-818B-1853FCE8A908}" ShortID="76541242">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestDay_02" ID="{011D8293-FCE6-4D5B-84D9-814092F82C16}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Amb_CityForest_City" ID="{5B6FEF08-3562-49B8-918E-C0BF8C6B36A6}">
+							<ChildrenList>
+								<Action Name="" ID="{50A12486-2AEF-4D70-B595-A335477E1267}" ShortID="413990721">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestDay_01" ID="{D7E09A0A-3B77-48AE-9006-E5BD8F068233}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Amb_CityForest_Tunel" ID="{8D33A4BE-21E3-4D14-A368-0CB26D1CB8FE}">
+							<ChildrenList>
+								<Action Name="" ID="{80B23745-FED8-4CE3-B24E-14386C649CDE}" ShortID="63647550">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestDay_Tunel" ID="{0D860D1A-13CA-42C5-A3BB-7AA3472C0704}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_OceanMap" ID="{3E08716F-C4AC-4648-9E80-3B25C5906250}" ShortID="397008623">
+					<ChildrenList>
+						<Event Name="Play_Env_Ocean" ID="{FBBC575A-31E6-4320-A840-E606EA455536}">
+							<ChildrenList>
+								<Action Name="" ID="{F91C6193-1663-4608-90D4-BA9FC90443AA}" ShortID="866477570">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Env_Ocean" ID="{3DFF3EBC-77D3-4AD0-B03F-FC022AB709DD}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_CanyonRoadMap" ID="{4D3991AF-2A45-4C9F-A381-F5794209C129}" ShortID="298650118"/>
+				<Folder Name="Amb_MineRoadMap" ID="{45C0C332-E3EC-40E2-8933-6EBEDC49011C}" ShortID="666805521">
+					<ChildrenList>
+						<Event Name="Play_Amb_MineRoadMap" ID="{4627EFAC-D8B6-4AB2-BB0E-F9D7BE7B99B1}">
+							<ChildrenList>
+								<Action Name="" ID="{B4446CA9-5EFE-4FD1-9FDE-2B82047CDF0B}" ShortID="164689093">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_MineRoadMap" ID="{08E643A8-5D45-4B84-A6DD-F7EFD28D4827}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_ForestMap" ID="{EA2FE793-CC5B-4F6A-A1B7-3403AF12BBAC}" ShortID="195952870">
+					<ChildrenList>
+						<Event Name="Amb_ForestMap_AV" ID="{3562B16B-A24F-4104-8DF3-BD753C58445A}">
+							<ChildrenList>
+								<Action Name="" ID="{BD15DB40-FA0F-47F1-B32D-CF1D8A4757A0}" ShortID="267169459">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestDay_02" ID="{FAE9C57C-AEE3-4AD0-8FF0-46C2C0047DE5}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Amb_ForestDay_Cave" ID="{1C249FA4-2073-48DD-8D1C-150B7D2A11B6}">
+							<ChildrenList>
+								<Action Name="" ID="{D0EE7D69-0FA1-4B9E-8EA1-FB1462BEF1B2}" ShortID="615989827">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_ForestDay_Cave" ID="{88B0D2B7-D8B8-490E-89C2-3FE7B5926B17}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_RuneStoneMap" ID="{CCD0E7AC-ED72-465E-832D-3C1AC606D2EE}" ShortID="988922302">
+					<ChildrenList>
+						<Event Name="Play_Amb_RuneStoneMap_Lp" ID="{37887998-553B-478F-9E6D-9C3B7458A714}">
+							<ChildrenList>
+								<Action Name="" ID="{36E0C19D-B02D-4C79-8E77-F86C718D193A}" ShortID="1039125007">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_RuneStoneMap_Lp" ID="{0D87E621-A3C0-4EFE-940C-35C1DF688CAE}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Amb_RoadCityMap" ID="{E65B1FCB-54CD-46F1-9DAF-9B0D861AC431}" ShortID="725612447">
+					<ChildrenList>
+						<Event Name="Play_Amb_RailRoadMap_01" ID="{83CCAFFB-95C5-4859-A401-B825C48CE537}">
+							<ChildrenList>
+								<Action Name="" ID="{2D5614A7-4C91-4799-A2EC-19109E06F255}" ShortID="89863395">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Amb_RailRoadMap" ID="{B28A7F1E-5E43-455B-B141-13B140C1D563}" WorkUnitID="{4EFFC1F6-EA46-4769-AB28-4060270DA93E}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

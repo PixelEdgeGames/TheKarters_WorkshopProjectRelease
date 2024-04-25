@@ -1,0 +1,78 @@
+Switch Group	ID	Name			Wwise Object Path	Notes
+	2259399941	Braking_Intensity			\Default Work Unit\Braking_Intensity	
+	4127324384	LandIntensity_Switch			\Default Work Unit\LandIntensity_Switch	
+
+Switch	ID	Name	Switch Group			Notes
+	670602561	SOFT	Braking_Intensity			
+	2849147824	MEDIUM	Braking_Intensity			
+	3599861390	HARD	Braking_Intensity			
+	670602561	SOFT	LandIntensity_Switch			
+	2849147824	MEDIUM	LandIntensity_Switch			
+	3599861390	HARD	LandIntensity_Switch			
+
+State Group	ID	Name			Wwise Object Path	Notes
+	4091656514	GameState			\Default Work Unit\GameState	
+
+State	ID	Name	State Group			Notes
+	748895195	None	GameState			
+	762757699	Gameplay_State	GameState			
+	915658673	LoadingScreen_State	GameState			
+	3112137713	InGame_MainMenu_State	GameState			
+	3205958645	MainMenu_State	GameState			
+
+Custom State	ID	Name	State Group	Owner		Notes
+	47881427	LoadingScreen_State	GameState	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\HDR_Bus\Music		
+	131260733	InGame_MainMenu_State	GameState	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Ambience		
+	774086064	InGame_MainMenu_State	GameState	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\HDR_Bus\Music		
+	934809894	InGame_MainMenu_State	GameState	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Enviro		
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	412632485	VO_Volume_RTPC			\Default Work Unit\Volumes_RTPC\VO_Volume_RTPC	
+	755495101	TimeInAir_RTPC			\Default Work Unit\TimeInAir_RTPC	
+	1883033791	SideChain			\Default Work Unit\SideChain	
+	2585960002	Master_Volume_RTPC			\Default Work Unit\Volumes_RTPC\Master_Volume_RTPC	
+	2654583815	SFX_Volume_RTPC			\Default Work Unit\Volumes_RTPC\SFX_Volume_RTPC	
+	3131952431	Music_Volume_RTPC			\Default Work Unit\Volumes_RTPC\Music_Volume_RTPC	
+	3526594642	UI_Volume_RTPC			\Default Work Unit\Volumes_RTPC\UI_Volume_RTPC	
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	85412153	Ambience			\Default Work Unit\Master Audio Bus\Ambience	
+	224914575	Weapons_HDR			\Default Work Unit\Master Audio Bus\HDR_Bus\Weapons_HDR	
+	393239870	SFX			\Default Work Unit\Master Audio Bus\SFX	
+	983016381	Car			\Default Work Unit\Master Audio Bus\SFX\Car	
+	1467963052	Weapons			\Default Work Unit\Master Audio Bus\SFX\Weapons	
+	1527753766	HDR_Bus			\Default Work Unit\Master Audio Bus\HDR_Bus	
+	1534528548	VO			\Default Work Unit\Master Audio Bus\VO	
+	1551306167	UI			\Default Work Unit\Master Audio Bus\UI	
+	1995189622	Enviro			\Default Work Unit\Master Audio Bus\Enviro	
+	2152238913	Boosts			\Default Work Unit\Master Audio Bus\HDR_Bus\Boosts	
+	2243062398	Car_HDR			\Default Work Unit\Master Audio Bus\HDR_Bus\Car_HDR	
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	Music			\Default Work Unit\Master Audio Bus\HDR_Bus\Music	
+
+Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	348963605	Reverb			\Default Work Unit\Master Audio Bus\Reverb	
+	1857588325	Rev_Outdoor			\Default Work Unit\Master Audio Bus\Reverb\Rev_Outdoor	
+	2172616000	Rev_Cave			\Default Work Unit\Master Audio Bus\Reverb\Rev_Cave	
+	2715877408	Rev_Main			\Default Work Unit\Master Audio Bus\Reverb\Rev_Main	
+	3282735431	Rev_Tunel			\Default Work Unit\Master Audio Bus\Reverb\Rev_Tunel	
+	3674175296	Rev_Outdoor_Ambience			\Default Work Unit\Master Audio Bus\Reverb\Rev_Outdoor_Ambience	
+	4006674087	Rev_ShortTunel			\Default Work Unit\Master Audio Bus\Reverb\Rev_ShortTunel	
+	4221949740	BoostTail			\Default Work Unit\Master Audio Bus\Reverb\BoostTail	
+
+Effect plug-ins	ID	Name	Type				Notes
+	48620415	Have_U_Ever_Been_Outside	Wwise RoomVerb			
+	69077411	Have_U_Ever_Been_Outside (Custom)	Wwise RoomVerb			
+	146599068	Holy (Custom)	Wwise RoomVerb			
+	840926554	Church_Small_Wood (Custom)	Wwise RoomVerb			
+	850624509	Underwater_Echoes (Custom)	Wwise Stereo Delay			
+	976212165	Space_Garage (Custom)	Wwise RoomVerb			
+	1459522457	Brick_Wall_Minus_1dB_Peak_Fast_Release	Wwise Peak Limiter			
+	1992114213	SideChain_Meter	Wwise Meter			
+	3164629247	Holy	Wwise RoomVerb			
+	3546444380	Big_Garage1	Wwise Matrix Reverb			
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+

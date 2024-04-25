@@ -53,6 +53,11 @@ public class PTK_AddressableAssetsHandler
 
         exporter.treeView.SaveStateToPrefs();  // Save state after changes
 
+        // after scene save/reload we may miss reference
+        if(exporter.boundingBoxCalculator == null)
+        {
+            exporter.boundingBoxCalculator = GameObject.FindObjectOfType<BoundingBoxCalculator>(true);
+        }
 
         if (exporter.boundingBoxCalculator != null)
             exporter.boundingBoxCalculator.gameObject.SetActive(true);

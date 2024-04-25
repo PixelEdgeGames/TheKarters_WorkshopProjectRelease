@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{CBDBAB5B-0F06-4DE7-B08E-F9C8A901B5CD}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="Per Vehicle-Player" ID="{CBDBAB5B-0F06-4DE7-B08E-F9C8A901B5CD}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="E_PlayerHitByBullet_Event" ID="{DFB32BEC-9A91-499E-8EAC-3E4A243F9817}"/>
+				<Event Name="E_OnBoostFired_Event" ID="{0D943DD8-578D-4F63-954A-E6A5B5335C9F}">
+					<ChildrenList>
+						<Action Name="" ID="{78791841-866F-4448-9249-0BBA22FCDE10}" ShortID="208491495">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="OnBoostFired" ID="{9492F420-67AA-4F11-B5B7-366DE285EF90}" WorkUnitID="{3454D272-0AB3-4BF6-87A6-567586DA4146}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_OnJustMadeTrick_Event" ID="{C3773FB9-ED3C-4040-BE97-4DC15EA0F907}">
+					<ChildrenList>
+						<Action Name="" ID="{AAE52B7C-F103-402E-982A-B74F80696A08}" ShortID="841558472">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Event_JumpTrick_Base" ID="{419A64B4-503E-45E7-8835-E75423DD3DDB}" WorkUnitID="{1B1F06AC-D7D5-4504-A332-9FF1B0397972}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F29E01EE-8023-4DF9-AD7C-C7F83490BDD5}" ShortID="452917826">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Event_JumpTrick" ID="{291067D4-51DF-4973-8091-16E9550B641F}" WorkUnitID="{1B1F06AC-D7D5-4504-A332-9FF1B0397972}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{9C7071C8-049E-4C41-8713-0199DF4F3771}" ShortID="895712361">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="WeaponsType_Idle_Loop" ID="{E645A9B6-62DA-4D21-80EB-74C731171995}" WorkUnitID="{E4407CE2-5735-4D1D-8A4C-AB5FCCB886C5}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_OnJustJumped_Event" ID="{BC9D97CE-ECA8-45AE-B377-FB273F41AFAF}">
+					<ChildrenList>
+						<Action Name="" ID="{1EA1CB0D-C70E-4D6C-A396-B4943CCA0EDC}" ShortID="542476858">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Vehicle_Jump" ID="{4C9A5835-A81B-46C7-88C7-A14FC9EAD85F}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{6231B132-DA9B-4DE6-8AC1-D8D693739C26}" ShortID="983264961">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="50"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Metal_sqeak" ID="{474DBF03-2A36-4CE5-ABA9-88A1B16E3F51}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_OnJustLanded_AndTimeInAir_Event" ID="{7E5303E4-E2C3-4EC1-8020-0A40D5FF4AAD}">
+					<ChildrenList>
+						<Action Name="" ID="{73C52773-9F2E-407B-A565-3DD2E7FF66C4}" ShortID="302596821">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Vehicle_Land" ID="{9CC06A4D-669A-42E3-8644-366A650143AF}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{8891832C-3C6C-426E-8748-C9942FDE803B}" ShortID="1030998351">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Metal_Elements" ID="{F392E8C3-C423-438F-A275-66C2A9540C29}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_VehicleBreakStart_Event" ID="{DBB4883B-EB14-4A3C-8687-84BB2FFF8E75}">
+					<ChildrenList>
+						<Action Name="" ID="{70D4EC79-6A93-4BAA-84EA-4178D814F466}" ShortID="576729793">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Braking_Intensity" ID="{62BCD7E5-5307-49A0-AA10-2F0F7CFF73FF}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_VehicleBreakStop_Event" ID="{EF18E921-BEA4-43CE-84F2-C81D982D86A8}">
+					<ChildrenList>
+						<Action Name="" ID="{60763520-5A5D-423A-A527-C759F527E5B4}" ShortID="40722410">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Braking_Intensity" ID="{62BCD7E5-5307-49A0-AA10-2F0F7CFF73FF}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_VehicleDriftingStart_Event" ID="{8CC637D9-9D66-4AB0-90C3-3DC980F321AB}">
+					<ChildrenList>
+						<Action Name="" ID="{EB7CBC0B-01C8-4442-B590-0DAD262CC647}" ShortID="653110664">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift_Switch" ID="{9027631E-D4D7-4DAD-A270-75F1CF1B4914}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{F0A4E784-2C35-44E0-BE03-1231C7189985}" ShortID="271331304">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Start_Drift_02" ID="{C46E65BF-10E1-489F-9A06-02CEAE641B9B}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{1330370E-9BF1-4367-BAA2-633AA4882803}" ShortID="23567426">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift_Start_Gravel_Os" ID="{2C7AEF0B-4824-48AE-A48B-76815007F84E}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_VehicleDriftingStop_Event" ID="{87B1F0F4-9944-472A-B81E-C77F50FB554D}">
+					<ChildrenList>
+						<Action Name="" ID="{53F2FD6A-0478-4F5D-8E22-0FEF29188ABC}" ShortID="327706813">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift_Switch" ID="{9027631E-D4D7-4DAD-A270-75F1CF1B4914}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{9AA9F80A-12AF-4A8B-875A-6F5C55BA2AC1}" ShortID="536742905">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeOutCurve" Type="int16" Value="6"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift_04" ID="{EAE3A843-4756-4CBB-8C1B-81E6825AF910}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{1A505295-00B7-4AB0-A660-79FC00C213E9}" ShortID="345865632">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.3"/>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Drift" ID="{2085ACBD-EF23-497C-AE35-D7635B4FE3F5}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_BoostFullyLoaded_Event" ID="{144C23F4-4678-401F-BF57-32A9685C0A95}">
+					<ChildrenList>
+						<Action Name="" ID="{15D42745-8678-4876-9D2C-8CE6AF5D396F}" ShortID="328152341">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SFX_Load_BoostBar" ID="{03B9D306-AB66-4C9B-AD21-062A32BA83E0}" WorkUnitID="{3454D272-0AB3-4BF6-87A6-567586DA4146}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{EEB5EFE3-6FCD-4143-845C-2341874E4A75}" ShortID="350545620">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Load_boost_01" ID="{459ED0C8-10AC-430A-86C9-6D8E3B342F1C}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_OnAllBoostsUsed_Event" ID="{918DFCCD-3647-45EE-9645-D4FAE28C6928}"/>
+				<Event Name="E_OnClickBurningWheelsButton_Event" ID="{06C48671-8E67-46AE-AAF2-61ECF0758AF8}">
+					<ChildrenList>
+						<Action Name="" ID="{09BF26A5-3E15-473B-A0B5-08301C43ED8D}" ShortID="687307420">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="30"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp" ID="{570BA4F6-61CF-47BE-B002-8C963C57B379}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{0A55E3A6-11BD-4BCD-A0AE-0F261E625312}" ShortID="1022822121">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="40"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Exhaus_Pops" ID="{3AC0EC4D-3B0A-4415-BB1B-8138EBADAD05}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{5CBCE763-0E5F-43E7-96F0-318FF5934353}" ShortID="430245153">
+							<PropertyList>
+								<Property Name="Inclusion" Type="bool">
+									<ValueList>
+										<Value>False</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Probability" Type="Real64" Value="40"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Land_Soft" ID="{4719994D-0E89-4192-BA29-23C91BB29029}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{A4F61C1D-7AF0-425B-BC3E-7569D4D4A5F8}" ShortID="434174839">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="30"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp_Metal" ID="{2829E17B-12F2-427E-91FF-1660BF52F880}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{49ED5697-B947-4D7E-9E97-B2ACE915CA54}" ShortID="771618099">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="30"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="SpeedUp_Dirt_Os" ID="{07EA1326-9458-4504-BF0A-2B4AAD6BA66D}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{188BCC67-7FA1-4C4C-893B-53C7F566BE1E}" ShortID="731791753">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="30"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Metal_Elements" ID="{90F96760-C881-40B8-B40F-05C0DD245DC2}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{C4E78340-A4CF-41FE-B75F-7029C95528CD}" ShortID="124218978">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Event_Screeching_Tires" ID="{78D29D43-362B-44A1-B14E-24FBA0ED8363}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{39CFD565-D589-4561-ACBA-888DDBDAE45E}" ShortID="444685254">
+							<PropertyList>
+								<Property Name="Probability" Type="Real64" Value="50"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Event_Screeching_Tires_Gravel" ID="{B039D304-1E97-40A4-84CF-5ECABF44D22D}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="BeforeRace" ID="{B127A220-BD18-47F2-A568-777B51BCBD0E}" ShortID="17291588">
+					<ChildrenList>
+						<Event Name="E_BeforeRacePlayerSteerLeftRightMax_Event" ID="{818B0A9E-C7D0-4CB9-B30B-FFBA80CBE35B}">
+							<ChildrenList>
+								<Action Name="" ID="{24918911-DB38-462C-80F2-4F05EADC2A12}" ShortID="705740831">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Land_Soft" ID="{4719994D-0E89-4192-BA29-23C91BB29029}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="E_CountdownJustEneded_RaceStarted" ID="{0FEC8EBD-65B5-4A80-A234-F120F1726B29}">
+							<ChildrenList>
+								<Action Name="" ID="{ED7D5215-4434-4653-8CE5-819CD5D3807B}" ShortID="778934854">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="RaceStarted" ID="{F72625AC-979C-483D-8232-4296F6D6F93C}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{4DE19512-171A-476C-B373-A9C9C18E5A38}" ShortID="661546837">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Event_RaceStarted_Boost" ID="{1B37F50F-F9CD-49A4-9E54-99E64DAA4CE7}" WorkUnitID="{6990DA1C-0ACD-48DA-8AB0-D929AB8D3F8D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

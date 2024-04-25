@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EE891C02-08C7-49EE-B9A6-54A47C006EE2}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="TEMP" ID="{EE891C02-08C7-49EE-B9A6-54A47C006EE2}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="Play_Test_sound" ID="{19BCED6C-0ED8-4432-A010-E6EFF5730B40}">
+					<ChildrenList>
+						<Action Name="" ID="{62828A1E-516C-4F23-8B9F-90D934511FE6}" ShortID="41333612">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Test_sound" ID="{BCCC9CF6-1DC2-4670-A485-2980A766A4EC}" WorkUnitID="{981DB9F6-0D4C-44B8-98D9-A8756243838D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Bobik" ID="{7A6002BD-3561-4DAB-9D48-EF83EAC1037C}">
+					<ChildrenList>
+						<Action Name="" ID="{B73E2487-0521-437C-86F9-38727A47B59D}" ShortID="772442107">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bobik" ID="{B6F286A8-374C-4C70-B9F6-B702FB57B9D0}" WorkUnitID="{981DB9F6-0D4C-44B8-98D9-A8756243838D}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

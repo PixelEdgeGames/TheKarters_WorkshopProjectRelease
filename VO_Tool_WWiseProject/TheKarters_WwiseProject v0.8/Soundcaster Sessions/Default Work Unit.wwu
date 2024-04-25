@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{208A6F3C-84E2-4E1A-B657-B15F9B7E4A0A}" SchemaVersion="103">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{208A6F3C-84E2-4E1A-B657-B15F9B7E4A0A}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="Ducking" ID="{70C05DAE-E88A-4449-BA1C-F1328D33E399}">
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BoostLoadPercentBarAny_RTPC" ID="{C3E8839D-F047-413A-B0EF-936B83016866}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fEngineSpeedPowerPercentage_RTPC" ID="{AB9ACB63-B484-4181-BB7A-7B22226ECD61}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SFX_Volume_RTPC" ID="{0A057D5B-6D6C-41A5-814A-3446B555684D}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fJustLandedTimeInAir_RTPC" ID="{11E16A02-047A-422D-8201-DDDD0D42FFE4}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="UI_Volume_RTPC" ID="{CBD05122-6046-43F4-865F-F47E0B4148AB}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="VehicleVelocity_RTPC" ID="{D1C8A2B7-9B99-463B-B506-0E9DC10B985F}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="VO_Volume_RTPC" ID="{DD89660A-80EC-468D-89F6-CFC1DDDFC3F7}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SideChain" ID="{7C876C78-90F9-4764-BF66-C8BB949B12A6}"/>
+							<Value>-48</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Master_Volume_RTPC" ID="{B65D3F9C-C59C-4770-9630-14AD20C8D86A}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="BOOSTPAD_VOLUME" ID="{BF8BDDCD-4986-4A54-8F51-6EB071A70933}"/>
+							<Value>50</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Music_Volume_RTPC" ID="{296518E3-2870-4B1A-AD69-210E7057BDFB}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="TimeInAir_RTPC" ID="{FB014E28-434D-4BC6-979D-6865ECC1D8D5}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fBeforeRaceBurningWheelsLoadedVal_RTPC" ID="{E0311674-F9DD-4E71-84A5-9938982228F0}"/>
+							<Value>0</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{C4E10DA8-CCA3-49CF-89EA-CC6A6CDD798C}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="HARD" ID="{D8E97F44-9C63-41E9-8DD0-F54F1A2EACFB}"/>
+						<CurrentSwitchRef Name="BoostpadAction" ID="{1E58F30D-2886-4C96-AD43-2A5CF73A0B89}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{BDBB9C31-553F-4DB7-B6B5-077C1C79968D}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{4B05CAA6-3B09-4006-9001-84787C2F725C}"/>
+						<CurrentSwitchRef Name="BAZOOKA_00" ID="{5228852E-C650-49FE-B64D-76071C3462D6}"/>
+						<CurrentSwitchRef Name="E_VEHICLE_0_DEFAULT" ID="{07138C2A-AE3D-4DF6-8DC4-206556D656BE}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{530A10F5-E2BC-41B3-B362-A2635A6CEA60}"/>
+						<CurrentSwitchRef Name="Music_BeforeRace" ID="{B802378C-1305-404D-93B2-A4632FB9D35B}"/>
+						<CurrentSwitchRef Name="Biome1_Scene1" ID="{64CAF124-E4DA-4BE1-8EEC-9AE7A837DDF0}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{E86017A8-D11B-4E81-A434-64A63F96C355}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{A9EE5B1E-5F47-4039-9847-47DA00F1665A}"/>
+						<CurrentSwitchRef Name="HARD" ID="{F0C75A3C-7077-46A2-9D88-6F7E38A9EB3D}"/>
+						<CurrentSwitchRef Name="EBOOST_JUMP_LANDED" ID="{98978413-B76F-4168-B87E-805D5516661C}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{912A8F5F-0B0A-4028-854B-BFAD474AFD61}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="SideChain" ID="{393F4555-011B-4AC8-9520-6ED288CD6728}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="E_Play_Music_System" ID="{A80197C6-9C0C-48AB-9F2D-FD7BB27BE660}" WorkUnitID="{C5A20723-F270-4ABC-83EA-B0BADB1F3CA8}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="NewRaceRecord_Event" ID="{D90A0161-0496-42A4-B8CB-A3FA58A7D288}" WorkUnitID="{C0906261-06CD-4D40-B897-A01DDEDD738E}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Play_Event_Zebuszek_Flying_Loop" ID="{5CF1839C-5AAE-4494-A1A0-53BE2217DE7B}" WorkUnitID="{C0906261-06CD-4D40-B897-A01DDEDD738E}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="ItemBoxDrawAnim_Started_Event" ID="{8F4097BF-F962-411A-A6C3-3B3F5E47A996}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="RaceStartedFromBegining" ID="{AA606D0E-6757-41D4-9BF1-E23AE073E3F1}" WorkUnitID="{C0906261-06CD-4D40-B897-A01DDEDD738E}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="ItemBoxDrawAnim_Ended_Event" ID="{10F71D03-E35A-4E7A-8809-6ED8891B00E9}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BoostLoadPercentBarAny_RTPC" ID="{C3E8839D-F047-413A-B0EF-936B83016866}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fEngineSpeedPowerPercentage_RTPC" ID="{AB9ACB63-B484-4181-BB7A-7B22226ECD61}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SFX_Volume_RTPC" ID="{0A057D5B-6D6C-41A5-814A-3446B555684D}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fJustLandedTimeInAir_RTPC" ID="{11E16A02-047A-422D-8201-DDDD0D42FFE4}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="UI_Volume_RTPC" ID="{CBD05122-6046-43F4-865F-F47E0B4148AB}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="VehicleVelocity_RTPC" ID="{D1C8A2B7-9B99-463B-B506-0E9DC10B985F}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="VO_Volume_RTPC" ID="{DD89660A-80EC-468D-89F6-CFC1DDDFC3F7}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SideChain" ID="{7C876C78-90F9-4764-BF66-C8BB949B12A6}"/>
+							<Value>4.26299058124584E-312</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Master_Volume_RTPC" ID="{B65D3F9C-C59C-4770-9630-14AD20C8D86A}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Music_Volume_RTPC" ID="{296518E3-2870-4B1A-AD69-210E7057BDFB}"/>
+							<Value>100</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="TimeInAir_RTPC" ID="{FB014E28-434D-4BC6-979D-6865ECC1D8D5}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fBeforeRaceBurningWheelsLoadedVal_RTPC" ID="{E0311674-F9DD-4E71-84A5-9938982228F0}"/>
+							<Value>68.4115523465704</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="Gameplay_State" ID="{5E5876D0-703B-4189-8F2F-F9F198CDF1E6}"/>
+					</CurrentStateList>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="HARD" ID="{D8E97F44-9C63-41E9-8DD0-F54F1A2EACFB}"/>
+						<CurrentSwitchRef Name="CatchingWeapon_NonVerbal" ID="{31B7C5AB-AD92-4743-A1F3-19EB67188B65}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{BDBB9C31-553F-4DB7-B6B5-077C1C79968D}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{4B05CAA6-3B09-4006-9001-84787C2F725C}"/>
+						<CurrentSwitchRef Name="BAZOOKA_00" ID="{5228852E-C650-49FE-B64D-76071C3462D6}"/>
+						<CurrentSwitchRef Name="E_VEHICLE_0_DEFAULT" ID="{07138C2A-AE3D-4DF6-8DC4-206556D656BE}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{530A10F5-E2BC-41B3-B362-A2635A6CEA60}"/>
+						<CurrentSwitchRef Name="Music_BeforeRace" ID="{B802378C-1305-404D-93B2-A4632FB9D35B}"/>
+						<CurrentSwitchRef Name="Biome999_Scene2" ID="{1FA033A1-91A3-4222-A340-1CC896762D6D}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{E86017A8-D11B-4E81-A434-64A63F96C355}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{A9EE5B1E-5F47-4039-9847-47DA00F1665A}"/>
+						<CurrentSwitchRef Name="HARD" ID="{F0C75A3C-7077-46A2-9D88-6F7E38A9EB3D}"/>
+						<CurrentSwitchRef Name="EBOOST_BOOSTER" ID="{71736248-9404-46C5-BB68-606046FB9185}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{912A8F5F-0B0A-4028-854B-BFAD474AFD61}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="Weapons Loops" ID="{74B0C6B0-F491-43BB-9351-9A5D2E41135D}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="E_WeaponType_Catch_Event" ID="{118629A6-45B4-434D-BCDF-4A892FADD85F}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_WeaponType_Catch_Event" ID="{118629A6-45B4-434D-BCDF-4A892FADD85F}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Weapon_UseSingle_Event" ID="{F6CEEE7B-8C0C-4B98-BB65-78A96E7D5E98}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BoostLoadPercentBarAny_RTPC" ID="{C3E8839D-F047-413A-B0EF-936B83016866}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fEngineSpeedPowerPercentage_RTPC" ID="{AB9ACB63-B484-4181-BB7A-7B22226ECD61}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fJustLandedTimeInAir_RTPC" ID="{11E16A02-047A-422D-8201-DDDD0D42FFE4}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="VehicleVelocity_RTPC" ID="{D1C8A2B7-9B99-463B-B506-0E9DC10B985F}"/>
+							<Value>44.5147679324895</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SideChain" ID="{7C876C78-90F9-4764-BF66-C8BB949B12A6}"/>
+							<Value>-48</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="TimeInAir_RTPC" ID="{FB014E28-434D-4BC6-979D-6865ECC1D8D5}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fBeforeRaceBurningWheelsLoadedVal_RTPC" ID="{E0311674-F9DD-4E71-84A5-9938982228F0}"/>
+							<Value>100</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="HARD" ID="{D8E97F44-9C63-41E9-8DD0-F54F1A2EACFB}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{BDBB9C31-553F-4DB7-B6B5-077C1C79968D}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{4B05CAA6-3B09-4006-9001-84787C2F725C}"/>
+						<CurrentSwitchRef Name="MLOT_03" ID="{1A62438C-CE3C-48B0-BC2B-D1C016064533}"/>
+						<CurrentSwitchRef Name="E_VEHICLE_0_DEFAULT" ID="{07138C2A-AE3D-4DF6-8DC4-206556D656BE}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{530A10F5-E2BC-41B3-B362-A2635A6CEA60}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{E86017A8-D11B-4E81-A434-64A63F96C355}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{A9EE5B1E-5F47-4039-9847-47DA00F1665A}"/>
+						<CurrentSwitchRef Name="HARD" ID="{F0C75A3C-7077-46A2-9D88-6F7E38A9EB3D}"/>
+						<CurrentSwitchRef Name="EBOOST_BOOSTER" ID="{71736248-9404-46C5-BB68-606046FB9185}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{912A8F5F-0B0A-4028-854B-BFAD474AFD61}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+				<SoundcasterSession Name="WeaponShotLoop" ID="{6988D058-AEA0-446F-AB3D-3251C009C4F0}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="E_Weapon_UseLoop_Start_Event" ID="{D5776ED2-066B-4B18-B360-F52242B034EA}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="E_Weapon_UseLoop_End_Event" ID="{9E7C302F-0976-4E92-8FD3-45C78F23428D}" WorkUnitID="{FEDD1CCB-F974-473B-9768-DE1C6717A45E}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true">
+						<RTPCValue>
+							<GameParameterRef Name="BoostLoadPercentBarAny_RTPC" ID="{C3E8839D-F047-413A-B0EF-936B83016866}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fEngineSpeedPowerPercentage_RTPC" ID="{AB9ACB63-B484-4181-BB7A-7B22226ECD61}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fJustLandedTimeInAir_RTPC" ID="{11E16A02-047A-422D-8201-DDDD0D42FFE4}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="VehicleVelocity_RTPC" ID="{D1C8A2B7-9B99-463B-B506-0E9DC10B985F}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="SideChain" ID="{7C876C78-90F9-4764-BF66-C8BB949B12A6}"/>
+							<Value>-48</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="TimeInAir_RTPC" ID="{FB014E28-434D-4BC6-979D-6865ECC1D8D5}"/>
+							<Value>0</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="fBeforeRaceBurningWheelsLoadedVal_RTPC" ID="{E0311674-F9DD-4E71-84A5-9938982228F0}"/>
+							<Value>0</Value>
+						</RTPCValue>
+					</RTPCValueList>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="HARD" ID="{D8E97F44-9C63-41E9-8DD0-F54F1A2EACFB}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{BDBB9C31-553F-4DB7-B6B5-077C1C79968D}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{4B05CAA6-3B09-4006-9001-84787C2F725C}"/>
+						<CurrentSwitchRef Name="STAR_10" ID="{CF5609A2-27D2-46EA-8EB2-7B4EEB4B1B60}"/>
+						<CurrentSwitchRef Name="E_VEHICLE_0_DEFAULT" ID="{07138C2A-AE3D-4DF6-8DC4-206556D656BE}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{530A10F5-E2BC-41B3-B362-A2635A6CEA60}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{E86017A8-D11B-4E81-A434-64A63F96C355}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{A9EE5B1E-5F47-4039-9847-47DA00F1665A}"/>
+						<CurrentSwitchRef Name="HARD" ID="{F0C75A3C-7077-46A2-9D88-6F7E38A9EB3D}"/>
+						<CurrentSwitchRef Name="EBOOST_BOOSTER" ID="{71736248-9404-46C5-BB68-606046FB9185}"/>
+						<CurrentSwitchRef Name="FALSE" ID="{912A8F5F-0B0A-4028-854B-BFAD474AFD61}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>

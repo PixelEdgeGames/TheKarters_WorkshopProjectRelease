@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{14D3D3E6-F9A6-413A-8F6F-5748A132F58F}" SchemaVersion="103" RootDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" ParentDocumentID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}">
+	<Events>
+		<WorkUnit Name="UI" ID="{14D3D3E6-F9A6-413A-8F6F-5748A132F58F}" OwnerID="{6134B061-5F0F-4BD5-BDEC-92A91F9792EA}" PersistMode="Nested">
+			<ChildrenList>
+				<Event Name="E_Menu_Button_Highlighted_Hovered" ID="{F3FE9FA8-A19B-4E5B-8FC0-42BB7B9249EE}">
+					<ChildrenList>
+						<Action Name="" ID="{BFCF3E94-93C8-45D6-852A-F71C5A59D04B}" ShortID="44595678">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="E_Menu_Button_Highlighted_Hovered" ID="{CB8BAC50-A62E-40F1-ABFD-D317B57720AD}" WorkUnitID="{B33708AC-AEDA-4227-9C59-BC03F169ED81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_Menu_Button_Back" ID="{E60FDB42-8E1D-48B9-9E1F-1538FAD0455C}">
+					<ChildrenList>
+						<Action Name="" ID="{8464F863-9F07-45F8-B475-CDD27C4FC757}" ShortID="410547891">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="E_Menu_Button_Back" ID="{A19FCBC2-6CBC-459F-9191-F08967E25144}" WorkUnitID="{B33708AC-AEDA-4227-9C59-BC03F169ED81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_Menu_Button_Clicked" ID="{B6C3598F-235C-4E99-9C50-73ABE4A468B7}">
+					<ChildrenList>
+						<Action Name="" ID="{85DC099A-4B1C-420B-B54C-530664618DFF}" ShortID="122346694">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="E_Menu_Button_Clicked" ID="{0AE984BA-F5C5-42DE-A95D-AB2687303BFC}" WorkUnitID="{B33708AC-AEDA-4227-9C59-BC03F169ED81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="E_Menu_Button_Clicked_But_Blocked" ID="{973393D8-E23F-4905-A9EF-2DD50865B0F7}">
+					<ChildrenList>
+						<Action Name="" ID="{4D3E61E8-278A-4F7F-BFE3-765AF7285898}" ShortID="543157869">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="E_Menu_Button_Clicked_But_Blocked" ID="{8F7897D0-5964-4AA2-8C59-EA096DDC4B10}" WorkUnitID="{B33708AC-AEDA-4227-9C59-BC03F169ED81}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
