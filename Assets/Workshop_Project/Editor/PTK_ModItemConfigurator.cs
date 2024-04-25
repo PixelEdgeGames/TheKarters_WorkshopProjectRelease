@@ -1,3 +1,5 @@
+#define PTK_OFFICIAL_CONTENT
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +13,6 @@ using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEngine;
-
 public class PTK_ModItemConfigurator
 {
 #if PTK_OFFICIAL_CONTENT
