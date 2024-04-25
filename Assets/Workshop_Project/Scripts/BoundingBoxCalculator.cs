@@ -23,7 +23,7 @@ public class BoundingBoxCalculator : MonoBehaviour
     private void Update()
     {
         transform.localPosition = new Vector3(0.0F, 0.0F, 6.5F);
-        transform.rotation = Quaternion.Euler(0.0F, 200.0F, 0.0F);
+        transform.localRotation = Quaternion.Euler(0.0F, -148f, 0.0F);
     }
     public void RefreshOffsets()
     {
@@ -50,15 +50,120 @@ public class BoundingBoxCalculator : MonoBehaviour
 
     public void ActivateChild(int index)
     {
+        Transform activeChildModel = null;
+
         if (index >= 0 && index < transform.childCount)
         {
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).gameObject.SetActive(i == index);
+                bool bActive = i == index;
+                transform.GetChild(i).gameObject.SetActive(bActive);
+
+                if (bActive == true)
+                    activeChildModel = transform.GetChild(i);
             }
             currentActive = index;
         }
+
+#if UNITY_EDITOR
+        // ensure it is presented in menu-standing-pose for icon render
+        Editor_SampleMenuStandingAnimationPoseForCharacter(activeChildModel);
+#endif
     }
+
+#if UNITY_EDITOR
+    public void Editor_SampleMenuStandingAnimationPoseForCharacter(Transform prefabCharacterParent)
+    {
+        if (prefabCharacterParent == null)
+            return;
+
+        GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(prefabCharacterParent.gameObject) as GameObject;
+
+        string path = AssetDatabase.GetAssetPath(prefab);
+        if (string.IsNullOrEmpty(path))
+        {
+            Debug.LogError("Active child model is not part of the assets.");
+            return;
+        }
+
+        // is it character?
+        if (!path.Contains("/Characters/"))
+        {
+            return;
+        }
+
+        string[] segments = path.Split('/');
+        int charIndex = System.Array.IndexOf(segments, "Characters") + 1;
+
+        if (charIndex <= 0 || charIndex >= segments.Length)
+        {
+            Debug.LogError("Character directory not found in the path.");
+            return;
+        }
+
+        string charName = segments[charIndex];
+        string scriptableObjectPath = path.Substring(0, path.IndexOf("Characters")) + $"Characters/{charName}/__PUT_Blender_ANIM_Export_here/PTK_Workshop_Char Anim Config.asset";
+        
+
+        PTK_Workshop_CharAnimConfig config = AssetDatabase.LoadAssetAtPath<PTK_Workshop_CharAnimConfig>(scriptableObjectPath);
+
+        if (config != null)
+        {
+
+            foreach (Transform child in prefabCharacterParent.transform)
+            {
+                child.localPosition = Vector3.zero;
+            }
+
+            if (config.CharacterA.Menu.Count > 0)
+            {
+                AnimationClip animClip = config.CharacterA.GetClipByNameFull("idle_menu");
+                if (animClip == null)
+                {
+                    Debug.LogError("Cant find menu animation clip for character " + path);
+                }
+                else
+                {
+                    GameObject animModel = prefabCharacterParent.GetChild(0).gameObject;
+                    animClip.SampleAnimation(animModel, 0.0f);
+                }
+            }
+
+
+            if (config.CharacterB.Menu.Count > 0)
+            {
+                AnimationClip animClip = config.CharacterB.GetClipByNameFull("idle_menu");
+                if (animClip == null)
+                {
+                    Debug.LogError("Cant find menu animation clip for character " + path);
+                }
+                else
+                {
+                    GameObject animModel = prefabCharacterParent.GetChild(1).gameObject;
+                    animClip.SampleAnimation(animModel, 0.0f);
+                }
+            }
+
+            if (config.CharacterC.Menu.Count > 0)
+            {
+                AnimationClip animClip = config.CharacterC.GetClipByNameFull("idle_menu");
+                if (animClip == null)
+                {
+                    Debug.LogError("Cant find menu animation clip for character " + path);
+                }
+                else
+                {
+                    GameObject animModel = prefabCharacterParent.GetChild(2).gameObject;
+                    animClip.SampleAnimation(animModel, 0.0f);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Failed to load the PTK_Workshop_CharAnimConfig scriptable object for character.");
+        }
+    }
+#endif
 
     public ChildData GetChildWithBestPath(string strPathToFile)
     {

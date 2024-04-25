@@ -14,7 +14,11 @@ using UnityEngine;
 
 public class PTK_ModItemConfigurator
 {
+#if PTK_OFFICIAL_CONTENT
+    public const string strWorkshopContentDirName = "Workshop_Content_PrivateOfficial"; // for official content it is "Workshop_Content_PrivateOfficial"
+#else
     public const string strWorkshopContentDirName = "Workshop_Content"; // for official content it is "Workshop_Content_PrivateOfficial"
+#endif
 
     public const string rootPath = "Assets/" + strWorkshopContentDirName;
     private Regex Pattern_CharacterOnly = new Regex(strWorkshopContentDirName + @"/Characters/(?<characterName>[^/]+)");
@@ -125,7 +129,7 @@ public class PTK_ModItemConfigurator
                         Directory.CreateDirectory(Path.GetDirectoryName(strTargetDirectory));
 
 
-                    GameObject instance = GameObject.Instantiate(prefabAsset);
+                    GameObject instance = (GameObject)PrefabUtility.InstantiatePrefab((UnityEngine.Object)prefabAsset);
 
                     if (animConfig.CharacterA.Menu.Count == 0)
                     {
@@ -143,7 +147,14 @@ public class PTK_ModItemConfigurator
                         instance.transform.position = childWithBestPath.vPosition;
                         instance.transform.rotation = childWithBestPath.qRotation;
                         instance.transform.localScale = childWithBestPath.vLoosyScale;
+
+                        foreach(Transform child in instance.transform)
+                        {
+                            child.localPosition = Vector3.zero;
+                        }
                     }
+
+                    exporter.boundingBoxCalculator.Editor_SampleMenuStandingAnimationPoseForCharacter(instance.transform);
 
                     ThumbnailGenerate.TakeScreenshoot(2048, 2048, Camera.main, true, strTargetDirectory, true, 512, 512);
                     AssetDatabase.Refresh();
@@ -410,7 +421,7 @@ public class PTK_ModItemConfigurator
                 }
 
                 GameObject prefabAsset = AssetDatabase.LoadAssetAtPath<GameObject>(strFullPath);
-                GameObject instance = GameObject.Instantiate(prefabAsset);
+                GameObject instance =(GameObject) PrefabUtility.InstantiatePrefab((UnityEngine.Object)prefabAsset);
 
                 var childWithBestPath = exporter.boundingBoxCalculator.GetChildWithBestPath(strFullPath);
 
@@ -419,7 +430,14 @@ public class PTK_ModItemConfigurator
                     instance.transform.position = childWithBestPath.vPosition;
                     instance.transform.rotation = childWithBestPath.qRotation;
                     instance.transform.localScale = childWithBestPath.vLoosyScale;
+
+                    foreach (Transform child in instance.transform)
+                    {
+                        child.localPosition = Vector3.zero;
+                    }
                 }
+
+                exporter.boundingBoxCalculator.Editor_SampleMenuStandingAnimationPoseForCharacter(instance.transform);
 
                 ThumbnailGenerate.TakeScreenshoot(2048, 2048, Camera.main, true, strTargetFilePathForThumbPNG, true, 512, 512);
                 AssetDatabase.Refresh();
