@@ -299,17 +299,17 @@ public class PTK_PackageExporterGUI
 
         if (strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
         {
-            modThumbnailTexPreview = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Thumbnail.png");
-            modScreen1 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen1.png");
-            modScreen2 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen2.png");
-            modScreen3 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen3.png");
-            modScreen4 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen4.png");
+            modThumbnailTexPreview = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
+            modScreen1 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen1"+ PTK_ModInfo.strThumbScreenImageExt);
+            modScreen2 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen2"+ PTK_ModInfo.strThumbScreenImageExt);
+            modScreen3 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen3"+ PTK_ModInfo.strThumbScreenImageExt);
+            modScreen4 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen4"+ PTK_ModInfo.strThumbScreenImageExt);
 
         }
 
         if (modThumbnailTexPreview != null)
         {
-            float fThumbnailSizeMB = new FileInfo(strModTexturePreviewsPath + "Thumbnail.png").Length / (1024.0f * 1024);
+            float fThumbnailSizeMB = new FileInfo(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt).Length / (1024.0f * 1024);
             fCurrentMBThumbnailSize = fThumbnailSizeMB;
         }
         else
@@ -323,7 +323,7 @@ public class PTK_PackageExporterGUI
         GUI.color = Color.yellow;
         if (GUILayout.Button("Show Thumbnail & Screens in Explorer"))
         {
-            EditorUtility.RevealInFinder(strModTexturePreviewsPath + "Thumbnail.png");
+            EditorUtility.RevealInFinder(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
         }
         GUI.color = Color.white;
 
@@ -533,19 +533,19 @@ public class PTK_PackageExporterGUI
             string strFileName = "";
 
             string strModTexturePreviewsPath = GetCurrentModEditorSO_LocationDirPath(exporter);
-            strFileName = "Thumbnail.png";
+            strFileName = "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt;
             System.IO.File.WriteAllBytes(strModTexturePreviewsPath + strFileName, emptyTex960);
 
-            strFileName = "Screen1.png";
+            strFileName = "Screen1"+ PTK_ModInfo.strThumbScreenImageExt;
             System.IO.File.WriteAllBytes(strModTexturePreviewsPath + strFileName, emptyTex1920);
 
-            strFileName = "Screen2.png";
+            strFileName = "Screen2"+ PTK_ModInfo.strThumbScreenImageExt;
             System.IO.File.WriteAllBytes(strModTexturePreviewsPath + strFileName, emptyTex1920);
 
-            strFileName = "Screen3.png";
+            strFileName = "Screen3"+ PTK_ModInfo.strThumbScreenImageExt;
             System.IO.File.WriteAllBytes(strModTexturePreviewsPath + strFileName, emptyTex1920);
 
-            strFileName = "Screen4.png";
+            strFileName = "Screen4"+ PTK_ModInfo.strThumbScreenImageExt;
             System.IO.File.WriteAllBytes(strModTexturePreviewsPath + strFileName, emptyTex1920);
 
 

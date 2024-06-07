@@ -123,6 +123,10 @@ public class PTK_AddressableAssetsHandler
         if (modInfoGroup == null)
             modInfoGroup = CreateAndConfigureGroup("ModInfoGroup", buildPath, exporter.currentMod);
 
+        settings.DefaultGroup = modInfoGroup; // important because default built in shaders will land in this group (and not in enviro group that is not included in mod package)
+        EditorUtility.SetDirty(settings);
+        AssetDatabase.SaveAssets();
+
         var currentModGuid = AssetDatabase.AssetPathToGUID(AssetDatabase.GetAssetPath(exporter.currentMod));
 
         var modInfoEntry = settings.CreateOrMoveEntry(currentModGuid, modInfoGroup);
@@ -356,7 +360,7 @@ public class PTK_AddressableAssetsHandler
 
         string strModTexturesPreviewsPath = exporter.packageExporterGUI.GetCurrentModEditorSO_LocationDirPath(exporter);
 
-        string strThumbnailPath1MBCheck = Path.Combine(strModTexturesPreviewsPath, "Thumbnail.png");
+        string strThumbnailPath1MBCheck = Path.Combine(strModTexturesPreviewsPath, "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
         if (File.Exists(strThumbnailPath1MBCheck) == false)
         {
             Debug.LogError("File thumbnail not found in path: " + strThumbnailPath1MBCheck);
@@ -369,7 +373,7 @@ public class PTK_AddressableAssetsHandler
         exporter.packageExporterGUI.fCurrentMBThumbnailSize = fThumbnailSizeMB;
         if (fThumbnailSizeMB > 1.0f)
         {
-            Debug.LogError("File thumnail size is higher than 1MB!");
+            Debug.LogError("File thumnail size is higher than 1MB! Size: " + fThumbnailSizeMB.ToString() + " MB");
             return false;
         }
 
@@ -377,7 +381,7 @@ public class PTK_AddressableAssetsHandler
         {
             for (int i = 0; i < 4; i++)
             {
-                string strScreenName = "Screen" + (i + 1).ToString() + ".png";
+                string strScreenName = "Screen" + (i + 1).ToString() + PTK_ModInfo.strThumbScreenImageExt;
                 string strScreenPath = Path.Combine(strModTexturesPreviewsPath, strScreenName);
                 if (File.Exists(strScreenPath) == false)
                 {
@@ -388,7 +392,7 @@ public class PTK_AddressableAssetsHandler
                 float fScreenMB = new FileInfo(strScreenPath).Length / (1024 * 1024.0f);
                 if (fScreenMB > 1.0f)
                 {
-                    Debug.LogError("File thumnail size is higher than 1MB!" + fScreenMB.ToString());
+                    Debug.LogError("File screen size is higher than 1MB! Size: " + fScreenMB.ToString() + " MB");
                     return false;
                 }
             }
@@ -482,23 +486,23 @@ public class PTK_AddressableAssetsHandler
         {
             string strFileName = "";
 
-            strFileName = "Thumbnail.png";
+            strFileName = "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt;
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
 
-            strFileName = "Screen1.png";
+            strFileName = "Screen1"+ PTK_ModInfo.strThumbScreenImageExt;
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
 
-            strFileName = "Screen2.png";
+            strFileName = "Screen2"+ PTK_ModInfo.strThumbScreenImageExt;
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
 
-            strFileName = "Screen3.png";
+            strFileName = "Screen3"+ PTK_ModInfo.strThumbScreenImageExt;
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
 
-            strFileName = "Screen4.png";
+            strFileName = "Screen4"+ PTK_ModInfo.strThumbScreenImageExt;
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(buildPathModDir, strFileName), true); // copy into main mod directory (without platforms)
             File.Copy(strModTexturesPreviewsPath + strFileName, Path.Combine(strDirectoryOfModWithFilesForTargetBuildPlatform, strFileName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
         }
