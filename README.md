@@ -13,17 +13,14 @@
   <a href="https://github.com/PixelEdgeGames/TheKarters_WorkshopProjectRelease/wiki" style="display: inline-block; background-color: #4CAF50; color: white; padding: 14px 25px; text-align: center; text-decoration: none; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">Documentation & Tutorials</a>
 </p>
 
-<h2>SDK Version - v0.8 Preview Release</h2>
+<h2>SDK Version - v1.0 BETA</h2>
 <p>
  Welcome to the initial release of our SDK! 
 </p>
 
 <p>
- This version, v0.8, is primarily designed for you to explore our documentation and tools. We're eager to hear your thoughts and suggestions, which you can share with us on our Discord channel at <a href="https://discord.gg/TheKarters">Discord</a>.
-</p>
-
-<p>
- <strong>Important Notice:</strong>   We recommend against using this version for your projects just yet. Starting from the forthcoming <strong>version 0.9</strong>, which will be released in conjunction with our game's upcoming closed beta tests, you will be encouraged to fully utilize these tools. This will also mark an exciting phase where you'll be able to test your creations directly within the game environment. 
+ 1.0 BETA, allows you to work on your creations without requiring future updates (though they are highly recommended).
+  We're eager to hear your thoughts and suggestions, which you can share with us on our Discord channel at <a href="https://discord.gg/TheKarters">Discord</a>.
 </p>
 
 <h2>🔧 Supported Mods Types</h2>
