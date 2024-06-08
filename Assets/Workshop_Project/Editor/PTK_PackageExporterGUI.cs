@@ -23,6 +23,7 @@ public class PTK_PackageExporterGUI
     string[] VisibilityOptions = new string[] { "Public", "FriendsOnly", "Unlisted", "Private" };
     string strModSO_Path = "Assets/Workshop_Project/LocalUserModsGenerationConfigs";
 
+    public Texture2D menuTrackThumbnail = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
     public Texture2D modThumbnailTexPreview = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
     Texture2D modScreen1 = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
     Texture2D modScreen2 = null; // local only, to not include in mod package (extra size, can be up to 3mb!)
@@ -297,6 +298,9 @@ public class PTK_PackageExporterGUI
     {
         string strModTexturePreviewsPath = GetCurrentModEditorSO_LocationDirPath(exporter);
 
+        string strSceneDir = Path.GetDirectoryName(UnityEngine.SceneManagement.SceneManager.GetActiveScene().path);
+        string strSceneThumbnailPath = strSceneDir + "\\TrackThumbnail.png";
+
         if (strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
         {
             modThumbnailTexPreview = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
@@ -306,6 +310,9 @@ public class PTK_PackageExporterGUI
             modScreen4 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen4"+ PTK_ModInfo.strThumbScreenImageExt);
 
         }
+
+        if(menuTrackThumbnail == null || strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
+            menuTrackThumbnail = AssetDatabase.LoadAssetAtPath<Texture2D>(strSceneThumbnailPath);
 
         if (modThumbnailTexPreview != null)
         {
@@ -320,11 +327,33 @@ public class PTK_PackageExporterGUI
         strLastPresentedModTexturePreviewsPath = strModTexturePreviewsPath;
 
         GUILayout.BeginVertical();
+
+        if(exporter.currentMod.strModTag.ToLower().Contains("track") == true)
+        {
+            GUI.color = Color.cyan;
+            if (GUILayout.Button("edit RACE TRACK Hi-Res Thumbnail (show in windows Explorer)"))
+            {
+                EditorUtility.RevealInFinder(strSceneThumbnailPath);
+            }
+            GUILayout.Label(strSceneThumbnailPath + "   ");
+            GUI.color = Color.white;
+
+            GUI.color = Color.white;
+            GUI.enabled = false;
+            menuTrackThumbnail = (Texture2D)EditorGUILayout.ObjectField("MENU 16x9 Hi-Resolution", menuTrackThumbnail, typeof(Texture2D), false);
+            GUI.enabled = true;
+
+            GUILayout.Space(10);
+        }
+      
+
+
         GUI.color = Color.yellow;
-        if (GUILayout.Button("Show Thumbnail & Screens in Explorer"))
+        if (GUILayout.Button("edit STEAM/Mods.IO Thumbnail & Screens (show in windows Explorer)"))
         {
             EditorUtility.RevealInFinder(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
         }
+        GUILayout.Label(strModTexturePreviewsPath +"Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
         GUI.color = Color.white;
 
         if (fCurrentMBThumbnailSize >= 1.0f || modThumbnailTexPreview == null)
@@ -336,8 +365,10 @@ public class PTK_PackageExporterGUI
 
         GUI.color = Color.white;
         GUI.enabled = false;
-        modThumbnailTexPreview = (Texture2D)EditorGUILayout.ObjectField("Mod Thumbnail 16x9", modThumbnailTexPreview, typeof(Texture2D), false);
+        modThumbnailTexPreview = (Texture2D)EditorGUILayout.ObjectField("Steam Thumbnail 16x9", modThumbnailTexPreview, typeof(Texture2D), false);
         GUI.enabled = true;
+
+
         GUILayout.BeginVertical();
 
 
@@ -360,18 +391,6 @@ public class PTK_PackageExporterGUI
 
         GUILayout.EndVertical();
 
-        // Optional: Display the assigned texture
-        if (modThumbnailTexPreview != null)
-        {
-            GUILayout.BeginHorizontal();
-            Rect rect = GUILayoutUtility.GetRect(-0, 0, 100, 100); // Adjust size as needed
-            rect.width = 192;
-            rect.height = 108;
-            GUI.DrawTexture(rect, modThumbnailTexPreview);
-            GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
-            GUILayout.Space(10);
-        }
     }
 
     private void RenderModConfigurations(PTK_PackageExporter exporter)
