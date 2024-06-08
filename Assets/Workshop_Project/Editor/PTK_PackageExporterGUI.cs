@@ -330,8 +330,10 @@ public class PTK_PackageExporterGUI
 
         if(exporter.currentMod.strModTag.ToLower().Contains("track") == true)
         {
+            GUI.color = Color.yellow;
             GUILayout.Label("Increase version to reset leaderboard");
-            exporter.currentMod.iTrackLeaderboardVersion = EditorGUILayout.IntField("Track Leaderboard Version", exporter.currentMod.iTrackLeaderboardVersion);
+            GUI.color = Color.white;
+            exporter.currentMod.iTrackLeaderboardVersion = EditorGUILayout.IntField("Track Leaderboard Ver", exporter.currentMod.iTrackLeaderboardVersion);
 
             GUI.color = Color.cyan;
             if (GUILayout.Button("edit RACE TRACK Hi-Res Thumbnail (show in windows Explorer)"))
