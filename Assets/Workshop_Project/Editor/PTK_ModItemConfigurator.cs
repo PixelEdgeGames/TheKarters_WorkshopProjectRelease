@@ -242,7 +242,7 @@ public class PTK_ModItemConfigurator
                 CPTK_ModContentInfoFile.CTrackInfo trackInfo = exporter.currentMod.modContentInfo.GetTrackFromDirectoryName(strName, true);
                 trackInfo.strTrackSceneName_AddressableKey = strPrefabAddressableKey;
                 trackInfo.iGeneratedTargetUniqueConfigID = GetStringHashWithMD5(exporter.currentMod.UniqueModNameHashToGenerateItemsKeys + strPrefabAddressableKey);
-
+                trackInfo.iLeaderboardVersion = exporter.currentMod.iTrackLeaderboardVersion;
                 UpdateTrackModFileItem(exporter,trackInfo, strFullPath, strPrefabAddressableKey);
             }
         }
