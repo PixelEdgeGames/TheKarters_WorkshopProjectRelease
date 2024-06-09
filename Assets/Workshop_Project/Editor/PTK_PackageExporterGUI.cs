@@ -33,7 +33,9 @@ public class PTK_PackageExporterGUI
 
 
     private Vector2 scrollPosition;
+    private Vector2 scrollPositionSettings;
     private Vector2 scrollPositionNames;
+    private Vector2 scrollPositionThumbnails;
     bool bRefreshDirectories = false;
 
     private Vector2 scrollPositionDescription;
@@ -43,6 +45,11 @@ public class PTK_PackageExporterGUI
     public string strUploadPassword = "";
     public string strLastPresentedModTexturePreviewsPath = "";
     public float fCurrentMBThumbnailSize = 0.0f;
+
+    private string[] tabOptions = new string[] { "Settings","Thumbnails", "Export" };
+    private int selectedTabIndex = 0;
+    private int iSelectedImageTabIndex = 0;
+    private string[] tabImageOptions = new string[] { "Steam Workshop & Mods.IO", "Track Selection Game Menu" };
 
     internal void OnEnable(PTK_PackageExporter exporter)
     {
@@ -57,9 +64,17 @@ public class PTK_PackageExporterGUI
         if (exporter.currentMod != null)
             Undo.RecordObject(exporter.currentMod, "Mod Changed");
 
+
+
+
         EditorGUI.BeginChangeCheck();
 
-        ModConfigGUI(exporter);
+        RenderModVersionInfo();
+
+        RenderSelectedAndManageModInfo(exporter);
+
+        GUILayout.Space(20);
+
 
         if (exporter.currentMod == null)
         {
@@ -68,7 +83,39 @@ public class PTK_PackageExporterGUI
         }
 
 
-        RenderModGenerationGUI(exporter);
+        selectedTabIndex = GUILayout.SelectionGrid(selectedTabIndex, tabOptions, tabOptions.Length);
+
+        RefreshTrackModCheck(exporter);
+
+        switch (selectedTabIndex)
+        {
+            case 0:
+                ModConfigGUI(exporter);
+                break;
+            case 1:
+
+                RenderModThumbnailsAndScreens(exporter);
+                break;
+            case 2:
+
+                RenderModGenerationGUI(exporter);
+                break;
+        }
+
+
+
+    }
+
+     void RenderLeaderboardVersion(PTK_PackageExporter exporter)
+    {
+        GUI.enabled = bIsTrackMod;
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Track Leaderboard Version - Increase version to reset leaderboard");
+        exporter.currentMod.iTrackLeaderboardVersion = EditorGUILayout.IntField("", exporter.currentMod.iTrackLeaderboardVersion);
+        GUILayout.EndHorizontal();
+        GUI.color = Color.white;
+        GUI.enabled = true;
+        GUILayout.Space(15);
     }
 
     void RenderModGenerationGUI(PTK_PackageExporter exporter)
@@ -86,6 +133,10 @@ public class PTK_PackageExporterGUI
         GUILayout.Space(5);
 
         RenderExportPasswordView(exporter);
+
+        RenderModChangelogInfo(exporter);
+
+        RenderLeaderboardVersion(exporter);
 
         RenderExportButtons(exporter);
 
@@ -113,6 +164,48 @@ public class PTK_PackageExporterGUI
         }
     }
 
+    enum ETrackModError
+    {
+        E_NONE,
+        E_MULTIPLE_ITEMS_SELECTED_FOR_TRACK_TAG,
+        E_TRACK_TAG_BUT_NO_TRACK_SELECTED
+    }
+
+    static ETrackModError eCurrentTrackModError = ETrackModError.E_NONE;
+
+    void RefreshTrackModCheck(PTK_PackageExporter exporter)
+    {
+        bIsTrackMod = exporter.currentMod.strModTag.ToLower().Contains("track") == true;
+
+
+        if (bIsTrackMod == true)
+        {
+            if (exporter.currentMod.SelectedPaths.Count > 1)
+            {
+                eCurrentTrackModError = ETrackModError.E_MULTIPLE_ITEMS_SELECTED_FOR_TRACK_TAG;
+
+                bIsTrackMod = false;
+            }
+            else
+            {
+                if (exporter.currentMod.SelectedPaths.Count == 0 || exporter.currentMod.SelectedPaths[0].ToLower().Contains("tracks") == false)
+                {
+                    eCurrentTrackModError = ETrackModError.E_TRACK_TAG_BUT_NO_TRACK_SELECTED;
+
+                    bIsTrackMod = false;
+                }
+                else
+                {
+                    strSelectedTrackToExportDir = exporter.currentMod.SelectedPaths[0];
+                    eCurrentTrackModError = ETrackModError.E_NONE;
+                }
+            }
+        }else
+        {
+            eCurrentTrackModError = ETrackModError.E_NONE;
+        }
+    }
+
     private static void RenderSelectedForExportTreeView(PTK_PackageExporter exporter)
     {
 
@@ -123,9 +216,30 @@ public class PTK_PackageExporterGUI
         GUILayout.EndVertical();
     }
 
+    static void DisplayTrackErrors()
+    {
+        if (eCurrentTrackModError == ETrackModError.E_TRACK_TAG_BUT_NO_TRACK_SELECTED)
+        {
+            GUI.color = Color.red;
+            GUILayout.Label("You choosen Track tag but no Track selected for export!!");
+            GUI.color = Color.white;
+        }
+        else if (eCurrentTrackModError == ETrackModError.E_MULTIPLE_ITEMS_SELECTED_FOR_TRACK_TAG)
+        {
+            GUI.color = Color.red;
+            GUILayout.Label("Only One item should be selected for Track Mod package!");
+            GUI.color = Color.white;
+        }
+    }
     private static void RenderExportButtons(PTK_PackageExporter exporter)
     {
-        if (GUILayout.Button("Export & generate only new thumbnails (fast)"))
+        DisplayTrackErrors();
+
+
+        if (eCurrentTrackModError != ETrackModError.E_NONE)
+            GUI.enabled = false;
+
+       if (GUILayout.Button("Export & generate only new thumbnails (fast)"))
         {
             exporter.ExportModPackage(false);
 
@@ -140,6 +254,7 @@ public class PTK_PackageExporterGUI
         }
 
         GUI.color = Color.white;
+        GUI.enabled = true;
     }
 
     private void RenderExportPasswordView(PTK_PackageExporter exporter)
@@ -232,31 +347,24 @@ public class PTK_PackageExporterGUI
 
     void ModConfigGUI(PTK_PackageExporter exporter)
     {
-        RenderModVersionInfo();
-
-        RenderSelectedAndManageModInfo(exporter);
-
-        GUILayout.Space(20);
 
 
         // Only show these fields if a mod is selected
         if (exporter.currentMod != null)
         {
+            scrollPositionSettings = GUILayout.BeginScrollView(scrollPositionSettings);
             // configs id
             RenderModConfigurations(exporter);
 
-            GUILayout.Space(10);
-
-            GUILayout.BeginHorizontal();
-            RenderModThumbnailsAndScreens(exporter);
-            RenderModDescription(exporter);
-            GUILayout.EndHorizontal();
+           // RenderModDescription(exporter);
 
             GUILayout.Space(10);
 
-            RenderModChangelogInfo(exporter);
+            RenderLeaderboardVersion(exporter);
 
             GUILayout.Space(2);
+
+            GUILayout.EndScrollView();
 
         }
 
@@ -267,10 +375,12 @@ public class PTK_PackageExporterGUI
         exporter.currentMod.UserModVersion = EditorGUILayout.FloatField("Mod Version (User)", exporter.currentMod.UserModVersion);
         GUILayout.BeginHorizontal(GUI.skin.box);
         GUILayout.Label("Changelog", GUILayout.Width(100));
-        scrollPositionChangelog = EditorGUILayout.BeginScrollView(scrollPositionChangelog, GUILayout.Height(60));
+        scrollPositionChangelog = EditorGUILayout.BeginScrollView(scrollPositionChangelog, GUILayout.Height(100));
         exporter.currentMod.strModChangelog = EditorGUILayout.TextArea(exporter.currentMod.strModChangelog, GUILayout.ExpandHeight(true));
         EditorGUILayout.EndScrollView();
         GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
     }
 
     private void RenderModDescription(PTK_PackageExporter exporter)
@@ -282,9 +392,7 @@ public class PTK_PackageExporterGUI
         exporter.currentMod.bUploadModDescriptionToServer = GUILayout.Toggle(exporter.currentMod.bUploadModDescriptionToServer, "Override Current Steam Mod Description");
         GUI.color = Color.white;
         GUILayout.Label("Description", GUILayout.Width(100));
-        scrollPositionDescription = EditorGUILayout.BeginScrollView(scrollPositionDescription, GUILayout.Height(110));
-        exporter.currentMod.strModDescription = EditorGUILayout.TextArea(exporter.currentMod.strModDescription, GUILayout.ExpandHeight(true), GUILayout.Width(300));
-        EditorGUILayout.EndScrollView();
+        exporter.currentMod.strModDescription = EditorGUILayout.TextArea(exporter.currentMod.strModDescription, GUILayout.Height(300), GUILayout.Width(300));
         GUILayout.EndVertical();
         GUILayout.Space(2);
 
@@ -294,12 +402,16 @@ public class PTK_PackageExporterGUI
         GUILayout.FlexibleSpace();
     }
 
+    bool bIsTrackMod = false;
+    string strSelectedTrackToExportDir = "";
     private void RenderModThumbnailsAndScreens(PTK_PackageExporter exporter)
     {
+        GUILayout.Space(10);
+        scrollPositionThumbnails = GUILayout.BeginScrollView(scrollPositionThumbnails);
+
         string strModTexturePreviewsPath = GetCurrentModEditorSO_LocationDirPath(exporter);
 
-        string strSceneDir = Path.GetDirectoryName(UnityEngine.SceneManagement.SceneManager.GetActiveScene().path);
-        string strSceneThumbnailPath = strSceneDir + "\\TrackThumbnail.png";
+        string strSceneThumbnailPath = strSelectedTrackToExportDir + "\\TrackThumbnail.png";
 
         if (strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
         {
@@ -311,8 +423,6 @@ public class PTK_PackageExporterGUI
 
         }
 
-        if(menuTrackThumbnail == null || strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
-            menuTrackThumbnail = AssetDatabase.LoadAssetAtPath<Texture2D>(strSceneThumbnailPath);
 
         if (modThumbnailTexPreview != null)
         {
@@ -328,29 +438,17 @@ public class PTK_PackageExporterGUI
 
         GUILayout.BeginVertical();
 
-        if(exporter.currentMod.strModTag.ToLower().Contains("track") == true)
-        {
-            GUI.color = Color.yellow;
-            GUILayout.Label("Increase version to reset leaderboard");
-            GUI.color = Color.white;
-            exporter.currentMod.iTrackLeaderboardVersion = EditorGUILayout.IntField("Track Leaderboard Ver", exporter.currentMod.iTrackLeaderboardVersion);
+        GUILayout.Space(20);
 
-            GUI.color = Color.cyan;
-            if (GUILayout.Button("edit RACE TRACK Hi-Res Thumbnail (show in windows Explorer)"))
-            {
-                EditorUtility.RevealInFinder(strSceneThumbnailPath);
-            }
-            GUILayout.Label(strSceneThumbnailPath + "   ");
-            GUI.color = Color.white;
+        GUILayout.BeginHorizontal();
+        GUI.color = Color.yellow;
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Steam / Mods.io Thumbnails & Screenshots", GUI.skin.box);
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUI.color = Color.white;
 
-            GUI.color = Color.white;
-            GUI.enabled = false;
-            menuTrackThumbnail = (Texture2D)EditorGUILayout.ObjectField("MENU 16x9 Hi-Resolution", menuTrackThumbnail, typeof(Texture2D), false);
-            GUI.enabled = true;
-
-            GUILayout.Space(10);
-        }
-      
+        GUILayout.Space(10);
 
 
         GUI.color = Color.yellow;
@@ -358,7 +456,7 @@ public class PTK_PackageExporterGUI
         {
             EditorUtility.RevealInFinder(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
         }
-        GUILayout.Label(strModTexturePreviewsPath +"Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
+        GUILayout.Label(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
         GUI.color = Color.white;
 
         if (fCurrentMBThumbnailSize >= 1.0f || modThumbnailTexPreview == null)
@@ -382,7 +480,7 @@ public class PTK_PackageExporterGUI
             GUI.color = Color.green;
         exporter.currentMod.bUploadAndReplaceScreenshootsOnServer = GUILayout.Toggle(exporter.currentMod.bUploadAndReplaceScreenshootsOnServer, "Override Current Steam Screenshoots");
         GUI.color = Color.white;
-        EditorGUILayout.EndScrollView();
+        EditorGUILayout.EndVertical();
 
 
         GUILayout.Label("Screens ( under 1MB!)");
@@ -394,7 +492,56 @@ public class PTK_PackageExporterGUI
         GUI.enabled = true;
         GUILayout.EndVertical();
 
+
+        // track thumbnails
+
+
+        GUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.color = Color.cyan;
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Race Track Game Menu Thumbnail", GUI.skin.box);
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUI.color = Color.white;
+
+        GUILayout.Space(20);
+        if (bIsTrackMod == false)
+        {
+            GUI.color = Color.gray;
+            GUILayout.Label("DISABLED - This is not a Track Mod (either the 'Track' tag is not selected or the track is not marked for export).");
+            GUI.enabled = false;
+
+        }
+
+        if (menuTrackThumbnail == null || strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
+            menuTrackThumbnail = AssetDatabase.LoadAssetAtPath<Texture2D>(strSceneThumbnailPath);
+
+
+        GUI.color = Color.cyan;
+        GUILayout.Space(10);
+        if (GUILayout.Button("edit RACE TRACK Hi-Res Thumbnail (show in windows Explorer)"))
+        {
+            EditorUtility.RevealInFinder(strSceneThumbnailPath);
+        }
+        GUILayout.Label(strSceneThumbnailPath + "   ");
+        GUI.color = Color.white;
+
+        GUI.color = Color.white;
+        GUI.enabled = false;
+        menuTrackThumbnail = (Texture2D)EditorGUILayout.ObjectField("MENU 16x9 Hi-Resolution", menuTrackThumbnail, typeof(Texture2D), false);
+        GUI.enabled = true;
+
+        GUILayout.Space(10);
+
+        GUI.enabled = true;
+
+
         GUILayout.EndVertical();
+
+
+        GUILayout.EndScrollView();
 
     }
 
@@ -476,7 +623,14 @@ public class PTK_PackageExporterGUI
                 break;
         }
 
+
+
         GUILayout.EndHorizontal();
+
+
+        DisplayTrackErrors();
+
+       
     }
 
     private void RenderSelectedAndManageModInfo(PTK_PackageExporter exporter)
