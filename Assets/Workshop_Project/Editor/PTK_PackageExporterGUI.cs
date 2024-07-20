@@ -448,20 +448,33 @@ public class PTK_PackageExporterGUI
                 {
                     DirectoryInfo dirInfoVO = new DirectoryInfo(strCharacterPath);
                     var trackDirFiles = dirInfoVO.GetFiles();
+                    bool bContainBnkFile = false;
+
                     for (int i = 0; i < trackDirFiles.Length; i++)
                     {
                         if (trackDirFiles[i].Name.Contains(".meta"))
                             continue;
+
 
                         if (trackDirFiles[i].Name.Contains(".bnk"))
                         {
                             strCharVOSoundBank = trackDirFiles[i].Name;
 
                             string strVOSoundbankPath = strCharacterPath + "\\" + strCharVOSoundBank;
+
+                            characterPaths.Add(strCharacterPath);
                             voPaths.Add(strVOSoundbankPath);
                             voSoundBankNames.Add(strCharVOSoundBank);
-                            characterPaths.Add(strCharacterPath);
+
+                            bContainBnkFile = true;
                         }
+                    }
+
+                    if(bContainBnkFile == false)
+                    {
+                        characterPaths.Add(strCharacterPath);
+                        voPaths.Add("");
+                        voSoundBankNames.Add("");
                     }
                 }
             }
@@ -622,9 +635,11 @@ public class PTK_PackageExporterGUI
                 EditorUtility.RevealInFinder(strCharacterInfoPath);
             }
             GUILayout.EndHorizontal();
-            GUILayout.Label(strVOSoundbankPath);
+            GUILayout.Label(strCharacterPath);
             GUILayout.EndVertical();
 
+            if (soundBank == null)
+                continue;
 
             if (bIsCharactersMod == true)
             {

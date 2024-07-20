@@ -500,6 +500,9 @@ public class PTK_AddressableAssetsHandler
             bool bSuccess = true;
             for (int i = 0; i < soundBankVOPaths.Length; i++)
             {
+                if (soundBankVOPaths[i] == "")
+                    continue;
+
                 bSuccess &= CopySoundBankToModDir(soundBankVOPaths[i], soundBankVONames[i], strDirectoryOfModWithFilesForTargetBuildPlatform);
             }
 
