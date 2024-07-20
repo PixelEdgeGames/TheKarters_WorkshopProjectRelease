@@ -1,16 +1,9 @@
-using UnityEditor;
-using UnityEditor.IMGUI.Controls;
-using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System;
-using UnityEditor.AddressableAssets.Settings;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using System.Linq;
-using System.Text.RegularExpressions;
-using System.Text;
-using System.Security.Cryptography;
+using UnityEditor;
+using UnityEngine;
 
 public class PTK_PackageExporterGUI
 {
@@ -46,7 +39,7 @@ public class PTK_PackageExporterGUI
     public string strLastPresentedModTexturePreviewsPath = "";
     public float fCurrentMBThumbnailSize = 0.0f;
 
-    private string[] tabOptions = new string[] { "Settings","Thumbnails", "Export" };
+    private string[] tabOptions = new string[] { "Settings","Thumbnails","VO & Music", "Export" };
     private int selectedTabIndex = 0;
     private int iSelectedImageTabIndex = 0;
     private string[] tabImageOptions = new string[] { "Steam Workshop & Mods.IO", "Track Selection Game Menu" };
@@ -87,6 +80,8 @@ public class PTK_PackageExporterGUI
 
         RefreshTrackModCheck(exporter);
 
+        RefreshTrackThumbnails(exporter);
+
         switch (selectedTabIndex)
         {
             case 0:
@@ -97,6 +92,9 @@ public class PTK_PackageExporterGUI
                 RenderModThumbnailsAndScreens(exporter);
                 break;
             case 2:
+                RenderModMusicInfo(exporter);
+                break;
+            case 3:
 
                 RenderModGenerationGUI(exporter);
                 break;
@@ -106,7 +104,24 @@ public class PTK_PackageExporterGUI
 
     }
 
-     void RenderLeaderboardVersion(PTK_PackageExporter exporter)
+    private void RefreshTrackThumbnails(PTK_PackageExporter exporter)
+    {
+        string strSceneThumbnailPath = strSelectedTrackToExportDir + "\\TrackThumbnail.png";
+        string strModTexturePreviewsPath = GetCurrentModEditorSO_LocationDirPath(exporter);
+
+        if (strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
+        {
+            modThumbnailTexPreview = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
+            modScreen1 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen1" + PTK_ModInfo.strThumbScreenImageExt);
+            modScreen2 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen2" + PTK_ModInfo.strThumbScreenImageExt);
+            modScreen3 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen3" + PTK_ModInfo.strThumbScreenImageExt);
+            modScreen4 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen4" + PTK_ModInfo.strThumbScreenImageExt);
+
+        }
+        strLastPresentedModTexturePreviewsPath = strModTexturePreviewsPath;
+    }
+
+    void RenderLeaderboardVersion(PTK_PackageExporter exporter)
     {
         GUI.enabled = bIsTrackMod;
         GUILayout.BeginHorizontal();
@@ -370,6 +385,297 @@ public class PTK_PackageExporterGUI
 
     }
 
+    private void RenderModMusicInfo(PTK_PackageExporter exporter)
+    {
+        bool bIsModTrackType = exporter.currentMod.strModTag == "Tracks";
+
+        if(bIsModTrackType == true)
+            RenderTrackCustomMusic(exporter);
+
+        bool bIsCharactersMod = exporter.currentMod.strModTag == "Characters";
+
+        if(bIsCharactersMod == true)
+            RenderCustomVoiceOvers(exporter);
+
+    }
+
+    public (string,string) GetTrackCustomMusicSoundBankPath(PTK_PackageExporter exporter)
+    {
+        string strMusicSoundBank = "";
+
+       string strSelectedTrackToExport =  exporter.currentMod.SelectedPaths[0];
+
+        if (strSelectedTrackToExportDir != "" && strSelectedTrackToExport.Contains("Tracks"))
+        {
+            DirectoryInfo dirInfoMusic = new DirectoryInfo(strSelectedTrackToExportDir);
+            var trackDirFiles = dirInfoMusic.GetFiles();
+            for (int i = 0; i < trackDirFiles.Length; i++)
+            {
+                if (trackDirFiles[i].Name.Contains(".bnk"))
+                {
+                    strMusicSoundBank = trackDirFiles[i].Name;
+                    break;
+                }
+            }
+        }
+        if (strMusicSoundBank == "")
+            return ("", "");
+
+
+        string strMusicSoundbankPath = strSelectedTrackToExportDir + "\\" + strMusicSoundBank;
+
+        return (strMusicSoundbankPath, strMusicSoundBank);
+    }
+
+    public (string[], string[],string[]) GetCharactersSoundBankPaths(PTK_PackageExporter exporter)
+    {
+        List<string> voPaths = new List<string>();
+        List<string> voSoundBankNames = new List<string>();
+        List<string> characterPaths = new List<string>();
+
+
+        for (int iPathIndex = 0; iPathIndex < exporter.currentMod.SelectedPaths.Count; iPathIndex++)
+        {
+
+            if (exporter.currentMod.SelectedPaths[iPathIndex].Contains("Characters"))
+            {
+                GUILayout.Space(5);
+
+                string strCharVOSoundBank = "";
+                string strCharacterPath = exporter.currentMod.SelectedPaths[iPathIndex];
+                //exporter.currentMod
+                if (strCharacterPath != "")
+                {
+                    DirectoryInfo dirInfoVO = new DirectoryInfo(strCharacterPath);
+                    var trackDirFiles = dirInfoVO.GetFiles();
+                    for (int i = 0; i < trackDirFiles.Length; i++)
+                    {
+                        if (trackDirFiles[i].Name.Contains(".meta"))
+                            continue;
+
+                        if (trackDirFiles[i].Name.Contains(".bnk"))
+                        {
+                            strCharVOSoundBank = trackDirFiles[i].Name;
+
+                            string strVOSoundbankPath = strCharacterPath + "\\" + strCharVOSoundBank;
+                            voPaths.Add(strVOSoundbankPath);
+                            voSoundBankNames.Add(strCharVOSoundBank);
+                            characterPaths.Add(strCharacterPath);
+                        }
+                    }
+                }
+            }
+        }
+
+        return (voPaths.ToArray(), voSoundBankNames.ToArray(), characterPaths.ToArray());
+    }
+
+    private void RenderTrackCustomMusic(PTK_PackageExporter exporter)
+    {
+        GUILayout.Space(15);
+
+
+        GUI.color = Color.yellow;
+        GUILayout.BeginHorizontal(GUI.skin.box);
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Track Custom Music - Not Required");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUI.color = Color.white;
+
+        bool bIsModTrackType = exporter.currentMod.strModTag == "Tracks";
+
+        if (bIsModTrackType == false)
+        {
+            GUILayout.BeginHorizontal(GUI.skin.box);
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Custom Music is only supported for Tracks tag");
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+
+            GUI.enabled = false;
+        }
+        else
+        {
+
+        }
+
+       ( string strMusicSoundbankPath,string strSoundBankName) = GetTrackCustomMusicSoundBankPath(exporter);
+
+        string strTrackThumbnailPath = strSelectedTrackToExportDir + "\\" + "TrackThumbnail.png";
+        GUILayout.BeginVertical(GUI.skin.box);
+        GUILayout.BeginHorizontal(GUI.skin.box);
+        GUI.color = Color.yellow; 
+        GUILayout.Label("Custom Music", GUILayout.Width(100));
+        GUI.color = Color.white;
+        var soundBank = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(strMusicSoundbankPath);
+        EditorGUILayout.ObjectField(" SoundBank    :", soundBank, typeof(UnityEngine.Object), false);
+        if (GUILayout.Button("Show In Explorer"))
+        {
+            EditorUtility.RevealInFinder(strTrackThumbnailPath);
+        }
+        GUILayout.EndHorizontal();
+        GUILayout.Label(strMusicSoundbankPath);
+        GUILayout.EndVertical();
+
+        GUI.enabled = true;
+
+        if (bIsModTrackType == true)
+        {
+            var vModTrack = GameObject.FindObjectOfType<PTK_ModTrack>();
+
+            if (vModTrack == null || vModTrack.strMusicSoundBank != strSoundBankName)
+            {
+                GUI.color = Color.red;
+                GUILayout.BeginHorizontal(GUI.skin.box);
+                GUILayout.FlexibleSpace();
+                GUILayout.Label("Ensure to set Music Soundbank name to PTK_ModTrack in scene!");
+                GUILayout.FlexibleSpace();
+
+
+                GUI.color = Color.white;
+                if (vModTrack != null)
+                {
+                    if (GUILayout.Button("Set Music Soundbank name to PTK_ModTrack object scene") == true)
+                    {
+                        vModTrack.strMusicSoundBank = strSoundBankName;
+                        EditorUtility.SetDirty(vModTrack);
+                        if (UnityEditor.SceneManagement.EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                        {
+                            AssetDatabase.SaveAssets();
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+                GUILayout.EndHorizontal();
+
+            }
+            else
+            {
+                GUI.color = Color.green + Color.white * 0.5f;
+                GUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
+                GUILayout.Label("Music Soundbank name is correctly set in PTK_ModTrack scene object");
+                GUILayout.FlexibleSpace();
+                GUILayout.EndHorizontal();
+            }
+        }
+
+        GUI.color = Color.white;
+        GUILayout.Space(5);
+    }
+
+    private void RenderCustomVoiceOvers(PTK_PackageExporter exporter)
+    {
+        GUILayout.Space(15);
+
+        GUI.color = Color.cyan;
+        GUILayout.BeginHorizontal(GUI.skin.box);
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Custom Voice Overs - Not Required");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUI.color = Color.white;
+
+        GUILayout.Space(5);
+
+        bool bIsCharactersMod = exporter.currentMod.strModTag == "Characters";
+
+        if (bIsCharactersMod == false)
+        {
+            GUI.color = Color.yellow + Color.red*2.5f;
+            GUILayout.BeginHorizontal(GUI.skin.box);
+            GUILayout.FlexibleSpace();
+            GUILayout.Label("Custom Voice Overs are only supported for Characters tag");
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+
+            GUI.color = Color.white;
+            GUI.enabled = false;
+        }
+        else
+        {
+
+        }
+
+       (string[] soundBankVOPaths, string[] soundBankVONames,string[] characterPaths) = GetCharactersSoundBankPaths(exporter);
+        for (int iPathIndex=0;iPathIndex< soundBankVOPaths.Length; iPathIndex++)
+        {
+            GUILayout.Space(5);
+
+            string strCharVOSoundBank = soundBankVONames[iPathIndex];
+            string strVOSoundbankPath = soundBankVOPaths[iPathIndex];
+            string strCharacterPath = characterPaths[iPathIndex];
+
+            string strCharacterInfoPath = strCharacterPath + "\\" + "CharacterInfo.asset";
+            GUILayout.BeginVertical(GUI.skin.box);
+            GUILayout.BeginHorizontal(GUI.skin.box);
+            GUI.color = Color.cyan;
+            GUILayout.Label(new FileInfo(strCharacterPath).Name);
+            GUI.color = Color.white;
+            var soundBank = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(strVOSoundbankPath);
+            EditorGUILayout.ObjectField(" SoundBank    :", soundBank, typeof(UnityEngine.Object), false);
+            if (GUILayout.Button("Show In Explorer"))
+            {
+                EditorUtility.RevealInFinder(strCharacterInfoPath);
+            }
+            GUILayout.EndHorizontal();
+            GUILayout.Label(strVOSoundbankPath);
+            GUILayout.EndVertical();
+
+
+            if (bIsCharactersMod == true)
+            {
+                var charInfoObject = AssetDatabase.LoadAssetAtPath<PTK_CharacterInfoSO>(strCharacterPath + "\\" + "CharacterInfo.asset");
+
+                if (charInfoObject == null || charInfoObject.charInfo.strCustomVOSoundBankName != strCharVOSoundBank)
+                {
+                    GUI.color = Color.red;
+                    GUILayout.BeginHorizontal(GUI.skin.box);
+                    GUILayout.FlexibleSpace();
+                    GUILayout.Label("Ensure to set VoiceOver Soundbank name to CharacterInfo in project!");
+                    GUILayout.FlexibleSpace();
+
+
+                    GUI.color = Color.white;
+                    if (charInfoObject != null)
+                    {
+                        if (GUILayout.Button("Set VoiceOver Soundbank name to CharacterInfo object") == true)
+                        {
+                            charInfoObject.charInfo.strCustomVOSoundBankName = strCharVOSoundBank;
+
+                            EditorUtility.SetDirty(charInfoObject);
+                            AssetDatabase.SaveAssets();
+                        }
+                    }
+                    GUILayout.EndHorizontal();
+
+                }
+                else
+                {
+                    if (strCharVOSoundBank != "")
+                    {
+                        GUI.color = Color.green + Color.white * 0.5f;
+                        GUILayout.BeginHorizontal();
+                        GUILayout.FlexibleSpace();
+                        if (charInfoObject != null)
+                            GUILayout.Label("VO Soundbank name is correctly set in CharacterInfo object");
+                        else
+                            GUILayout.Label("CharacterInfo object not found in directory");
+                        GUILayout.FlexibleSpace();
+                        GUILayout.EndHorizontal();
+                    }
+                }
+            }
+        }
+       
+
+        GUI.color = Color.white;
+        GUILayout.Space(5);
+
+    }
     private void RenderModChangelogInfo(PTK_PackageExporter exporter)
     {
         exporter.currentMod.UserModVersion = EditorGUILayout.FloatField("Mod Version (User)", exporter.currentMod.UserModVersion);
@@ -413,17 +719,6 @@ public class PTK_PackageExporterGUI
 
         string strSceneThumbnailPath = strSelectedTrackToExportDir + "\\TrackThumbnail.png";
 
-        if (strLastPresentedModTexturePreviewsPath != strModTexturePreviewsPath)
-        {
-            modThumbnailTexPreview = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt);
-            modScreen1 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen1"+ PTK_ModInfo.strThumbScreenImageExt);
-            modScreen2 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen2"+ PTK_ModInfo.strThumbScreenImageExt);
-            modScreen3 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen3"+ PTK_ModInfo.strThumbScreenImageExt);
-            modScreen4 = AssetDatabase.LoadAssetAtPath<Texture2D>(strModTexturePreviewsPath + "Screen4"+ PTK_ModInfo.strThumbScreenImageExt);
-
-        }
-
-
         if (modThumbnailTexPreview != null)
         {
             float fThumbnailSizeMB = new FileInfo(strModTexturePreviewsPath + "Thumbnail" + PTK_ModInfo.strThumbScreenImageExt).Length / (1024.0f * 1024);
@@ -434,7 +729,6 @@ public class PTK_PackageExporterGUI
             fCurrentMBThumbnailSize = 0.0f;
         }
 
-        strLastPresentedModTexturePreviewsPath = strModTexturePreviewsPath;
 
         GUILayout.BeginVertical();
 
@@ -627,6 +921,7 @@ public class PTK_PackageExporterGUI
 
         GUILayout.EndHorizontal();
 
+     
 
         DisplayTrackErrors();
 
@@ -643,6 +938,7 @@ public class PTK_PackageExporterGUI
         // Dropdown for selecting a mod
         if (allMods.Count > 0)
         {
+            allMods = allMods.OrderBy(mod => mod.ModName).ToList();
             string[] modNames = allMods.Select(mod => mod.ModName).ToArray();
             iSelectedModIndex = EditorGUILayout.Popup("Select Mod", iSelectedModIndex, modNames);
 
@@ -698,9 +994,10 @@ public class PTK_PackageExporterGUI
             AssetDatabase.Refresh();
 
             allMods.Add(newMod);
-            exporter.currentMod = newMod;
-            iSelectedModIndex = allMods.Count - 1;
+            allMods = allMods.OrderBy(mod => mod.ModName).ToList();
 
+            exporter.currentMod = newMod;
+            iSelectedModIndex = allMods.FindIndex(mod => mod.ModName == newMod.ModName);
 
             // create empty textures that user can edit with their own images
             Texture2D newTex1920 = new Texture2D(1920, 1080, TextureFormat.RGB24, false);

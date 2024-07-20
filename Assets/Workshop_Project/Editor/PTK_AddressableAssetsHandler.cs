@@ -64,6 +64,10 @@ public class PTK_AddressableAssetsHandler
 
         // after mod generated - copy textures
         CopyThumbnailAndScreensToExportedModDirectory(exporter);
+        CopySoundBanks(exporter);
+
+
+        EditorUtility.DisplayDialog("Success", "Package Generated successfully", "OK");
 
         EditorUtility.RevealInFinder(Path.Combine(buildPathModDir, ""));
     }
@@ -475,7 +479,60 @@ public class PTK_AddressableAssetsHandler
         return true;
     }
 
+    private void CopySoundBanks(PTK_PackageExporter exporter)
+    {
+        string strDirectoryOfModWithFilesForTargetBuildPlatform = GetModFilesDirectoryForBuildPlatform(exporter.currentMod);
+        (string strMusicSoundbankPath, string strSoundBankName) = exporter.packageExporterGUI.GetTrackCustomMusicSoundBankPath(exporter);
 
+        if (strMusicSoundbankPath != "")
+        {
+           bool bSuccess = CopySoundBankToModDir(strMusicSoundbankPath, strSoundBankName, strDirectoryOfModWithFilesForTargetBuildPlatform);
+
+            if(bSuccess)
+                EditorUtility.DisplayDialog("SoundBank Copy", "SoundBanks copied successfully", "OK");
+        }
+
+
+        (string[] soundBankVOPaths, string[] soundBankVONames, string[] characterPaths) = exporter.packageExporterGUI.GetCharactersSoundBankPaths(exporter);
+
+        if(soundBankVOPaths.Length > 0)
+        {
+            bool bSuccess = true;
+            for (int i = 0; i < soundBankVOPaths.Length; i++)
+            {
+                bSuccess &= CopySoundBankToModDir(soundBankVOPaths[i], soundBankVONames[i], strDirectoryOfModWithFilesForTargetBuildPlatform);
+            }
+
+            if (bSuccess)
+                EditorUtility.DisplayDialog("SoundBank Copy", "SoundBanks copied successfully", "OK");
+        }
+    }
+
+    bool CopySoundBankToModDir(string strSoundBankPath, string strSoundBankName, string strTargetDirectory)
+    {
+        string strJsonPath = strSoundBankPath.Replace(".bnk", ".json");
+        string strJsonName = strSoundBankName.Replace(".bnk", ".json");
+
+        string strTxtPath = strSoundBankPath.Replace(".bnk", ".txt");
+        string strTxtnName = strSoundBankName.Replace(".bnk", ".txt");
+
+        if (File.Exists(strJsonPath) == false)
+        {
+            EditorUtility.DisplayDialog("Track Custom Music", "No JSON SoundBank file found" + strJsonPath, "OK");
+        }
+
+        if (File.Exists(strTxtPath) == false)
+        {
+            EditorUtility.DisplayDialog("Track Custom Music", "No TXT SoundBank file found" + strTxtPath, "OK");
+
+        }
+        File.Copy(strSoundBankPath, Path.Combine(strTargetDirectory, strSoundBankName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+        File.Copy(strJsonPath, Path.Combine(strTargetDirectory, strJsonName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+        File.Copy(strTxtPath, Path.Combine(strTargetDirectory, strTxtnName), true); // copy isnide Paltform type (StandaloneWIndows64) so offline loading will have thumbnail and screenshots to load
+
+
+        return true;
+    }
     private void CopyThumbnailAndScreensToExportedModDirectory(PTK_PackageExporter exporter)
     {
         string strDirectoryOfModWithFilesForTargetBuildPlatform = GetModFilesDirectoryForBuildPlatform(exporter.currentMod);
