@@ -15,6 +15,10 @@ using System.Security.Cryptography;
 public class PTK_PackageExporter : EditorWindow
 {
     public PTK_ModInfo currentMod;
+    [HideInInspector]
+    public PTK_ModInfo lastSelectedMod;
+    [HideInInspector]
+    public int iModsSortMode = 2;
     public PTK_AddressableAssetsHandler addressableHelper = new PTK_AddressableAssetsHandler();
     public PTK_PackageExporterGUI packageExporterGUI = new PTK_PackageExporterGUI();
 

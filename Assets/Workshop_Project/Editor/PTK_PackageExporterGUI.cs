@@ -9,8 +9,6 @@ public class PTK_PackageExporterGUI
 {
     private List<PTK_ModInfo> allMods = new List<PTK_ModInfo>();
 
-    private int iSelectedModIndex = -1;
-    private int iLastSelectedIndex = -1;
 
     string[] TagOptions = new string[] { "Characters", "Vehicles", "Wheels", "Tracks", "Stickers" };
     string[] VisibilityOptions = new string[] { "Public", "FriendsOnly", "Unlisted", "Private" };
@@ -953,13 +951,45 @@ public class PTK_PackageExporterGUI
         // Dropdown for selecting a mod
         if (allMods.Count > 0)
         {
-            allMods = allMods.OrderBy(mod => mod.ModName).ToList();
-            string[] modNames = allMods.Select(mod => mod.ModName).ToArray();
+            List<string> strModNames = new List<string>();
+            for(int i=0;i< allMods.Count;i++)
+            {
+                // esnure no empty
+                if (allMods[i].ModName == "")
+                    allMods[i].ModName = i.ToString();
+
+                // to ensure there are no duplicate names
+                if (strModNames.Contains(allMods[i].ModName) == true)
+                    allMods[i].ModName += i.ToString();
+
+                strModNames.Add(allMods[i].ModName);
+            }
+
+
+             List<PTK_ModInfo> sortedMods = allMods;
+
+             if(exporter.iModsSortMode == 1)
+                sortedMods = allMods.OrderBy(mod => mod.ModName).ToList();
+             else if (exporter.iModsSortMode == 2)
+                    sortedMods = allMods.OrderByDescending(mod => mod.LastBuildDateTime).ToList();
+
+                int iSelectedModIndex = 0;
+            for (int i=0;i< sortedMods.Count;i++)
+            {
+                if(sortedMods[i] == exporter.currentMod)
+                {
+                    iSelectedModIndex = i;
+                    break;
+                }
+            }
+            string[] modNames = sortedMods.Select(mod => mod.ModName).ToArray();
             iSelectedModIndex = EditorGUILayout.Popup("Select Mod", iSelectedModIndex, modNames);
+
+            exporter.iModsSortMode = EditorGUILayout.Popup("", exporter.iModsSortMode, new string[] { "Sort: None", "Sort: Mod Name", "Sort: Build Date" }, GUILayout.Width(150));
 
             if (iSelectedModIndex >= 0)
             {
-                exporter.currentMod = allMods[iSelectedModIndex];
+                exporter.currentMod = sortedMods[iSelectedModIndex];
             }
         }
         else
@@ -968,12 +998,12 @@ public class PTK_PackageExporterGUI
         }
 
 
-        if (iLastSelectedIndex != iSelectedModIndex)
+        if (exporter.lastSelectedMod != exporter.currentMod)
         {
             RefreshModListInProject(exporter);
         }
 
-        iLastSelectedIndex = iSelectedModIndex;
+        exporter.lastSelectedMod = exporter.currentMod;
 
         GUI.color = exporter.currentMod != null ? Color.red : Color.gray;
         // Delete mod button with confirmation
@@ -985,12 +1015,10 @@ public class PTK_PackageExporterGUI
                 AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(exporter.currentMod));
                 AssetDatabase.Refresh();
                 exporter.currentMod = null;
-                iSelectedModIndex = -1;
 
                 if (allMods.Count > 0)
                 {
                     exporter.currentMod = allMods[0];
-                    iSelectedModIndex = 0;
                 }
             }
         }
@@ -1009,10 +1037,7 @@ public class PTK_PackageExporterGUI
             AssetDatabase.Refresh();
 
             allMods.Add(newMod);
-            allMods = allMods.OrderBy(mod => mod.ModName).ToList();
-
             exporter.currentMod = newMod;
-            iSelectedModIndex = allMods.FindIndex(mod => mod.ModName == newMod.ModName);
 
             // create empty textures that user can edit with their own images
             Texture2D newTex1920 = new Texture2D(1920, 1080, TextureFormat.RGB24, false);
@@ -1090,17 +1115,15 @@ public class PTK_PackageExporterGUI
                 {
                     exporter.currentMod = null;
                 }
-                iSelectedModIndex = 0;
             }
         }
         else if (allMods.Count > 0)
         {
             exporter.currentMod = allMods[0];
-            iSelectedModIndex = 0;
         }
         else
         {
-            iSelectedModIndex = 0;
+            exporter.currentMod = null;
         }
     }
 
