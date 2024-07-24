@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PTK_PackageExporterGUI
@@ -387,7 +388,12 @@ public class PTK_PackageExporterGUI
     {
         bool bIsModTrackType = exporter.currentMod.strModTag == "Tracks";
 
-        if(bIsModTrackType == true)
+        GUILayout.Space(10);
+        GUI.color = Color.yellow;
+        GUILayout.Label("Select Tag in settings :  Character Tag for customVO | Tracks tag for Custom Music");
+        GUI.color = Color.white;
+
+        if (bIsModTrackType == true)
             RenderTrackCustomMusic(exporter);
 
         bool bIsCharactersMod = exporter.currentMod.strModTag == "Characters";
@@ -481,11 +487,20 @@ public class PTK_PackageExporterGUI
         return (voPaths.ToArray(), voSoundBankNames.ToArray(), characterPaths.ToArray());
     }
 
-    private void RenderTrackCustomMusic(PTK_PackageExporter exporter)
+    void RenderCustomVOBox()
     {
         GUILayout.Space(15);
-
-
+        GUI.color = Color.cyan;
+        GUILayout.BeginHorizontal(GUI.skin.box);
+        GUILayout.FlexibleSpace();
+        GUILayout.Label("Custom Voice Overs - Not Required");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+        GUI.color = Color.white;
+    }
+    void RenderCustomMusicTracksBox()
+    {
+        GUILayout.Space(15);
         GUI.color = Color.yellow;
         GUILayout.BeginHorizontal(GUI.skin.box);
         GUILayout.FlexibleSpace();
@@ -493,6 +508,57 @@ public class PTK_PackageExporterGUI
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
         GUI.color = Color.white;
+    }
+    private void RenderTrackCustomMusic(PTK_PackageExporter exporter)
+    {
+        GUI.enabled = false; RenderCustomVOBox(); GUI.enabled = true;// to show it is supported
+
+        RenderCustomMusicTracksBox();
+
+        if (exporter.currentMod.SelectedPaths.Count == 0)
+        {
+            GUILayout.Label("Please select scene in Export tab first");
+            return;
+        }
+
+        bool bTargetModSceneTrackIsOpen = true;
+
+        var activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+        // Get the path of the active scene
+        string scenePathDir = activeScene.path != "" ? Path.GetDirectoryName(activeScene.path) : "";
+
+
+        (string strMusicSoundbankPath, string strSoundBankName) = GetTrackCustomMusicSoundBankPath(exporter);
+
+        if (scenePathDir == "" || scenePathDir.Replace('\\', '/') != exporter.currentMod.SelectedPaths[0].Replace('\\', '/'))
+        {
+            GUILayout.Label("Soundbank Exist: " +( (strMusicSoundbankPath != "") ? "TRUE" : "FALSE"));
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("To ensure soundbank setup is correct, please open correct Mod Track scene");
+            bTargetModSceneTrackIsOpen = false;
+
+            GUI.color = Color.green;
+            if (GUILayout.Button("Open Mod Target Track Scene"))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(exporter.currentMod.SelectedPaths[0]);
+                var filesInDir = dirInfo.GetFiles();
+                for (int iFile = 0; iFile < filesInDir.Length;iFile++)
+                {
+                    if(filesInDir[iFile].FullName.Contains(".unity"))
+                    {
+                        EditorSceneManager.OpenScene(filesInDir[iFile].FullName, OpenSceneMode.Single);
+                        break;
+                    }
+                }
+            }
+
+            GUILayout.EndHorizontal();
+
+            GUI.enabled = false;
+            GUI.color = Color.white;
+            return; // to not confuse with presenting soundbank from other scene
+        }
 
         bool bIsModTrackType = exporter.currentMod.strModTag == "Tracks";
 
@@ -511,7 +577,6 @@ public class PTK_PackageExporterGUI
 
         }
 
-       ( string strMusicSoundbankPath,string strSoundBankName) = GetTrackCustomMusicSoundBankPath(exporter);
 
         string strTrackThumbnailPath = strSelectedTrackToExportDir + "\\" + "TrackThumbnail.png";
         GUILayout.BeginVertical(GUI.skin.box);
@@ -529,7 +594,7 @@ public class PTK_PackageExporterGUI
         GUILayout.Label(strMusicSoundbankPath);
         GUILayout.EndVertical();
 
-        GUI.enabled = true;
+        GUI.enabled = bTargetModSceneTrackIsOpen;
 
         if (bIsModTrackType == true)
         {
@@ -547,7 +612,8 @@ public class PTK_PackageExporterGUI
                 GUI.color = Color.white;
                 if (vModTrack != null)
                 {
-                    if (GUILayout.Button("Set Music Soundbank name to PTK_ModTrack object scene") == true)
+                    GUI.color = Color.green;
+                    if (GUILayout.Button("Auto FIX: Set Music Soundbank name to PTK_ModTrack object scene") == true)
                     {
                         vModTrack.strMusicSoundBank = strSoundBankName;
                         EditorUtility.SetDirty(vModTrack);
@@ -560,35 +626,33 @@ public class PTK_PackageExporterGUI
                         }
                     }
                 }
+                GUI.color = Color.white;
                 GUILayout.EndHorizontal();
 
             }
             else
             {
-                GUI.color = Color.green + Color.white * 0.5f;
-                GUILayout.BeginHorizontal();
-                GUILayout.FlexibleSpace();
-                GUILayout.Label("Music Soundbank name is correctly set in PTK_ModTrack scene object");
-                GUILayout.FlexibleSpace();
-                GUILayout.EndHorizontal();
+                if(bTargetModSceneTrackIsOpen == true)
+                {
+                    GUI.color = Color.green + Color.white * 0.5f;
+                    GUILayout.BeginHorizontal();
+                    GUILayout.FlexibleSpace();
+                    GUILayout.Label("Music Soundbank name is correctly set in PTK_ModTrack scene object");
+                    GUILayout.FlexibleSpace();
+                    GUILayout.EndHorizontal();
+                }
             }
         }
 
         GUI.color = Color.white;
         GUILayout.Space(5);
+        GUI.enabled = true;
     }
 
     private void RenderCustomVoiceOvers(PTK_PackageExporter exporter)
     {
-        GUILayout.Space(15);
 
-        GUI.color = Color.cyan;
-        GUILayout.BeginHorizontal(GUI.skin.box);
-        GUILayout.FlexibleSpace();
-        GUILayout.Label("Custom Voice Overs - Not Required");
-        GUILayout.FlexibleSpace();
-        GUILayout.EndHorizontal();
-        GUI.color = Color.white;
+        RenderCustomVOBox();
 
         GUILayout.Space(5);
 
@@ -608,10 +672,16 @@ public class PTK_PackageExporterGUI
         }
         else
         {
+            if (exporter.currentMod.SelectedPaths.Count == 0)
+            {
+                GUILayout.Label("Please select character in Export tab first");
+                GUI.enabled = false; RenderCustomMusicTracksBox(); GUI.enabled = true;// to show it is supported
+                return;
+            }
 
         }
 
-       (string[] soundBankVOPaths, string[] soundBankVONames,string[] characterPaths) = GetCharactersSoundBankPaths(exporter);
+        (string[] soundBankVOPaths, string[] soundBankVONames,string[] characterPaths) = GetCharactersSoundBankPaths(exporter);
         for (int iPathIndex=0;iPathIndex< soundBankVOPaths.Length; iPathIndex++)
         {
             GUILayout.Space(5);
@@ -687,6 +757,9 @@ public class PTK_PackageExporterGUI
 
         GUI.color = Color.white;
         GUILayout.Space(5);
+
+
+        GUI.enabled = false; RenderCustomMusicTracksBox(); GUI.enabled = true;// to show it is supported
 
     }
     private void RenderModChangelogInfo(PTK_PackageExporter exporter)
