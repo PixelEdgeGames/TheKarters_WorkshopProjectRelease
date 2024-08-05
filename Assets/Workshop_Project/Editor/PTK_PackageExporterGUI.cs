@@ -271,6 +271,9 @@ public class PTK_PackageExporterGUI
         GUI.enabled = true;
     }
 
+    public static string strPlayerPrefsGameDirKey = "TargetGameDir";
+    public static string strPlayerPrefsGameDirCopyKey = "TargetGameDirCopyInt";
+
     private void RenderExportPasswordView(PTK_PackageExporter exporter)
     {
         GUI.color = (Color.red + Color.yellow * 1.0f) * 1.5f;
@@ -357,6 +360,44 @@ public class PTK_PackageExporterGUI
 
         GUILayout.EndVertical();
         GUILayout.EndScrollView();
+
+
+        GUILayout.Space(10);
+        GUILayout.BeginHorizontal();
+        string strGameModsDirPath = PlayerPrefs.GetString(strPlayerPrefsGameDirKey);
+        bool bCopyToGameDir = PlayerPrefs.GetInt(strPlayerPrefsGameDirCopyKey) == 1;
+        if (PlayerPrefs.HasKey(strPlayerPrefsGameDirCopyKey) == false)
+            bCopyToGameDir = true;
+
+        GUI.color = Color.cyan;
+        bCopyToGameDir = EditorGUILayout.Toggle("Copy Export to Game Dir", bCopyToGameDir, GUILayout.Width(180));
+        GUI.color = Color.white;
+        PlayerPrefs.SetInt(strPlayerPrefsGameDirCopyKey, bCopyToGameDir ? 1 : 0);
+
+        GUI.enabled = bCopyToGameDir;
+
+        bool bCorrectModsDir = strGameModsDirPath != "" && strGameModsDirPath.ToLower().Contains("mods") == true;
+
+        if (bCopyToGameDir && bCorrectModsDir == false)
+            GUI.color = Color.red;
+
+        if (GUILayout.Button("Select Game 'Mods' Dir", GUILayout.Width(200)))
+        {
+            string strSelectedDir = EditorUtility.OpenFolderPanel("Select Game 'Mods' directory", "", "");
+            PlayerPrefs.SetString(strPlayerPrefsGameDirKey, strSelectedDir);
+        }
+
+        if(bCorrectModsDir == true)
+            GUI.color = Color.green;
+
+        GUILayout.Label(strGameModsDirPath);
+
+        GUI.color = Color.white;
+        GUI.enabled = true;
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(5);
     }
 
     void ModConfigGUI(PTK_PackageExporter exporter)

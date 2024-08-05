@@ -70,6 +70,65 @@ public class PTK_AddressableAssetsHandler
         EditorUtility.DisplayDialog("Success", "Package Generated successfully", "OK");
 
         EditorUtility.RevealInFinder(Path.Combine(buildPathModDir, ""));
+
+        CopyModToGameDirectory(exporter);
+    }
+    
+    void CopyModToGameDirectory(PTK_PackageExporter exporter)
+    {
+        string strGameModsDirPath = PlayerPrefs.GetString(PTK_PackageExporterGUI.strPlayerPrefsGameDirKey);
+        bool bCopyToGameDir = PlayerPrefs.GetInt(PTK_PackageExporterGUI.strPlayerPrefsGameDirCopyKey) == 1;
+
+        if(bCopyToGameDir == false || Directory.Exists(strGameModsDirPath) == false)
+        {
+            return;
+        }
+
+        try
+        {
+            string strTargetDirWithModName = Path.Combine(strGameModsDirPath, new DirectoryInfo(buildPathModDir).Name);
+            if (Directory.Exists(strTargetDirWithModName))
+                Directory.Delete(strTargetDirWithModName, true);
+
+            CopyDirectory(buildPathModDir, strTargetDirWithModName);
+            EditorUtility.RevealInFinder(strTargetDirWithModName);
+        }
+        catch(Exception e)
+        {
+            Debug.LogError("Cant copy exported package to game directory. Please copy it manually. " + e.Message);
+        }
+    }
+
+    static void CopyDirectory(string sourceDir, string destinationDir)
+    {
+        // Get the subdirectories for the specified directory.
+        DirectoryInfo dir = new DirectoryInfo(sourceDir);
+
+        if (!dir.Exists)
+        {
+            throw new DirectoryNotFoundException(
+                "Source directory does not exist or could not be found: "
+                + sourceDir);
+        }
+
+        DirectoryInfo[] dirs = dir.GetDirectories();
+        // If the destination directory doesn't exist, create it.
+        Directory.CreateDirectory(destinationDir);
+
+        // Get the files in the directory and copy them to the new location.
+        FileInfo[] files = dir.GetFiles();
+        foreach (FileInfo file in files)
+        {
+            string temppath = Path.Combine(destinationDir, file.Name);
+            file.CopyTo(temppath, true);
+        }
+
+        // Copy subdirectories and their contents to new location.
+        foreach (DirectoryInfo subdir in dirs)
+        {
+            string temppath = Path.Combine(destinationDir, subdir.Name);
+            CopyDirectory(subdir.FullName, temppath);
+        }
     }
 
     void PrepareExportToAddressables(PTK_PackageExporter exporter)
