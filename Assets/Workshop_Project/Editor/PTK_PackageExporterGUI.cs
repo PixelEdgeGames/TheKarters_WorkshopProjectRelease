@@ -363,6 +363,8 @@ public class PTK_PackageExporterGUI
 
 
         GUILayout.Space(10);
+        GUI.color = Color.green*0.3f + Color.white*0.7f;
+        GUILayout.Label("Hot RaceTrack Reload Supported - Game/Track Restart not required");
         GUILayout.BeginHorizontal();
         string strGameModsDirPath = PlayerPrefs.GetString(strPlayerPrefsGameDirKey);
         bool bCopyToGameDir = PlayerPrefs.GetInt(strPlayerPrefsGameDirCopyKey) == 1;
