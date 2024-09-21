@@ -47,6 +47,7 @@ public class PTK_PackageExporterGUI
     {
         bRefreshDirectories = true;
         strUploadPassword = "";
+        bShowPassword = false;
 
         RefreshModListInProject(exporter);
     }
@@ -74,8 +75,11 @@ public class PTK_PackageExporterGUI
             return;
         }
 
-
+        EditorGUI.BeginChangeCheck();
         selectedTabIndex = GUILayout.SelectionGrid(selectedTabIndex, tabOptions, tabOptions.Length);
+
+        if (EditorGUI.EndChangeCheck())
+            bShowPassword = false;
 
         RefreshTrackModCheck(exporter);
 
@@ -274,6 +278,7 @@ public class PTK_PackageExporterGUI
     public static string strPlayerPrefsGameDirKey = "TargetGameDir";
     public static string strPlayerPrefsGameDirCopyKey = "TargetGameDirCopyInt";
 
+    bool bShowPassword = false;
     private void RenderExportPasswordView(PTK_PackageExporter exporter)
     {
         GUI.color = (Color.red + Color.yellow * 1.0f) * 1.5f;
@@ -295,7 +300,16 @@ public class PTK_PackageExporterGUI
             GUI.color = Color.green;
 
         EditorGUI.BeginChangeCheck();
-        strUploadPassword = EditorGUILayout.TextField("Upload Password: ", strUploadPassword);
+        GUILayout.BeginHorizontal();
+
+        if (bShowPassword == false)
+            strUploadPassword = EditorGUILayout.PasswordField("Upload Password: ", strUploadPassword);
+        else
+            strUploadPassword = EditorGUILayout.TextField("Upload Password: ", strUploadPassword);
+
+        GUI.color = Color.white;
+        bShowPassword = EditorGUILayout.Toggle("Show Password", bShowPassword, GUILayout.Width(200));
+        GUILayout.EndHorizontal();
 
         if (EditorGUI.EndChangeCheck() == true)
         {
@@ -1099,7 +1113,12 @@ public class PTK_PackageExporterGUI
                 }
             }
             string[] modNames = sortedMods.Select(mod => mod.ModName).ToArray();
+
+            EditorGUI.BeginChangeCheck();
             iSelectedModIndex = EditorGUILayout.Popup("Select Mod", iSelectedModIndex, modNames);
+
+            if(EditorGUI.EndChangeCheck())
+                bShowPassword = false;
 
             exporter.iModsSortMode = EditorGUILayout.Popup("", exporter.iModsSortMode, new string[] { "Sort: None", "Sort: Mod Name", "Sort: Build Date" }, GUILayout.Width(150));
 
