@@ -11,7 +11,7 @@ public class PTK_PackageExporterGUI
     private List<PTK_ModInfo> allMods = new List<PTK_ModInfo>();
 
 
-    string[] TagOptions = new string[] { "Characters", "Vehicles", "Wheels", "Tracks", "Stickers" };
+    string[] TagOptions = new string[] { "Characters", "Vehicles", "Wheels", "Tracks", "Stickers","Duo Characters" };
     string[] VisibilityOptions = new string[] { "Public", "FriendsOnly", "Unlisted", "Private" };
     string strModSO_Path = "Assets/Workshop_Project/LocalUserModsGenerationConfigs";
 
